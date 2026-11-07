@@ -1,154 +1,42 @@
-/* AnzGlow — interactions */
+/* AnzGlow — home page (needs shades.js + common.js first). */
 (() => {
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const { $, $$, KITS, PK, artSvg, wa, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals } = window.AG;
 
-  // ---------- Product data (prices are placeholders — set your real prices) ----------
-  const KITS = [
-    {
-      id: "tan", tag: "Best Seller", tagClass: "", name: "Tan Removal Combo Kit",
-      items: ["Face Wash", "Tan Removal Cream", "Body Lotion"], note: "For clear & even skin",
-      price: 149, was: 189,
-      desc: "A three-step set that gently lifts sun tan and evens out dark spots, while keeping skin soft and hydrated.",
-      use: "Wash face with the Face Wash, apply a thin layer of Tan Removal Cream on tanned areas, finish with Body Lotion. Use twice daily; patch test first.",
-      art: `<use href="#tube" x="30" y="12" width="84" height="210"/><use href="#tube" x="196" y="56" width="66" height="166"/><use href="#jar" x="96" y="128" width="118" height="100"/>`
-    },
-    {
-      id: "glow", tag: "Popular", tagClass: "", featured: true, name: "Complete Glow Beauty Kit",
-      items: ["Gentle Cleanser", "Moisturiser", "Glow Serum"], note: "Get your natural glow",
-      price: 199, was: 249,
-      desc: "Our complete daily ritual — cleanse, nourish and finish with serum for that lit-from-within glow.",
-      use: "Morning and night: cleanse, press 2–3 drops of serum into skin, then seal with moisturiser.",
-      art: `<use href="#pump" x="40" y="4" width="72" height="224"/><use href="#dropper" x="200" y="70" width="52" height="160"/><use href="#jar" x="100" y="128" width="118" height="100"/>`
-    },
-    {
-      id: "pinkkey", tag: "New", tagClass: "rose", name: "Pink Key Liquid Lipstick",
-      items: ["Little Brown Pink shade", "Suits every skin tone", "Long-lasting, non-sticky"], note: "One shade, every skin tone",
-      price: 10, was: null, img: "assets/pinkkey.jpg",
-      gallery: ["assets/pinkkey.jpg", "assets/pk-dark.jpg", "assets/pk-brown.jpg", "assets/pk-white.jpg"],
-      desc: "Pink Key Liquid Lipstick in Little Brown Pink — a soft rosy-brown that suits every skin tone, from fair to deep. Lightweight, non-sticky and richly pigmented, with organic ingredients that stay gentle on lips.",
-      use: "Start at the centre of your lips and glide outwards with the applicator. Add a second layer for deeper colour. Let it set for a few seconds."
-    }
-  ];
-  const DELIVERY_FEE = 10; // AED, flat rate across the UAE
-  const artSvg =(k, cls = "") => k.img
-    ? `<img class="prod-photo ${cls}" src="${k.img}" alt="${k.name}">`
-    : `<svg class="${cls}" viewBox="0 0 300 230" aria-hidden="true">${k.art}</svg>`;
-
-  // ---------- Safe storage ----------
-  const store = {
-    get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
-    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-  };
-  let cart = store.get("anz-cart", {});
-  Object.keys(cart).forEach(id => { if (!KITS.some(k => k.id === id)) delete cart[id]; });
-  let wish = new Set(store.get("anz-wish", []));
-
-  // ---------- Render kits ----------
-  $("#kitGrid").innerHTML = KITS.map((k, i) => `
+  // ---------- Collection cards ----------
+  $("#kitGrid").innerHTML = KITS.map((k, i) => {
+    const isPK = k.id === PK.id;
+    const stage = isPK
+      ? `<a class="kit-stage" href="${k.page}" aria-label="See all 12 shades">${artSvg(k)}<span class="qv-hint">See 12 shades</span></a>`
+      : `<button class="kit-stage" data-qv="${k.id}" aria-label="View ${k.name}">${artSvg(k)}<span class="qv-hint">Quick view</span></button>`;
+    const title = isPK ? `<a class="kit-name" href="${k.page}">${k.name}</a>` : `<button class="kit-name" data-qv="${k.id}">${k.name}</button>`;
+    const cta = isPK
+      ? `<a class="btn btn-gold btn-sm" href="${k.page}">Choose shade <svg><use href="#i-arrow"/></svg></a>`
+      : `<button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag <svg><use href="#i-arrow"/></svg></button>`;
+    return `
     <article class="kit reveal d${i} ${k.featured ? "featured" : ""}" data-id="${k.id}">
       <span class="tag ${k.tagClass}">${k.tag}</span>
-      <button class="wish ${wish.has(k.id) ? "on" : ""}" aria-label="Save to wishlist" data-wish="${k.id}"><svg><use href="#i-heart"/></svg></button>
-      <button class="kit-stage" data-qv="${k.id}" aria-label="View ${k.name}">${artSvg(k)}<span class="qv-hint">Quick view</span></button>
-      <h3><button class="kit-name" data-qv="${k.id}">${k.name}</button></h3>
+      <button class="wish" aria-label="Save to wishlist" data-wish="${k.id}"><svg><use href="#i-heart"/></svg></button>
+      ${stage}
+      <h3>${title}</h3>
+      ${isPK ? `<div class="kit-shades">${PK.shades.map(s => `<i style="background:${s.hex}" title="${s.no} ${s.name}"></i>`).join("")}</div>` : ""}
       <ul class="kit-list">${k.items.map(x => `<li>${x}</li>`).join("")}</ul>
       <p class="kit-note">${k.note}</p>
       <div class="kit-foot">
-        <div class="price"><small>${k.img ? "Price" : "Kit price"}</small>AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}</div>
-        <button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag <svg><use href="#i-arrow"/></svg></button>
+        <div class="price"><small>${isPK ? "Each shade" : "Kit price"}</small>AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}</div>
+        ${cta}
       </div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
+  $$("[data-wish]").forEach(x => x.classList.toggle("on", (window.AG.store.get("anz-wish", [])).includes(x.dataset.wish)));
 
-  // ---------- Toast ----------
-  let tt;
-  const toast = msg => {
-    $("#toastMsg").textContent = msg;
-    $("#toast").classList.add("show");
-    clearTimeout(tt); tt = setTimeout(() => $("#toast").classList.remove("show"), 2600);
-  };
-  const bump = el => { el.classList.add("bump"); setTimeout(() => el.classList.remove("bump"), 350); };
+  // ---------- Pink Key spotlight: 12-shade strip ----------
+  const strip = $("#pkStrip");
+  if (strip) strip.innerHTML = PK.shades.map(s =>
+    `<a href="pink-key.html?shade=${s.no}" title="${s.no} ${s.name}"><i style="background:${s.hex}"></i>${s.no}<br>${s.name}</a>`).join("");
 
-  // ---------- Cart ----------
-  const renderCart = () => {
-    const ids = Object.keys(cart).filter(id => cart[id] > 0);
-    const count = ids.reduce((n, id) => n + cart[id], 0);
-    const total = ids.reduce((n, id) => n + cart[id] * KITS.find(k => k.id === id).price, 0);
-    const ship = count ? DELIVERY_FEE : 0;
-    $("#cartCount").textContent = count;
-    $("#cartSub").textContent = "AED " + total;
-    $("#cartShip").textContent = "AED " + ship;
-    $("#cartTotal").textContent = "AED " + (total + ship);
-    $("#cartBody").innerHTML = ids.length ? ids.map(id => {
-      const k = KITS.find(x => x.id === id);
-      return `<div class="ci-row"><div class="thumb">${artSvg(k)}</div>
-        <div><b>${k.name}</b><span class="qty"><button data-dec="${id}" aria-label="Less">−</button>${cart[id]}<button data-inc="${id}" aria-label="More">+</button></span></div>
-        <span>AED ${k.price * cart[id]}</span></div>`;
-    }).join("") : `<div class="empty"><span class="script">Your bag is empty</span>Your glow is just one kit away.</div>`;
-    store.set("anz-cart", cart);
-  };
-  const openCart = () => document.body.classList.add("cart-open");
-  const closeCart = () => document.body.classList.remove("cart-open");
+  observeReveals();
 
-  document.addEventListener("click", e => {
-    const add = e.target.closest("[data-add]");
-    if (add) {
-      const id = add.dataset.add; cart[id] = (cart[id] || 0) + 1; renderCart(); bump($("#cartCount"));
-      toast(KITS.find(k => k.id === id).name + " added to your bag");
-    }
-    const inc = e.target.closest("[data-inc]"); if (inc) { cart[inc.dataset.inc]++; renderCart(); }
-    const dec = e.target.closest("[data-dec]"); if (dec) { cart[dec.dataset.dec]--; renderCart(); }
-    const w = e.target.closest("[data-wish]");
-    if (w) {
-      const id = w.dataset.wish; wish.has(id) ? wish.delete(id) : wish.add(id);
-      w.classList.toggle("on", wish.has(id)); $("#wishCount").textContent = wish.size; bump($("#wishCount"));
-      store.set("anz-wish", [...wish]); if (wish.has(id)) toast("Saved to your wishlist ♡");
-    }
-  });
-  $("#cartBtn").onclick = openCart;
-  $("#cartClose").onclick = closeCart;
-  $("#scrim").onclick = closeCart;
-  $("#wishCount").textContent = wish.size;
-  renderCart();
-
-  // ---------- Mobile menu ----------
-  $("#menuBtn").onclick = () => document.body.classList.add("menu-open");
-  $("#menuClose").onclick = () => document.body.classList.remove("menu-open");
-  $$("#mnav a").forEach(a => a.onclick = () => document.body.classList.remove("menu-open"));
-  document.addEventListener("keydown", e => { if (e.key === "Escape") { closeCart(); document.body.classList.remove("menu-open"); } });
-
-  // ---------- Header + active nav ----------
-  const header = $("#header");
-  const onScroll = () => header.classList.toggle("scrolled", scrollY > 20);
-  addEventListener("scroll", onScroll, { passive: true }); onScroll();
-  const navLinks = $$("#nav a");
-  const spy = new IntersectionObserver(es => es.forEach(en => {
-    if (!en.isIntersecting) return;
-    const id = en.target.classList.contains("hero") ? "top" : en.target.id;
-    navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-  }), { rootMargin: "-45% 0px -50% 0px" });
-  ["kits", "finder", "ritual", "story", "reviews", "order"].forEach(id => spy.observe(document.getElementById(id)));
-  spy.observe($(".hero"));
-
-  // ---------- Reveal + counters ----------
-  const countUp = el => {
-    const to = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0, suf = el.dataset.suffix || "";
-    const t0 = performance.now();
-    const tick = t => {
-      const p = Math.min(1, (t - t0) / 1600), v = to * (1 - Math.pow(1 - p, 3));
-      el.textContent = (dec ? v.toFixed(dec) : Math.round(v).toLocaleString()) + suf;
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-  const io = new IntersectionObserver(es => es.forEach(en => {
-    if (!en.isIntersecting) return;
-    en.target.classList.add("in");
-    $$("[data-count]", en.target).forEach(countUp);
-    io.unobserve(en.target);
-  }), { threshold: .15 });
-  $$(".reveal, #ritualTrack").forEach(el => io.observe(el));
-
-  // ---------- Kit tilt + light ----------
+  // ---------- Card tilt + light ----------
   $$(".kit").forEach(card => {
     card.addEventListener("pointermove", e => {
       const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
@@ -158,12 +46,22 @@
     card.addEventListener("pointerleave", () => card.style.transform = "");
   });
 
+  // ---------- Active nav on scroll ----------
+  const navLinks = $$("#nav a");
+  const spy = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    const id = en.target.classList.contains("hero") ? "top" : en.target.id;
+    navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  ["kits", "pinkkey", "finder", "ritual", "story", "reviews", "order"].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+  spy.observe($(".hero"));
+
   // ---------- Glow Finder ----------
   const FIND = {
-    tan:  { kit: "tan",     title: "Tan Removal Combo Kit", text: "Fades sun tan and dark spots while keeping skin soft — our best seller for life under the UAE sun.", m: [92, 70, 80] },
-    dull: { kit: "glow",    title: "Complete Glow Beauty Kit", text: "Cleanse, nourish and finish with serum for that lit-from-within glow, every single day.", m: [70, 95, 78] },
-    dry:  { kit: "glow",    title: "Complete Glow Beauty Kit", text: "A hydration-first ritual: gentle cleanser, rich moisturiser and a serum that keeps skin plump.", m: [55, 78, 96] },
-    age:  { kit: "glow",    title: "Complete Glow Beauty Kit", text: "Cleanser, moisturiser and serum that smooth, brighten and wake up tired-looking skin.", m: [62, 90, 86] }
+    tan:  { kit: "tan",  title: "Tan Removal Combo Kit", text: "Fades sun tan and dark spots while keeping skin soft — our best seller for life under the UAE sun.", m: [92, 70, 80] },
+    dull: { kit: "glow", title: "Complete Glow Beauty Kit", text: "Cleanse, nourish and finish with serum for that lit-from-within glow, every single day.", m: [70, 95, 78] },
+    dry:  { kit: "glow", title: "Complete Glow Beauty Kit", text: "A hydration-first ritual: gentle cleanser, rich moisturiser and a serum that keeps skin plump.", m: [55, 78, 96] },
+    age:  { kit: "glow", title: "Complete Glow Beauty Kit", text: "Cleanser, moisturiser and serum that smooth, brighten and wake up tired-looking skin.", m: [62, 90, 86] }
   };
   const showFind = c => {
     const f = FIND[c], k = KITS.find(x => x.id === f.kit);
@@ -183,31 +81,8 @@
   });
   showFind("tan");
 
-  // ---------- Pink Key shade spotlight ----------
-  const SHADES = {
-    dark:  { img: "assets/pk-dark.jpg",  label: "On dark skin",  text: "A rich rosy-brown that glows against deep skin tones." },
-    brown: { img: "assets/pk-brown.jpg", label: "On brown skin", text: "A soft mauve-pink that warms up medium and olive tones." },
-    white: { img: "assets/pk-white.jpg", label: "On fair skin",  text: "A natural dusty rose — polished, never too loud." }
-  };
-  const pkMain = $("#pkMain");
-  $$("#pkShades button").forEach(b => b.onclick = () => {
-    $$("#pkShades button").forEach(x => x.classList.toggle("on", x === b));
-    const s = SHADES[b.dataset.shade];
-    pkMain.classList.add("out");
-    setTimeout(() => {
-      $("img", pkMain).src = s.img; $("#pkLabel").textContent = s.label; $("#pkText").textContent = s.text;
-      pkMain.classList.remove("out");
-    }, 280);
-  });
-
-  // ---------- Modals (quick view + policies) ----------
-  const openModal = id => { document.body.classList.add("modal-open"); $("#" + id).classList.add("open"); };
-  const closeModals = () => { document.body.classList.remove("modal-open"); $$(".modal.open").forEach(m => m.classList.remove("open")); };
-  $$(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m || e.target.closest("[data-close]")) closeModals(); }));
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
-
+  // ---------- Quick view (skincare kits) ----------
   let qvKit = null, qvQty = 1;
-  const qvSetMain = src => { $("#qvMain").innerHTML = src ? `<img src="${src}" alt="${qvKit.name}">` : artSvg(qvKit); };
   const openQuick = id => {
     const k = qvKit = KITS.find(x => x.id === id); qvQty = 1;
     $("#qvTag").textContent = k.tag; $("#qvTag").className = "tag " + k.tagClass;
@@ -216,53 +91,31 @@
     $("#qvDesc").textContent = k.desc; $("#qvUse").textContent = k.use;
     $("#qvList").innerHTML = k.items.map(x => `<li>${x}</li>`).join("");
     $("#qvQty").textContent = 1;
-    const g = k.gallery || [];
-    qvSetMain(g[0]);
-    $("#qvThumbs").innerHTML = g.map((src, i) => `<button class="${i ? "" : "on"}" data-src="${src}"><img src="${src}" alt=""></button>`).join("");
-    $$("#qvThumbs button").forEach(b => b.onclick = () => { $$("#qvThumbs button").forEach(x => x.classList.toggle("on", x === b)); qvSetMain(b.dataset.src); });
-    $("#qvWa").href = `https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${encodeURIComponent(`Hi AnzGlow, I'd like to order: ${k.name} (AED ${k.price}).`)}`;
+    $("#qvMain").innerHTML = artSvg(k); $("#qvThumbs").innerHTML = "";
+    $("#qvWa").href = wa(`Hi AnzGlow, I'd like to order: ${k.name} (AED ${k.price}).`);
     openModal("quick");
   };
   document.addEventListener("click", e => { const q = e.target.closest("[data-qv]"); if (q) openQuick(q.dataset.qv); });
   $("#qvMinus").onclick = () => { qvQty = Math.max(1, qvQty - 1); $("#qvQty").textContent = qvQty; };
   $("#qvPlus").onclick = () => { qvQty = Math.min(20, qvQty + 1); $("#qvQty").textContent = qvQty; };
-  $("#qvAdd").onclick = () => {
-    cart[qvKit.id] = (cart[qvKit.id] || 0) + qvQty; renderCart(); bump($("#cartCount"));
-    closeModals(); toast(`${qvQty} × ${qvKit.name} added to your bag`);
-  };
+  $("#qvAdd").onclick = () => { addToCart(qvKit.id, qvQty); closeModals(); };
 
-  const POLICIES = {
-    delivery: ["Delivery", `<p><b>AED 10 flat delivery</b> to all seven emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain.</p><p>Orders are usually delivered within <b>1–2 working days</b>. We call or WhatsApp you to confirm before dispatch.</p><p><b>Payment:</b> cash on delivery — pay when your order arrives.</p>`],
-    returns: ["Returns", `<p>Unopened, unused products can be returned within <b>7 days</b> of delivery. For hygiene reasons, opened cosmetics (including lipsticks) can't be returned unless they arrived damaged.</p><p>If anything arrives damaged or wrong, message us within 48 hours with a photo and we'll replace it.</p>`],
-    privacy: ["Privacy policy", `<p>We only collect the details needed to deliver your order — your name, phone number and emirate/address — and use them only to confirm, deliver and support your order.</p><p>We never sell or share your details with third parties, apart from the courier who delivers your parcel. Ask us anytime to delete your details.</p>`]
-  };
-  document.addEventListener("click", e => {
-    const p = e.target.closest("[data-policy]"); if (!p) return;
-    e.preventDefault(); const [t, body] = POLICIES[p.dataset.policy];
-    $("#polTitle").textContent = t; $("#polBody").innerHTML = body; openModal("policy");
-  });
-
-  // ---------- Checkout: send the whole bag to WhatsApp ----------
-  $("#checkout").addEventListener("click", e => {
+  // ---------- Order form (kits + every Pink Key shade) ----------
+  const oKit = $("#oKit");
+  oKit.innerHTML = `<optgroup label="Skincare kits">${KITS.filter(k => k.id !== PK.id).map(k => `<option value="${k.id}">${k.name} — AED ${k.price}</option>`).join("")}</optgroup>
+    <optgroup label="Pink Key Liquid Lipstick — AED ${PK.price}">${PK.shades.map(s => `<option value="${PK.id}:${s.no}">Pink Key ${s.no} · ${s.name}</option>`).join("")}</optgroup>`;
+  const priceOf = v => (v.startsWith(PK.id) ? PK.price : KITS.find(k => k.id === v).price);
+  const formTotal = () => { const p = priceOf(oKit.value); $("#oTotal").textContent = `AED ${p} + AED ${DELIVERY_FEE} delivery = AED ${p + DELIVERY_FEE}`; };
+  oKit.addEventListener("change", formTotal); formTotal();
+  $("#orderForm").addEventListener("submit", e => {
     e.preventDefault();
-    const ids = Object.keys(cart).filter(id => cart[id] > 0);
-    if (!ids.length) { toast("Your bag is empty — add a product first"); return; }
-    const lines = ids.map(id => { const k = KITS.find(x => x.id === id); return `• ${cart[id]} × ${k.name} — AED ${k.price * cart[id]}`; });
-    const sub = ids.reduce((n, id) => n + cart[id] * KITS.find(k => k.id === id).price, 0);
-    const text = `Hi AnzGlow, I'd like to order:\n${lines.join("\n")}\nDelivery: AED ${DELIVERY_FEE}\nTotal: AED ${sub + DELIVERY_FEE} (cash on delivery)\n\nName:\nArea / Emirate:`;
-    window.open(`https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-    closeCart();
+    const name = $("#oName").value.trim(), phone = $("#oPhone").value.trim();
+    if (!name || phone.replace(/\D/g, "").length < 9) { toast("Please add your name and a valid mobile number"); return; }
+    const product = oKit.options[oKit.selectedIndex].text;
+    window.open(wa(`New AnzGlow order\nName: ${name}\nPhone: ${phone}\nProduct: ${product}\nTotal: ${$("#oTotal").textContent}\nEmirate: ${$("#oCity").value}`), "_blank", "noopener");
+    toast(`Thank you, ${name}! We'll call you to confirm your order.`);
+    e.target.reset(); formTotal();
   });
-
-  // ---------- Order form: live total ----------
-  const formTotal = () => {
-    const k = KITS.find(x => x.name === $("#oKit").value);
-    $("#oTotal").textContent = k ? `AED ${k.price} + AED ${DELIVERY_FEE} delivery = AED ${k.price + DELIVERY_FEE}` : "";
-  };
-  $("#oKit").addEventListener("change", formTotal);
-
-  // ---------- Back to top ----------
-  $("#toTop").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 
   // ---------- Reviews ----------
   const track = $("#reviewTrack");
@@ -287,32 +140,9 @@
   };
   tick(); setInterval(tick, 1000);
 
-  // ---------- Forms ----------
-  // Set your WhatsApp order number (digits only, e.g. "9715XXXXXXXX") to send orders to WhatsApp.
-  const WHATSAPP_ORDER_NUMBER = "971566650328";
-  $("#orderForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const name = $("#oName").value.trim(), phone = $("#oPhone").value.trim();
-    if (!name || phone.replace(/\D/g, "").length < 9) { toast("Please add your name and a valid mobile number"); return; }
-    const msg = `New AnzGlow order%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AKit: ${encodeURIComponent($("#oKit").value)}%0ATotal: ${encodeURIComponent($("#oTotal").textContent)}%0AEmirate: ${encodeURIComponent($("#oCity").value)}`;
-    if (WHATSAPP_ORDER_NUMBER) window.open(`https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${msg}`, "_blank", "noopener");
-    toast(`Thank you, ${name}! We'll call you to confirm your order.`);
-    e.target.reset();
-  });
-  $("#newsForm").addEventListener("submit", e => { e.preventDefault(); toast("Welcome to the Glow Club ✨"); e.target.reset(); });
-  $("#yr").textContent = new Date().getFullYear();
-  formTotal();
-
-  // ---------- Marquee: duplicate for seamless loop ----------
-  const mq = $("#marquee"); mq.innerHTML += mq.innerHTML;
-
-  // ---------- Cursor glow ----------
-  const glow = $("#cursorGlow");
-  addEventListener("pointermove", e => { glow.style.left = e.clientX + "px"; glow.style.top = e.clientY + "px"; }, { passive: true });
-
   // ---------- Hero parallax ----------
   const hv = $("#heroVisual");
-  if (matchMedia("(pointer:fine)").matches) {
+  if (hv && matchMedia("(pointer:fine)").matches) {
     addEventListener("pointermove", e => {
       const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
       $$(".float-card", hv).forEach((c, i) => c.style.translate = `${x * (i ? -18 : 18)}px ${y * (i ? -14 : 14)}px`);
@@ -320,7 +150,8 @@
   }
 
   // ---------- Gold sparkles ----------
-  const cv = $("#sparkles"), ctx = cv.getContext("2d");
+  const cv = $("#sparkles"); if (!cv) return;
+  const ctx = cv.getContext("2d");
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let W, H, P = [];
   const size = () => {

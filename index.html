@@ -192,7 +192,7 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track" id="marquee">
-    <span>Premium Quality</span><span>Dermatologically Tested</span><span>Paraben Free</span><span>Cruelty Free</span><span>Cash on Delivery</span><span>AED 10 Delivery Across UAE</span><span>Pink Key Liquid Lipstick</span>
+    <span>Premium Quality</span><span>Dermatologically Tested</span><span>Paraben Free</span><span>Cruelty Free</span><span>Cash on Delivery</span><span>AED 10 Delivery Across UAE</span><span>Pink Key · 12 Matte Shades</span>
   </div>
 </div>
 
@@ -211,38 +211,20 @@
 <!-- ============ Pink Key spotlight ============ -->
 <section class="pad spotlight" id="pinkkey">
   <div class="wrap">
-    <div class="pk-product reveal">
+    <a class="pk-product reveal" href="pink-key.html" aria-label="Open Pink Key Liquid Lipstick">
       <span class="pk-halo"></span>
-      <img src="assets/pinkkey.jpg" alt="Pink Key Liquid Lipstick in Little Brown Pink">
-      <span class="pk-badge">New</span>
-    </div>
+      <img src="assets/pinkkey/pk-open.jpg" alt="Pink Key Liquid Lipstick open with its applicator">
+      <span class="pk-badge">12 shades</span>
+    </a>
     <div class="pk-copy">
-      <span class="eyebrow reveal">Pure · Organic · Beautiful</span>
+      <span class="eyebrow reveal">Natural beauty · Lasting confidence</span>
       <h2 class="h2 reveal d1"><span class="rose-text">Pink Key</span><br><span class="script">Liquid Lipstick</span></h2>
-      <p class="lead reveal d1">One shade — <b class="pk-shade-name">Little Brown Pink</b> — that <b>suits every skin tone</b>. Tap a skin tone to see it on.</p>
-
-      <div class="pk-try reveal d2">
-        <div class="pk-shades" id="pkShades">
-          <button class="on" data-shade="dark"><img src="assets/pk-dark.jpg" alt=""><span>Dark skin</span></button>
-          <button data-shade="brown"><img src="assets/pk-brown.jpg" alt=""><span>Brown skin</span></button>
-          <button data-shade="white"><img src="assets/pk-white.jpg" alt=""><span>Fair skin</span></button>
-        </div>
-        <figure class="pk-main fade-swap" id="pkMain">
-          <img src="assets/pk-dark.jpg" alt="Pink Key lipstick shown on different skin tones">
-          <figcaption><b id="pkLabel">On dark skin</b><span id="pkText">A rich rosy-brown that glows against deep skin tones.</span></figcaption>
-        </figure>
-      </div>
-
-      <ul class="pk-feats reveal d2">
-        <li><svg><use href="#i-leaf"/></svg>100% organic ingredients</li>
-        <li><svg><use href="#i-drop"/></svg>Long-lasting finish</li>
-        <li><svg><use href="#i-heart"/></svg>Lightweight &amp; non-sticky</li>
-        <li><svg><use href="#i-spark"/></svg>Rich pigment</li>
-        <li><svg><use href="#i-shield"/></svg>Gentle on lips</li>
-      </ul>
+      <p class="lead reveal d1">Ultra-matte colour in <b class="pk-shade-name">12 shades</b> — soft pinks, warm nudes and browns, and bold reds. Lightweight, non-drying and made to suit <b>every skin tone</b>.</p>
+      <div class="pk-strip reveal d2" id="pkStrip"></div>
+      <div class="pk-families reveal d2"><span>6 pinks</span><span>4 nudes &amp; browns</span><span>2 reds</span><span>Ultra matte</span></div>
       <div class="pk-buy reveal d3">
-        <div class="price">AED 10<small class="pk-note">Suits every skin tone</small></div>
-        <button class="btn btn-gold" data-add="pinkkey">Add to bag <svg><use href="#i-arrow"/></svg></button>
+        <div class="price">AED 10<small class="pk-note">Each shade · suits every skin tone</small></div>
+        <a class="btn btn-gold" href="pink-key.html">Choose your shade <svg><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>
@@ -377,8 +359,8 @@
       <div class="field"><input id="oName" placeholder=" " required autocomplete="name"><label for="oName">Your name</label></div>
       <div class="field"><input id="oPhone" type="tel" placeholder=" " required autocomplete="tel" inputmode="tel"><label for="oPhone">Mobile number</label></div>
       <div class="field">
-        <select id="oKit"><option>Tan Removal Combo Kit</option><option>Complete Glow Beauty Kit</option><option>Pink Key Liquid Lipstick</option></select>
-        <label for="oKit">Choose your kit</label>
+        <select id="oKit"></select>
+        <label for="oKit">Choose your product</label>
       </div>
       <div class="field">
         <select id="oCity"><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option></select>
@@ -403,27 +385,30 @@
       <form class="news" id="newsForm"><input type="email" placeholder="Your email address" aria-label="Email address" required><button class="btn btn-gold btn-sm" type="submit">Subscribe</button></form>
     </div>
 
+    <div class="foot-brandrow">
+      <a href="#top" class="brand" aria-label="AnzGlow home">
+        <img class="brand-emblem" src="assets/emblem-sm.png" alt="">
+        <img class="brand-word" src="assets/wordmark.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
+      </a>
+      <p class="foot-about">Premium skincare and Pink Key liquid lipsticks, made for life under the Gulf sun. Gentle formulas, beautiful results.</p>
+      <ul class="foot-contact">
+        <li><svg><use href="#i-wa"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">+971 56 665 0328</a></li>
+        <li><svg><use href="#i-mail"/></svg><a href="mailto:info.anzglow@gmail.com">info.anzglow@gmail.com</a></li>
+        <li><svg><use href="#i-pin"/></svg>United Arab Emirates</li>
+      </ul>
+    </div>
+
     <div class="foot-grid">
-      <div class="foot-brand">
-        <a href="#top" class="foot-mark" aria-label="AnzGlow home">
-          <img class="foot-logo-full" src="assets/logo.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
-        </a>
-        <p class="foot-about">Premium skincare and beauty, made for life under the Gulf sun. Gentle formulas, beautiful results.</p>
-        <ul class="foot-contact">
-          <li><svg><use href="#i-wa"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">+971 56 665 0328</a></li>
-          <li><svg><use href="#i-mail"/></svg><a href="mailto:info.anzglow@gmail.com">info.anzglow@gmail.com</a></li>
-          <li><svg><use href="#i-pin"/></svg>United Arab Emirates</li>
-        </ul>
-      </div>
-      <div><h5>Shop</h5><ul><li><a href="#kits">Tan Removal Kit</a></li><li><a href="#kits">Complete Glow Kit</a></li><li><a href="#pinkkey">Pink Key Lipstick</a></li><li><a href="#finder">Glow Finder</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="https://wa.me/971566650328" target="_blank" rel="noopener">Track order</a></li><li><a href="#order">FAQ</a></li><li><a href="#" data-policy="delivery">Delivery — AED 10</a></li><li><a href="#" data-policy="returns">Returns</a></li><li><a href="#" data-policy="privacy">Privacy policy</a></li></ul></div>
+      <div><h5>Shop</h5><ul><li><a href="#kits">Tan Removal Kit</a></li><li><a href="#kits">Complete Glow Kit</a></li><li><a href="pink-key.html">Pink Key Lipstick</a></li><li><a href="#finder">Glow Finder</a></li></ul></div>
+      <div><h5>Pink Key shades</h5><ul><li><a href="pink-key.html?shade=01">01 Nude Pink</a></li><li><a href="pink-key.html?shade=05">05 Caramel Pink</a></li><li><a href="pink-key.html?shade=10">10 Chocolate</a></li><li><a href="pink-key.html?shade=12">12 Classic Red</a></li><li><a href="pink-key.html#shades">All 12 shades</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="https://wa.me/971566650328?text=Hi%20AnzGlow%2C%20I%27d%20like%20to%20track%20my%20order" target="_blank" rel="noopener">Track order</a></li><li><a href="#order">FAQ</a></li><li><a href="#" data-policy="delivery">Delivery — AED 10</a></li><li><a href="#" data-policy="returns">Returns</a></li><li><a href="#" data-policy="privacy">Privacy policy</a></li></ul></div>
       <div>
         <h5>Follow the glow</h5>
         <div class="foot-gallery">
-          <a href="#pinkkey"><img src="assets/pinkkey.jpg" alt="Pink Key lipstick"></a>
+          <a href="pink-key.html"><img src="assets/pinkkey/pk-open.jpg" alt="Pink Key lipstick with applicator"></a>
+          <a href="pink-key.html?shade=12"><img src="assets/pinkkey/pk-red-2.jpg" alt="Pink Key Classic Red"></a>
           <a href="#top"><img src="assets/model.jpg" alt="AnzGlow model"></a>
-          <a href="#pinkkey"><img src="assets/pk-brown.jpg" alt="Pink Key on brown skin"></a>
-          <a href="#pinkkey"><img src="assets/pk-white.jpg" alt="Pink Key on fair skin"></a>
+          <a href="pink-key.html?shade=05"><img src="assets/pinkkey/shade-05.jpg" alt="Pink Key Caramel Pink"></a>
         </div>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
@@ -434,7 +419,7 @@
       </div>
     </div>
 
-    <div class="foot-trust">
+
       <span><svg><use href="#i-shield"/></svg>Cash on delivery</span>
       <span><svg><use href="#i-truck"/></svg>AED 10 delivery · all 7 emirates</span>
       <span><svg><use href="#i-flask"/></svg>Dermatologically tested</span>
@@ -505,6 +490,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
+<script src="shades.js"></script>
+<script src="common.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
