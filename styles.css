@@ -310,13 +310,11 @@ section{position:relative}
 .foot-grid h5{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:500}
 .foot-grid ul{list-style:none;display:grid;gap:10px;font-size:.92rem;color:#bfb2a0}
 .foot-grid a:hover{color:var(--gold-2)}
-.foot-logo{width:min(320px,100%);mix-blend-mode:screen;margin-bottom:16px}
 .foot-about{font-size:.9rem;color:#a99a85;max-width:34ch}
 .socials{display:flex;gap:10px;margin-top:22px}
 .socials a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--line);color:#d9ccba;transition:all .3s}
 .socials a:hover{background:var(--gold-grad);color:#1a1208}
 .socials svg{width:18px;height:18px}
-.news{display:flex;padding:6px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);margin-top:6px}
 .news input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--ivory);padding:0 16px;font:inherit;font-size:.9rem}
 .news input::placeholder{color:#8b7d6e}
 .foot-bottom{display:flex;justify-content:space-between;gap:20px;padding:26px 0;border-top:1px solid rgba(217,180,106,.14);font-size:.8rem;color:#8b7d6e;position:relative;z-index:2;margin-top:-40px;background:linear-gradient(transparent,#060504 40%)}
@@ -363,6 +361,99 @@ body.menu-open .mnav{opacity:1;pointer-events:auto}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ---------- Product photo (Pink Key) in cards / cart / finder ---------- */
+.kit-stage .prod-photo{height:100%;width:auto;max-width:62%;object-fit:cover;border-radius:999px 999px 18px 18px;position:relative;z-index:1;box-shadow:0 24px 40px -22px rgba(80,30,40,.7),0 0 0 1px rgba(169,128,60,.3);transition:transform .7s var(--ease)}
+.kit:hover .kit-stage .prod-photo{transform:translateY(-8px) scale(1.03)}
+.ci-row .thumb .prod-photo{width:100%;height:100%;object-fit:cover}
+.sub-row{display:flex;justify-content:space-between;font-size:.88rem;color:#bfb2a0;margin-bottom:8px}
+
+/* ---------- Pink Key spotlight ---------- */
+.spotlight{background:
+  radial-gradient(60% 70% at 20% 50%,rgba(201,102,138,.28),transparent 60%),
+  radial-gradient(50% 60% at 90% 10%,rgba(217,180,106,.16),transparent 60%),
+  linear-gradient(160deg,#1a0f12,#0b0908 70%);overflow:hidden}
+.spotlight .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center}
+.pk-product{position:relative;justify-self:center;width:min(300px,80%)}
+.pk-product img{width:100%;border-radius:999px 999px 30px 30px;position:relative;z-index:1;box-shadow:0 50px 90px -40px rgba(0,0,0,.95),0 0 0 1px rgba(247,195,212,.35)}
+.pk-halo{position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(rgba(236,143,176,.35),transparent 62%);animation:pulse 5s ease-in-out infinite}
+.pk-product::after{content:"";position:absolute;inset:-18px;border-radius:999px 999px 44px 44px;border:1px solid rgba(247,195,212,.3)}
+@keyframes pulse{50%{transform:scale(1.08);opacity:.7}}
+.pk-badge{position:absolute;z-index:2;top:18%;right:-22px;padding:10px 18px;border-radius:999px;background:var(--rose-grad);color:#3a1322;font-weight:600;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;box-shadow:0 14px 30px -14px rgba(236,143,176,.9);transform:rotate(8deg)}
+.pk-copy .h2{margin:16px 0 18px}
+.pk-copy .h2 .script{color:var(--gold-2)}
+.pk-try{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin:30px 0}
+.pk-shades{display:grid;gap:12px}
+.pk-shades button{display:flex;align-items:center;gap:12px;padding:6px 16px 6px 6px;border-radius:999px;border:1px solid rgba(247,195,212,.2);background:rgba(255,255,255,.03);font-size:.85rem;color:#d9ccba;transition:all .35s var(--ease);text-align:left}
+.pk-shades img{width:46px;height:46px;border-radius:50%;object-fit:cover}
+.pk-shades button:hover{border-color:rgba(247,195,212,.5)}
+.pk-shades button.on{background:linear-gradient(135deg,rgba(236,143,176,.28),rgba(217,180,106,.15));border-color:var(--rose);color:var(--ivory);box-shadow:0 14px 30px -18px rgba(236,143,176,.9)}
+.pk-main{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 30px 60px -30px rgba(0,0,0,.9),0 0 0 1px rgba(247,195,212,.25)}
+.pk-main img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.pk-main figcaption{position:absolute;left:14px;right:14px;bottom:14px;padding:12px 16px;border-radius:16px;background:rgba(11,9,8,.7);backdrop-filter:blur(10px);font-size:.82rem;color:#d9ccba;display:grid;gap:2px}
+.pk-main figcaption b{font-family:var(--script);font-weight:400;font-size:1.6rem;color:var(--rose-2);line-height:1}
+.pk-feats{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.pk-feats li{display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:.8rem;color:#d9ccba}
+.pk-feats svg{width:16px;height:16px;color:var(--gold-2)}
+.pk-buy{display:flex;align-items:center;gap:26px}
+.pk-buy .price{font-size:2.4rem;color:var(--gold-2)}
+
+/* ---------- Premium footer ---------- */
+.footer{background:radial-gradient(60% 50% at 50% 0%,rgba(217,180,106,.12),transparent 70%),#060504;padding-top:80px}
+.foot-cta{display:flex;justify-content:space-between;align-items:center;gap:40px;padding:40px 44px;margin-bottom:70px;border-radius:30px;background:linear-gradient(120deg,rgba(217,180,106,.14),rgba(236,143,176,.1));border:1px solid rgba(243,217,153,.3);position:relative;overflow:hidden}
+.foot-cta::after{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(243,217,153,.2)}
+.foot-cta h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.6vw,2.3rem);line-height:1.15;margin-top:10px;max-width:22ch}
+.foot-cta .script{font-size:1.2em}
+.foot-cta .news{width:min(460px,100%);position:relative;z-index:1}
+.news{display:flex;padding:6px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.35)}
+.foot-mark{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.foot-emblem{width:84px;height:84px;border-radius:50%;flex:none;padding:3px;background:var(--gold-grad);box-shadow:0 0 40px -6px rgba(243,217,153,.45)}
+.foot-emblem img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 40%;background:#000}
+.foot-mark .brand-name{font-size:2.3rem}
+.foot-mark sup{font-size:.7rem;color:var(--gold);margin-left:2px}
+.foot-tag{display:block;font-size:.6rem;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-top:6px}
+.foot-by{display:block;font-size:.6rem;letter-spacing:.42em;color:#a99a85;margin-top:3px}
+.foot-contact{margin-top:20px}
+.foot-contact li{display:flex;align-items:center;gap:10px}
+.foot-contact svg{width:17px;height:17px;color:var(--gold-2);flex:none}
+.foot-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.foot-gallery a{aspect-ratio:1;border-radius:14px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.foot-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .6s}
+.foot-gallery a:hover img{transform:scale(1.1);filter:brightness(1.15)}
+.socials{margin-top:0}
+.foot-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 34px;margin-top:60px;padding:22px 0;border-block:1px solid rgba(217,180,106,.14);font-size:.82rem;color:#bfb2a0}
+.foot-trust span{display:flex;align-items:center;gap:8px}
+.foot-trust svg{width:17px;height:17px;color:var(--gold)}
+.foot-word{margin-top:40px}
+.foot-bottom{align-items:center}
+.to-top{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--gold-grad);color:#1a1208;transform:rotate(-90deg);transition:transform .4s var(--ease)}
+.to-top:hover{transform:rotate(-90deg) translateX(4px)}
+.to-top svg{width:18px;height:18px}
+
+/* ---------- Floating WhatsApp ---------- */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:10px;height:60px;padding:0 18px 0 16px;border-radius:999px;background:linear-gradient(135deg,#2bd66a,#128c4a);color:#fff;font-weight:500;font-size:.9rem;box-shadow:0 18px 40px -14px rgba(18,140,74,.8),0 0 0 3px rgba(243,217,153,.55);transition:transform .4s var(--ease)}
+.wa-float svg{width:30px;height:30px}
+.wa-float::before{content:"";position:absolute;inset:-3px;border-radius:inherit;border:2px solid rgba(43,214,106,.6);animation:ring 2.4s ease-out infinite}
+.wa-float:hover{transform:translateY(-3px)}
+@keyframes ring{0%{transform:scale(1);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+body.cart-open .wa-float{opacity:0;pointer-events:none}
+
+@media (max-width:900px){
+  .spotlight .wrap{grid-template-columns:1fr;gap:60px}
+  .foot-cta{flex-direction:column;align-items:flex-start;padding:30px 26px}
+}
+@media (max-width:640px){
+  .pk-try{grid-template-columns:1fr}
+  .pk-shades{grid-template-columns:repeat(3,1fr)}
+  .pk-shades button{flex-direction:column;padding:8px;border-radius:18px;gap:6px;text-align:center;font-size:.74rem}
+  .pk-badge{right:-8px}
+  .pk-buy{flex-wrap:wrap;gap:16px}
+  .wa-float{right:16px;bottom:16px;width:58px;height:58px;padding:0;justify-content:center}
+  .wa-float span{display:none}
+  .foot-mark .brand-name{font-size:1.9rem}
+  .foot-emblem{width:70px;height:70px}
+  .foot-trust{justify-content:flex-start;gap:12px 22px}
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width:1100px){
@@ -430,3 +521,11 @@ body.menu-open .mnav{opacity:1;pointer-events:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ---------- Pink Key photo sizing fixes ---------- */
+.kit-stage .prod-photo{height:220px;width:auto;max-width:none;aspect-ratio:130/493;object-fit:cover}
+.pk-product{width:min(280px,72%)}
+.pk-product img{height:520px;width:100%;object-fit:contain;background:radial-gradient(circle at 50% 40%,#2a1a1d,#0e0a0a 75%)}
+.pk-main{aspect-ratio:4/5;max-width:340px}
+.pk-main img{object-position:center 45%}
+@media (max-width:640px){.pk-product img{height:420px}.pk-main{max-width:none}}

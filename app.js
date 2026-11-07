@@ -18,13 +18,15 @@
       art: `<use href="#pump" x="40" y="4" width="72" height="224"/><use href="#dropper" x="200" y="70" width="52" height="160"/><use href="#jar" x="100" y="128" width="118" height="100"/>`
     },
     {
-      id: "radiant", tag: "New", tagClass: "rose", name: "Radiant Skin Care Set",
-      items: ["Face Cream", "Eye Cream", "Day Cream"], note: "Look younger, feel fresh",
-      price: 179, was: 219,
-      art: `<use href="#tube" x="182" y="10" width="84" height="210"/><use href="#jar" x="30" y="104" width="140" height="121"/><use href="#jar" x="150" y="166" width="70" height="61"/>`
+      id: "pinkkey", tag: "New", tagClass: "rose", name: "Pink Key Liquid Lipstick",
+      items: ["Little Brown Pink shade", "Long-lasting, non-sticky", "Rich pigment, gentle on lips"], note: "The perfect shade for every you",
+      price: 59, was: 79, img: "assets/pinkkey.jpg"
     }
   ];
-  const artSvg = (k, cls = "") => `<svg class="${cls}" viewBox="0 0 300 230" aria-hidden="true">${k.art}</svg>`;
+  const DELIVERY_FEE = 10; // AED, flat rate across the UAE
+  const artSvg =(k, cls = "") => k.img
+    ? `<img class="prod-photo ${cls}" src="${k.img}" alt="${k.name}">`
+    : `<svg class="${cls}" viewBox="0 0 300 230" aria-hidden="true">${k.art}</svg>`;
 
   // ---------- Safe storage ----------
   const store = {
@@ -63,8 +65,11 @@
     const ids = Object.keys(cart).filter(id => cart[id] > 0);
     const count = ids.reduce((n, id) => n + cart[id], 0);
     const total = ids.reduce((n, id) => n + cart[id] * KITS.find(k => k.id === id).price, 0);
+    const ship = count ? DELIVERY_FEE : 0;
     $("#cartCount").textContent = count;
-    $("#cartTotal").textContent = "AED " + total;
+    $("#cartSub").textContent = "AED " + total;
+    $("#cartShip").textContent = "AED " + ship;
+    $("#cartTotal").textContent = "AED " + (total + ship);
     $("#cartBody").innerHTML = ids.length ? ids.map(id => {
       const k = KITS.find(x => x.id === id);
       return `<div class="ci-row"><div class="thumb">${artSvg(k)}</div>
@@ -151,7 +156,7 @@
     tan:  { kit: "tan",     title: "Tan Removal Combo Kit", text: "Fades sun tan and dark spots while keeping skin soft — our best seller for life under the UAE sun.", m: [92, 70, 80] },
     dull: { kit: "glow",    title: "Complete Glow Beauty Kit", text: "Cleanse, nourish and finish with serum for that lit-from-within glow, every single day.", m: [70, 95, 78] },
     dry:  { kit: "glow",    title: "Complete Glow Beauty Kit", text: "A hydration-first ritual: gentle cleanser, rich moisturiser and a serum that keeps skin plump.", m: [55, 78, 96] },
-    age:  { kit: "radiant", title: "Radiant Skin Care Set", text: "Face, eye and day cream that smooth, brighten and wake up tired-looking skin.", m: [60, 88, 85] }
+    age:  { kit: "glow",    title: "Complete Glow Beauty Kit", text: "Cleanser, moisturiser and serum that smooth, brighten and wake up tired-looking skin.", m: [62, 90, 86] }
   };
   const showFind = c => {
     const f = FIND[c], k = KITS.find(x => x.id === f.kit);
@@ -170,6 +175,26 @@
     $$("#concerns .concern").forEach(x => x.classList.toggle("on", x === b)); showFind(b.dataset.c);
   });
   showFind("tan");
+
+  // ---------- Pink Key shade spotlight ----------
+  const SHADES = {
+    dark:  { img: "assets/pk-dark.jpg",  label: "On dark skin",  text: "A rich rosy-brown that glows against deep skin tones." },
+    brown: { img: "assets/pk-brown.jpg", label: "On brown skin", text: "A soft mauve-pink that warms up medium and olive tones." },
+    white: { img: "assets/pk-white.jpg", label: "On fair skin",  text: "A natural dusty rose — polished, never too loud." }
+  };
+  const pkMain = $("#pkMain");
+  $$("#pkShades button").forEach(b => b.onclick = () => {
+    $$("#pkShades button").forEach(x => x.classList.toggle("on", x === b));
+    const s = SHADES[b.dataset.shade];
+    pkMain.classList.add("out");
+    setTimeout(() => {
+      $("img", pkMain).src = s.img; $("#pkLabel").textContent = s.label; $("#pkText").textContent = s.text;
+      pkMain.classList.remove("out");
+    }, 280);
+  });
+
+  // ---------- Back to top ----------
+  $("#toTop").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 
   // ---------- Reviews ----------
   const track = $("#reviewTrack");
