@@ -6,11 +6,12 @@
 <title>AnzGlow — Beauty · Confidence · You</title>
 <meta name="description" content="AnzGlow by Anzix — premium skincare kits for clear, radiant, even-toned skin. AED 10 delivery across the UAE, cash on delivery.">
 <meta name="theme-color" content="#0b0908">
-<link rel="icon" href="assets/emblem.jpg">
+<link rel="icon" href="assets/emblem-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="theme.css">
 </head>
 <body>
 
@@ -105,7 +106,7 @@
       <li><svg><use href="#i-shield"/></svg>Cash on delivery</li>
       <li><svg><use href="#i-headset"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">WhatsApp 056 665 0328</a></li>
     </ul>
-    <div class="r-right"><a href="#">Track order</a><a href="#">Login / Sign up</a><a href="#">🇦🇪 AED</a></div>
+    <div class="r-right"><a href="https://wa.me/971566650328?text=Hi%20AnzGlow%2C%20I%27d%20like%20to%20track%20my%20order" target="_blank" rel="noopener">Track order</a><a href="#" data-policy="delivery">Delivery &amp; returns</a><a href="#">🇦🇪 AED</a></div>
   </div>
 </div>
 
@@ -113,11 +114,8 @@
 <header class="header" id="header">
   <div class="wrap">
     <a href="#top" class="brand" aria-label="AnzGlow home">
-      <img src="assets/emblem.jpg" alt="">
-      <span>
-        <span class="brand-name"><span class="a">Anz</span><span class="g">Glow</span></span>
-        <span class="brand-tag">BY ANZIX</span>
-      </span>
+      <img class="brand-emblem" src="assets/emblem-sm.png" alt="">
+      <img class="brand-word" src="assets/wordmark.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
     </a>
     <ul class="nav" id="nav">
       <li><a href="#top" class="active">Home</a></li>
@@ -221,7 +219,7 @@
     <div class="pk-copy">
       <span class="eyebrow reveal">Pure · Organic · Beautiful</span>
       <h2 class="h2 reveal d1"><span class="rose-text">Pink Key</span><br><span class="script">Liquid Lipstick</span></h2>
-      <p class="lead reveal d1">One shade — <b style="color:var(--rose-2)">Little Brown Pink</b> — made to flatter every skin tone. Tap a skin tone to see it on.</p>
+      <p class="lead reveal d1">One shade — <b class="pk-shade-name">Little Brown Pink</b> — that <b>suits every skin tone</b>. Tap a skin tone to see it on.</p>
 
       <div class="pk-try reveal d2">
         <div class="pk-shades" id="pkShades">
@@ -243,7 +241,7 @@
         <li><svg><use href="#i-shield"/></svg>Gentle on lips</li>
       </ul>
       <div class="pk-buy reveal d3">
-        <div class="price">AED 59<s>79</s></div>
+        <div class="price">AED 10<small class="pk-note">Suits every skin tone</small></div>
         <button class="btn btn-gold" data-add="pinkkey">Add to bag <svg><use href="#i-arrow"/></svg></button>
       </div>
     </div>
@@ -307,7 +305,7 @@
 <section class="pad story" id="story">
   <div class="wrap">
     <div class="story-img reveal">
-      <img src="assets/emblem.jpg" alt="AnzGlow emblem — golden A with a woman's profile and a rose lily">
+      <img src="assets/emblem.png" alt="AnzGlow emblem — golden A with a woman's profile and a rose lily">
       <div class="stamp">
         <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text font-family="Jost" font-size="9.5" letter-spacing="3.6" fill="#d9b46a"><textPath href="#circ">BEAUTY · CONFIDENCE · YOU · BY ANZIX ·</textPath></text></svg>
         <b>A</b>
@@ -386,6 +384,7 @@
         <select id="oCity"><option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option><option>Ras Al Khaimah</option><option>Fujairah</option><option>Umm Al Quwain</option></select>
         <label for="oCity">Emirate</label>
       </div>
+      <p class="o-total" id="oTotal"></p>
       <button class="btn btn-gold" type="submit">Place order now <svg><use href="#i-arrow"/></svg></button>
       <p class="secure"><svg><use href="#i-lock"/></svg>100% secure · Pay cash on delivery</p>
     </form>
@@ -407,12 +406,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a href="#top" class="foot-mark" aria-label="AnzGlow home">
-          <span class="foot-emblem"><img src="assets/emblem.jpg" alt=""></span>
-          <span>
-            <span class="brand-name"><span class="a">Anz</span><span class="g">Glow</span><sup>™</sup></span>
-            <span class="foot-tag">Beauty · Confidence · You</span>
-            <span class="foot-by">by ANZIX</span>
-          </span>
+          <img class="foot-logo-full" src="assets/logo.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
         </a>
         <p class="foot-about">Premium skincare and beauty, made for life under the Gulf sun. Gentle formulas, beautiful results.</p>
         <ul class="foot-contact">
@@ -422,14 +416,14 @@
         </ul>
       </div>
       <div><h5>Shop</h5><ul><li><a href="#kits">Tan Removal Kit</a></li><li><a href="#kits">Complete Glow Kit</a></li><li><a href="#pinkkey">Pink Key Lipstick</a></li><li><a href="#finder">Glow Finder</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="https://wa.me/971566650328" target="_blank" rel="noopener">Track order</a></li><li><a href="#order">FAQ</a></li><li><a href="#order">Delivery — AED 10</a></li><li><a href="#">Privacy policy</a></li></ul></div>
+      <div><h5>Help</h5><ul><li><a href="https://wa.me/971566650328" target="_blank" rel="noopener">Track order</a></li><li><a href="#order">FAQ</a></li><li><a href="#" data-policy="delivery">Delivery — AED 10</a></li><li><a href="#" data-policy="returns">Returns</a></li><li><a href="#" data-policy="privacy">Privacy policy</a></li></ul></div>
       <div>
         <h5>Follow the glow</h5>
         <div class="foot-gallery">
           <a href="#pinkkey"><img src="assets/pinkkey.jpg" alt="Pink Key lipstick"></a>
           <a href="#top"><img src="assets/model.jpg" alt="AnzGlow model"></a>
           <a href="#pinkkey"><img src="assets/pk-brown.jpg" alt="Pink Key on brown skin"></a>
-          <a href="#story"><img src="assets/emblem.jpg" alt="AnzGlow emblem"></a>
+          <a href="#pinkkey"><img src="assets/pk-white.jpg" alt="Pink Key on fair skin"></a>
         </div>
         <div class="socials">
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
@@ -475,6 +469,39 @@
   <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
   <a href="#top">Home</a><a href="#kits">Shop</a><a href="#pinkkey">Pink Key</a><a href="#finder">Glow Finder</a><a href="#ritual">Ritual</a><a href="#story">About</a><a href="#reviews">Reviews</a><a href="#order">Contact</a>
 </nav>
+<!-- ============ Product quick view ============ -->
+<div class="modal" id="quick" role="dialog" aria-modal="true" aria-labelledby="qvName">
+  <div class="modal-card qv">
+    <button class="icon-btn modal-x" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <div class="qv-media"><div class="qv-main" id="qvMain"></div><div class="qv-thumbs" id="qvThumbs"></div></div>
+    <div class="qv-info">
+      <span class="tag" id="qvTag"></span>
+      <h3 id="qvName"></h3>
+      <p class="qv-stock"><i></i>In stock · ships in 1–2 working days</p>
+      <div class="price" id="qvPrice"></div>
+      <p class="qv-desc" id="qvDesc"></p>
+      <ul class="kit-list" id="qvList"></ul>
+      <details open><summary>How to use</summary><p id="qvUse"></p></details>
+      <details><summary>Delivery &amp; payment</summary><p>AED 10 flat delivery to all seven emirates, usually 1–2 working days. Pay cash when it arrives — we confirm every order by phone or WhatsApp first.</p></details>
+      <div class="qv-buy">
+        <div class="qty-lg"><button id="qvMinus" aria-label="Less">−</button><span id="qvQty">1</span><button id="qvPlus" aria-label="More">+</button></div>
+        <button class="btn btn-gold" id="qvAdd">Add to bag <svg><use href="#i-arrow"/></svg></button>
+      </div>
+      <a class="btn btn-wa" id="qvWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Policies ============ -->
+<div class="modal" id="policy" role="dialog" aria-modal="true" aria-labelledby="polTitle">
+  <div class="modal-card pol">
+    <button class="icon-btn modal-x" data-close aria-label="Close"><svg><use href="#i-close"/></svg></button>
+    <h3 id="polTitle"></h3>
+    <div id="polBody"></div>
+    <p class="pol-help">Questions? WhatsApp us on <a href="https://wa.me/971566650328" target="_blank" rel="noopener">+971 56 665 0328</a> or email <a href="mailto:info.anzglow@gmail.com">info.anzglow@gmail.com</a>.</p>
+  </div>
+</div>
+
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 

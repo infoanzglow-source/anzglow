@@ -9,18 +9,25 @@
       id: "tan", tag: "Best Seller", tagClass: "", name: "Tan Removal Combo Kit",
       items: ["Face Wash", "Tan Removal Cream", "Body Lotion"], note: "For clear & even skin",
       price: 149, was: 189,
+      desc: "A three-step set that gently lifts sun tan and evens out dark spots, while keeping skin soft and hydrated.",
+      use: "Wash face with the Face Wash, apply a thin layer of Tan Removal Cream on tanned areas, finish with Body Lotion. Use twice daily; patch test first.",
       art: `<use href="#tube" x="30" y="12" width="84" height="210"/><use href="#tube" x="196" y="56" width="66" height="166"/><use href="#jar" x="96" y="128" width="118" height="100"/>`
     },
     {
       id: "glow", tag: "Popular", tagClass: "", featured: true, name: "Complete Glow Beauty Kit",
       items: ["Gentle Cleanser", "Moisturiser", "Glow Serum"], note: "Get your natural glow",
       price: 199, was: 249,
+      desc: "Our complete daily ritual — cleanse, nourish and finish with serum for that lit-from-within glow.",
+      use: "Morning and night: cleanse, press 2–3 drops of serum into skin, then seal with moisturiser.",
       art: `<use href="#pump" x="40" y="4" width="72" height="224"/><use href="#dropper" x="200" y="70" width="52" height="160"/><use href="#jar" x="100" y="128" width="118" height="100"/>`
     },
     {
       id: "pinkkey", tag: "New", tagClass: "rose", name: "Pink Key Liquid Lipstick",
-      items: ["Little Brown Pink shade", "Long-lasting, non-sticky", "Rich pigment, gentle on lips"], note: "The perfect shade for every you",
-      price: 59, was: 79, img: "assets/pinkkey.jpg"
+      items: ["Little Brown Pink shade", "Suits every skin tone", "Long-lasting, non-sticky"], note: "One shade, every skin tone",
+      price: 10, was: null, img: "assets/pinkkey.jpg",
+      gallery: ["assets/pinkkey.jpg", "assets/pk-dark.jpg", "assets/pk-brown.jpg", "assets/pk-white.jpg"],
+      desc: "Pink Key Liquid Lipstick in Little Brown Pink — a soft rosy-brown that suits every skin tone, from fair to deep. Lightweight, non-sticky and richly pigmented, with organic ingredients that stay gentle on lips.",
+      use: "Start at the centre of your lips and glide outwards with the applicator. Add a second layer for deeper colour. Let it set for a few seconds."
     }
   ];
   const DELIVERY_FEE = 10; // AED, flat rate across the UAE
@@ -34,6 +41,7 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
   };
   let cart = store.get("anz-cart", {});
+  Object.keys(cart).forEach(id => { if (!KITS.some(k => k.id === id)) delete cart[id]; });
   let wish = new Set(store.get("anz-wish", []));
 
   // ---------- Render kits ----------
@@ -41,12 +49,12 @@
     <article class="kit reveal d${i} ${k.featured ? "featured" : ""}" data-id="${k.id}">
       <span class="tag ${k.tagClass}">${k.tag}</span>
       <button class="wish ${wish.has(k.id) ? "on" : ""}" aria-label="Save to wishlist" data-wish="${k.id}"><svg><use href="#i-heart"/></svg></button>
-      <div class="kit-stage">${artSvg(k)}</div>
-      <h3>${k.name}</h3>
+      <button class="kit-stage" data-qv="${k.id}" aria-label="View ${k.name}">${artSvg(k)}<span class="qv-hint">Quick view</span></button>
+      <h3><button class="kit-name" data-qv="${k.id}">${k.name}</button></h3>
       <ul class="kit-list">${k.items.map(x => `<li>${x}</li>`).join("")}</ul>
       <p class="kit-note">${k.note}</p>
       <div class="kit-foot">
-        <div class="price"><small>Kit price</small>AED ${k.price}<s>${k.was}</s></div>
+        <div class="price"><small>${k.img ? "Price" : "Kit price"}</small>AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}</div>
         <button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag <svg><use href="#i-arrow"/></svg></button>
       </div>
     </article>`).join("");
@@ -99,7 +107,6 @@
   $("#cartBtn").onclick = openCart;
   $("#cartClose").onclick = closeCart;
   $("#scrim").onclick = closeCart;
-  $("#checkout").onclick = closeCart;
   $("#wishCount").textContent = wish.size;
   renderCart();
 
@@ -193,6 +200,67 @@
     }, 280);
   });
 
+  // ---------- Modals (quick view + policies) ----------
+  const openModal = id => { document.body.classList.add("modal-open"); $("#" + id).classList.add("open"); };
+  const closeModals = () => { document.body.classList.remove("modal-open"); $$(".modal.open").forEach(m => m.classList.remove("open")); };
+  $$(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m || e.target.closest("[data-close]")) closeModals(); }));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeModals(); });
+
+  let qvKit = null, qvQty = 1;
+  const qvSetMain = src => { $("#qvMain").innerHTML = src ? `<img src="${src}" alt="${qvKit.name}">` : artSvg(qvKit); };
+  const openQuick = id => {
+    const k = qvKit = KITS.find(x => x.id === id); qvQty = 1;
+    $("#qvTag").textContent = k.tag; $("#qvTag").className = "tag " + k.tagClass;
+    $("#qvName").textContent = k.name;
+    $("#qvPrice").innerHTML = `AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}`;
+    $("#qvDesc").textContent = k.desc; $("#qvUse").textContent = k.use;
+    $("#qvList").innerHTML = k.items.map(x => `<li>${x}</li>`).join("");
+    $("#qvQty").textContent = 1;
+    const g = k.gallery || [];
+    qvSetMain(g[0]);
+    $("#qvThumbs").innerHTML = g.map((src, i) => `<button class="${i ? "" : "on"}" data-src="${src}"><img src="${src}" alt=""></button>`).join("");
+    $$("#qvThumbs button").forEach(b => b.onclick = () => { $$("#qvThumbs button").forEach(x => x.classList.toggle("on", x === b)); qvSetMain(b.dataset.src); });
+    $("#qvWa").href = `https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${encodeURIComponent(`Hi AnzGlow, I'd like to order: ${k.name} (AED ${k.price}).`)}`;
+    openModal("quick");
+  };
+  document.addEventListener("click", e => { const q = e.target.closest("[data-qv]"); if (q) openQuick(q.dataset.qv); });
+  $("#qvMinus").onclick = () => { qvQty = Math.max(1, qvQty - 1); $("#qvQty").textContent = qvQty; };
+  $("#qvPlus").onclick = () => { qvQty = Math.min(20, qvQty + 1); $("#qvQty").textContent = qvQty; };
+  $("#qvAdd").onclick = () => {
+    cart[qvKit.id] = (cart[qvKit.id] || 0) + qvQty; renderCart(); bump($("#cartCount"));
+    closeModals(); toast(`${qvQty} × ${qvKit.name} added to your bag`);
+  };
+
+  const POLICIES = {
+    delivery: ["Delivery", `<p><b>AED 10 flat delivery</b> to all seven emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain.</p><p>Orders are usually delivered within <b>1–2 working days</b>. We call or WhatsApp you to confirm before dispatch.</p><p><b>Payment:</b> cash on delivery — pay when your order arrives.</p>`],
+    returns: ["Returns", `<p>Unopened, unused products can be returned within <b>7 days</b> of delivery. For hygiene reasons, opened cosmetics (including lipsticks) can't be returned unless they arrived damaged.</p><p>If anything arrives damaged or wrong, message us within 48 hours with a photo and we'll replace it.</p>`],
+    privacy: ["Privacy policy", `<p>We only collect the details needed to deliver your order — your name, phone number and emirate/address — and use them only to confirm, deliver and support your order.</p><p>We never sell or share your details with third parties, apart from the courier who delivers your parcel. Ask us anytime to delete your details.</p>`]
+  };
+  document.addEventListener("click", e => {
+    const p = e.target.closest("[data-policy]"); if (!p) return;
+    e.preventDefault(); const [t, body] = POLICIES[p.dataset.policy];
+    $("#polTitle").textContent = t; $("#polBody").innerHTML = body; openModal("policy");
+  });
+
+  // ---------- Checkout: send the whole bag to WhatsApp ----------
+  $("#checkout").addEventListener("click", e => {
+    e.preventDefault();
+    const ids = Object.keys(cart).filter(id => cart[id] > 0);
+    if (!ids.length) { toast("Your bag is empty — add a product first"); return; }
+    const lines = ids.map(id => { const k = KITS.find(x => x.id === id); return `• ${cart[id]} × ${k.name} — AED ${k.price * cart[id]}`; });
+    const sub = ids.reduce((n, id) => n + cart[id] * KITS.find(k => k.id === id).price, 0);
+    const text = `Hi AnzGlow, I'd like to order:\n${lines.join("\n")}\nDelivery: AED ${DELIVERY_FEE}\nTotal: AED ${sub + DELIVERY_FEE} (cash on delivery)\n\nName:\nArea / Emirate:`;
+    window.open(`https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    closeCart();
+  });
+
+  // ---------- Order form: live total ----------
+  const formTotal = () => {
+    const k = KITS.find(x => x.name === $("#oKit").value);
+    $("#oTotal").textContent = k ? `AED ${k.price} + AED ${DELIVERY_FEE} delivery = AED ${k.price + DELIVERY_FEE}` : "";
+  };
+  $("#oKit").addEventListener("change", formTotal);
+
   // ---------- Back to top ----------
   $("#toTop").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 
@@ -226,13 +294,14 @@
     e.preventDefault();
     const name = $("#oName").value.trim(), phone = $("#oPhone").value.trim();
     if (!name || phone.replace(/\D/g, "").length < 9) { toast("Please add your name and a valid mobile number"); return; }
-    const msg = `New AnzGlow order%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AKit: ${encodeURIComponent($("#oKit").value)}%0AEmirate: ${encodeURIComponent($("#oCity").value)}`;
+    const msg = `New AnzGlow order%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AKit: ${encodeURIComponent($("#oKit").value)}%0ATotal: ${encodeURIComponent($("#oTotal").textContent)}%0AEmirate: ${encodeURIComponent($("#oCity").value)}`;
     if (WHATSAPP_ORDER_NUMBER) window.open(`https://wa.me/${WHATSAPP_ORDER_NUMBER}?text=${msg}`, "_blank", "noopener");
     toast(`Thank you, ${name}! We'll call you to confirm your order.`);
     e.target.reset();
   });
   $("#newsForm").addEventListener("submit", e => { e.preventDefault(); toast("Welcome to the Glow Club ✨"); e.target.reset(); });
   $("#yr").textContent = new Date().getFullYear();
+  formTotal();
 
   // ---------- Marquee: duplicate for seamless loop ----------
   const mq = $("#marquee"); mq.innerHTML += mq.innerHTML;
