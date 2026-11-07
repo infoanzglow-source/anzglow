@@ -196,7 +196,7 @@
 
   // ---------- Forms ----------
   // Set your WhatsApp order number (digits only, e.g. "9715XXXXXXXX") to send orders to WhatsApp.
-  const WHATSAPP_ORDER_NUMBER = "";
+  const WHATSAPP_ORDER_NUMBER = "971566650328";
   $("#orderForm").addEventListener("submit", e => {
     e.preventDefault();
     const name = $("#oName").value.trim(), phone = $("#oPhone").value.trim();
