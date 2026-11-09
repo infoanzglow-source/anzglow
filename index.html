@@ -10,10 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261110">
-<link rel="stylesheet" href="footer.css?v=20261110">
-<link rel="stylesheet" href="theme.css?v=20261110">
-<link rel="stylesheet" href="hero.css?v=20261110">
+<link rel="stylesheet" href="styles.css?v=20261111">
+<link rel="stylesheet" href="footer.css?v=20261111">
+<link rel="stylesheet" href="theme.css?v=20261111">
+<link rel="stylesheet" href="hero.css?v=20261111">
+<link rel="stylesheet" href="reels.css?v=20261111">
 </head>
 <body>
 
@@ -250,6 +251,45 @@
       <p class="lead">Lips, hair and skin — add to bag, or ask us anything on WhatsApp or email before you buy.</p>
     </div>
     <div class="kits" id="kitGrid"></div>
+  </div>
+</section>
+
+<!-- ============ Glow in motion: video reels ============ -->
+<section class="pad reels" id="reels">
+  <div class="wrap reels-wrap">
+    <div class="reels-head">
+      <span class="eyebrow reveal">Glow in motion</span>
+      <h2 class="h2 reveal d1">Little rituals,<br><span class="script">big glow</span></h2>
+      <p class="lead reveal d1">Eight seconds of calm, three ways to glow. Tap a reel to watch with sound — and shop the look right from the story.</p>
+      <ol class="reel-index reveal d2" id="reelIndex">
+        <li><button data-open="0"><b>01</b><span>The Dubai glow<small>Skin · cream ritual</small></span><svg><use href="#i-arrow"/></svg></button></li>
+        <li><button data-open="1"><b>02</b><span>Morning serum<small>Cleanse · serum</small></span><svg><use href="#i-arrow"/></svg></button></li>
+        <li><button data-open="2"><b>03</b><span>Rosemary hair ritual<small>Hair care</small></span><svg><use href="#i-arrow"/></svg></button></li>
+      </ol>
+      <button class="btn btn-ghost reveal d3" data-open="0"><svg><use href="#i-spark"/></svg>Watch all stories</button>
+    </div>
+
+    <div class="reel-stack" id="reelStack">
+      <button class="reel r0" data-open="0" aria-label="Play: The Dubai glow">
+        <video muted loop playsinline preload="none" poster="assets/reels/reel-glow.jpg" data-src="assets/reels/reel-glow.mp4"></video>
+        <span class="reel-top"><b>01</b>The Dubai glow</span>
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        <span class="reel-tag"><i style="background-image:url(assets/reels/reel-glow.jpg)"></i>Shop the look</span>
+      </button>
+      <button class="reel r1" data-open="1" aria-label="Play: Morning serum">
+        <video muted loop playsinline preload="none" poster="assets/reels/reel-serum.jpg" data-src="assets/reels/reel-serum.mp4"></video>
+        <span class="reel-top"><b>02</b>Morning serum</span>
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        <span class="reel-tag"><i style="background-image:url(assets/reels/reel-serum.jpg)"></i>Shop the look</span>
+      </button>
+      <button class="reel r2" data-open="2" aria-label="Play: Rosemary hair ritual">
+        <video muted loop playsinline preload="none" poster="assets/reels/reel-hair.jpg" data-src="assets/reels/reel-hair.mp4"></video>
+        <span class="reel-top"><b>03</b>Rosemary ritual</span>
+        <span class="reel-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+        <span class="reel-tag"><i style="background-image:url(assets/shampoo/ma-bottle.jpg)"></i>Shop · AED 30</span>
+      </button>
+      <span class="reel-orbit" aria-hidden="true"></span>
+    </div>
   </div>
 </section>
 
@@ -572,6 +612,7 @@
     <div class="mnav-links">
       <a href="#top"><svg><use href="#i-spark"/></svg>Home</a>
       <a href="#kits"><svg><use href="#i-bag"/></svg>Shop all</a>
+      <a href="#reels"><svg><use href="#i-spark"/></svg>Glow stories</a>
       <a href="#pinkkey"><svg><use href="#i-heart"/></svg>Pink Key lipstick</a>
       <a href="#hair"><svg><use href="#i-leaf"/></svg>Hair care</a>
       <a href="#finder"><svg><use href="#i-sun"/></svg>Glow finder</a>
@@ -620,11 +661,30 @@
   </div>
 </div>
 
+<!-- ============ Story viewer (reels) ============ -->
+<div class="sv" id="reelViewer" role="dialog" aria-modal="true" aria-label="AnzGlow stories">
+  <div class="sv-frame" id="svFrame">
+    <div class="sv-bars" id="svBars"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    <div class="sv-head">
+      <img src="assets/emblem-sm.png" alt="">
+      <span><b>anzglow</b><small id="svTitle"></small></span>
+      <button class="sv-btn" id="svSound" aria-label="Sound on/off"><svg viewBox="0 0 24 24"><path id="svSoundIcon" d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/></svg></button>
+      <button class="sv-btn" id="svClose" aria-label="Close stories"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <video id="svVideo" playsinline preload="auto"></video>
+    <button class="sv-zone prev" id="svPrev" aria-label="Previous story"></button>
+    <button class="sv-zone next" id="svNext" aria-label="Next story"></button>
+    <div class="sv-caption" id="svCaption"></div>
+    <div class="sv-shop" id="svShop"></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261110"></script>
-<script src="common.js?v=20261110"></script>
-<script src="app.js?v=20261110"></script>
+<script src="shades.js?v=20261111"></script>
+<script src="common.js?v=20261111"></script>
+<script src="app.js?v=20261111"></script>
+<script src="reels.js?v=20261111"></script>
 </body>
 </html>
