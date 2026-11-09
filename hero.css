@@ -166,3 +166,48 @@ body.menu-open .mnav-panel{transform:none}
 @media (max-width:640px){.hx-media{width:min(262px,70%)}.hx-slide{gap:28px}.hx-copy{gap:12px}.hx-title{font-size:2.6rem}.hx-text{font-size:1.02rem}}
 
 .mnav-panel{grid-auto-rows:max-content;overscroll-behavior:contain}
+
+/* ==========================================================
+   Glow header — logo halo + shimmer, gold glow line, glass buttons
+   ========================================================== */
+.ribbon{display:none!important}
+.header{background:linear-gradient(180deg,rgba(255,250,245,.96),rgba(253,244,246,.92));backdrop-filter:blur(18px) saturate(150%);box-shadow:none;position:sticky}
+.header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(217,180,106,.15) 10%,#e9cc8c 35%,#f2b8cc 50%,#cdb5ee 65%,rgba(205,181,238,.15) 90%,transparent)}
+.header::before{content:"";position:absolute;left:10%;right:10%;bottom:-14px;height:14px;pointer-events:none;
+  background:radial-gradient(50% 100% at 50% 0%,rgba(233,204,140,.35),transparent 70%);filter:blur(4px)}
+.header.scrolled{box-shadow:0 14px 34px -26px rgba(120,70,100,.55)}
+
+/* logo: soft glow halo + slow shimmer sweep */
+.brand{position:relative;isolation:isolate}
+.brand::before{content:"";position:absolute;z-index:-1;left:-14px;top:50%;width:88px;height:88px;transform:translateY(-50%);border-radius:50%;
+  background:radial-gradient(circle,rgba(243,217,153,.65),rgba(246,196,212,.35) 45%,transparent 70%);filter:blur(6px);animation:logoGlow 4.5s ease-in-out infinite}
+@keyframes logoGlow{50%{opacity:.55;transform:translateY(-50%) scale(.88)}}
+.brand .brand-emblem{filter:drop-shadow(0 0 10px rgba(243,217,153,.7)) drop-shadow(0 2px 2px rgba(120,80,30,.25)) saturate(1.2)!important}
+.brand .brand-word{filter:drop-shadow(0 0 8px rgba(255,255,255,.9)) drop-shadow(0 1px 1px rgba(120,80,30,.3)) saturate(1.25) contrast(1.06)!important;
+  -webkit-mask-image:linear-gradient(100deg,#000 40%,rgba(0,0,0,.55) 50%,#000 60%);-webkit-mask-size:300% 100%;
+  mask-image:linear-gradient(100deg,#000 40%,rgba(0,0,0,.55) 50%,#000 60%);mask-size:300% 100%;animation:logoShine 6s ease-in-out infinite}
+@keyframes logoShine{0%,60%{-webkit-mask-position:100% 0;mask-position:100% 0}100%{-webkit-mask-position:0 0;mask-position:0 0}}
+.brand::after{content:"";position:absolute;right:-6px;top:6px;width:6px;height:6px;border-radius:50%;background:#fff;
+  box-shadow:0 0 8px 3px rgba(243,217,153,.9);animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}
+
+/* desktop nav: glass pill with gold ring */
+.nav{background:rgba(255,255,255,.7);box-shadow:0 0 0 1px rgba(233,204,140,.55),0 12px 30px -20px rgba(120,70,100,.5),inset 0 1px 0 #fff}
+.nav a.active{box-shadow:0 0 16px rgba(233,204,140,.75)}
+
+/* cart / wishlist / menu: glass circles with gold ring + glow */
+.tools{gap:10px}
+.tools .icon-btn{width:46px;height:46px;background:rgba(255,255,255,.75);color:var(--ink);
+  box-shadow:0 0 0 1px rgba(233,204,140,.7),0 8px 20px -10px rgba(120,70,100,.45),inset 0 1px 0 #fff;transition:all .35s var(--ease)}
+.tools .icon-btn:hover{box-shadow:0 0 0 1px #e9cc8c,0 0 18px rgba(243,217,153,.8);transform:translateY(-1px)}
+.tools .badge{background:linear-gradient(135deg,#c4577f,#e48aa9);box-shadow:0 0 0 2px #fff,0 0 10px rgba(228,138,169,.8);top:-3px;right:-3px}
+.menu-btn{background:var(--gold-grad)!important;color:#fff!important;box-shadow:0 0 0 1px rgba(255,255,255,.6),0 8px 22px -8px rgba(169,128,60,.8),0 0 18px rgba(243,217,153,.55)!important}
+.menu-btn svg{width:22px;height:22px}
+
+@media (max-width:640px){
+  .header .wrap{height:72px}
+  .brand::before{width:70px;height:70px;left:-10px}
+  .tools .icon-btn{width:42px;height:42px}
+}
+@media (prefers-reduced-motion:reduce){.brand::before,.brand::after,.brand .brand-word{animation:none}}
