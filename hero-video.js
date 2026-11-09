@@ -18,7 +18,7 @@
     picks.forEach(p => p.classList.toggle("lit", +p.dataset.ch === n));
     // phones: slide the playing product card into view (sideways only, page doesn't jump)
     const lit = picks.find(p => +p.dataset.ch === n), row = lit && lit.parentElement;
-    if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: lit.offsetLeft - 14, behavior: "smooth" });
+    if (row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: Math.max(0, lit.offsetLeft - 16), behavior: "smooth" });
   };
   const go = n => {
     n = (n + CLIPS.length) % CLIPS.length;

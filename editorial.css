@@ -192,3 +192,32 @@
   .ed-chapters button span{white-space:nowrap}
   .ed-mega{padding-top:14px}
 }
+
+/* ---------- Hero product picks: slim pills (less crowded) ---------- */
+.ed-picks{gap:10px;align-items:center}
+.ed-pick{width:auto;min-width:0;display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;
+  background:rgba(255,250,245,.82);backdrop-filter:blur(12px);box-shadow:0 0 0 1px rgba(255,255,255,.6),0 12px 26px -16px rgba(40,20,30,.55)}
+.ed-pick img{width:42px;height:42px;flex:none;border-radius:50%;object-fit:cover;object-position:center 30%;box-shadow:0 0 0 2px #fff}
+.ed-pick span{display:grid;padding:0;gap:1px;line-height:1.1}
+.ed-pick small{font-family:var(--sans);font-size:.56rem;letter-spacing:.2em;color:var(--lav-deep);font-weight:500}
+.ed-pick b{font-family:var(--sans);font-size:.86rem;font-weight:500;color:var(--ink);white-space:nowrap}
+.ed-pick em{font-family:var(--sans);font-size:.74rem;font-weight:600;color:#1b8a32}
+.ed-pick.lit{transform:translateY(-3px);box-shadow:0 0 0 2px #e9cc8c,0 14px 30px -14px rgba(40,20,30,.6)}
+.ed-pick.lit::after{top:-9px;left:auto;right:10px;padding:2px 7px;font-size:.5rem}
+@media (max-width:640px){
+  .ed-picks{gap:8px;padding:4px 16px 18px;scroll-snap-type:x mandatory;scroll-padding:16px}
+  .ed-pick{flex:none;width:auto;padding:5px 14px 5px 5px;scroll-snap-align:start}
+  .ed-pick img{width:38px;height:38px}
+  .ed-pick b{font-size:.8rem}
+  .ed-main{min-height:560px}
+}
+@media (max-width:640px){
+  .ed-picks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:2px 12px 16px;overflow:visible}
+  .ed-pick{width:auto;gap:7px;padding:4px 8px 4px 4px}
+  .ed-pick img{width:32px;height:32px}
+  .ed-pick small{display:none}
+  .ed-pick b{font-size:.74rem;overflow:hidden;text-overflow:ellipsis}
+  .ed-pick em{font-size:.68rem}
+  .ed-pick.lit{transform:none;box-shadow:0 0 0 2px #e9cc8c,0 10px 22px -14px rgba(40,20,30,.6)}
+  .ed-pick.lit::after{display:none}
+}
