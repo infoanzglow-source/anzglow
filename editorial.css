@@ -221,3 +221,13 @@
   .ed-pick.lit{transform:none;box-shadow:0 0 0 2px #e9cc8c,0 10px 22px -14px rgba(40,20,30,.6)}
   .ed-pick.lit::after{display:none}
 }
+
+/* ---------- "Born to Glow" headline: Playfair Display, purple ---------- */
+.ed-mega{font-family:"Playfair Display",var(--serif);font-weight:700;letter-spacing:.01em;line-height:.9;text-shadow:none;
+  filter:drop-shadow(0 4px 22px rgba(40,10,60,.55)) drop-shadow(0 0 2px rgba(60,20,80,.35))}
+.ed-mega span{background:linear-gradient(100deg,#f4ecff 0%,#d9c2fb 35%,#b88ef0 70%,#d7b8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ed-mega span+span{padding-left:.7em}
+.ed-mega em{font-family:"Playfair Display",var(--serif);font-style:italic;font-weight:600;text-transform:none;font-size:1em;letter-spacing:0;vertical-align:0;
+  background:linear-gradient(100deg,#f7c6ea,#c79cff 55%,#a777f0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1.ed-mega,.hero h1.ed-mega span{font-family:"Playfair Display",Georgia,serif;font-weight:700}
+.hero h1.ed-mega em{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-style:italic}
