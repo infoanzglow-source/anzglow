@@ -9,7 +9,11 @@
     { src: "assets/reels/reel-serum.mp4", poster: "assets/reels/reel-serum.jpg", title: "Morning serum",
       caption: "Cleanse, then press in a few drops of serum for fresh, dewy skin.", product: "glow" },
     { src: "assets/reels/reel-hair.mp4",  poster: "assets/reels/reel-hair.jpg",  title: "Rosemary hair ritual",
-      caption: "Rosemary for stronger, shinier hair — wash, massage, rinse, glow.", product: "shampoo" }
+      caption: "Rosemary for stronger, shinier hair — wash, massage, rinse, glow.", product: "shampoo" },
+    { src: "assets/reels/reel-cleanse.mp4", poster: "assets/reels/reel-cleanse.jpg", title: "Mirror cleanse",
+      caption: "Hair back, a few golden drops, gentle taps — skin that looks rested.", product: "glow" },
+    { src: "assets/reels/reel-wash.mp4", poster: "assets/reels/reel-wash.jpg", title: "Brush & wash",
+      caption: "Brush, lather, flip — the rosemary wash for strong, shiny hair.", product: "shampoo" }
   ];
 
   // ---------- Cards: play silently only while the section is on screen ----------

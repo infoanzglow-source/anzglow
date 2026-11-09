@@ -100,3 +100,10 @@
 
 .reels-wrap>*{min-width:0}
 @media (max-width:1100px){.reels-wrap{grid-template-columns:minmax(0,1fr)}}
+
+/* five reels: two extra cards tucked behind the fan on desktop */
+.reel.r3{transform:translateX(-112%) rotate(-14deg) scale(.74);z-index:0;opacity:.95}
+.reel.r4{transform:translateX(112%) rotate(14deg) scale(.74);z-index:0;opacity:.95}
+.reel.r3.lift{transform:translateX(-104%) rotate(-8deg) scale(.86)}
+.reel.r4.lift{transform:translateX(104%) rotate(8deg) scale(.86)}
+@media (max-width:1300px) and (min-width:641px){.reel.r3,.reel.r4{display:none}}

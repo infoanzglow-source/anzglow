@@ -169,3 +169,26 @@
   .ed-actions .btn{flex:none;white-space:nowrap;padding:14px 20px}
   .ed-watch{font-size:.82rem}
 }
+
+/* ---------- Hero video playlist ---------- */
+.ed-video{opacity:0;transition:opacity .7s ease}
+.ed-video.on{opacity:1}
+.ed-chapters{position:absolute;z-index:2;top:22px;right:22px;display:flex;gap:6px;padding:6px;border-radius:999px;background:rgba(255,250,245,.18);backdrop-filter:blur(10px);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.ed-chapters button{position:relative;display:flex;align-items:center;gap:8px;padding:8px 14px 10px;border-radius:999px;color:rgba(255,255,255,.8);font-size:.76rem;letter-spacing:.06em;transition:background .3s,color .3s}
+.ed-chapters button b{font-family:var(--serif);font-size:1rem;font-weight:600;color:#f6dca3}
+.ed-chapters button.on{background:rgba(255,250,245,.92);color:var(--ink)}
+.ed-chapters button.on b{color:var(--gold-ink)}
+.ed-chapters i{position:absolute;left:14px;right:14px;bottom:4px;height:2px;border-radius:2px;background:rgba(255,255,255,.25);overflow:hidden}
+.ed-chapters button.on i{background:rgba(59,42,53,.12)}
+.ed-chapters em{display:block;height:100%;width:0;background:var(--gold-grad);transition:width .25s linear}
+.ed-pick{transition:transform .4s var(--ease),box-shadow .4s}
+.ed-pick.lit{transform:translateY(-8px);box-shadow:0 0 0 2px #f6dca3,0 22px 40px -18px rgba(40,20,30,.7)}
+.ed-pick.lit::after{content:"Now playing";position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:999px;background:var(--buy,#1b8a32);color:#fff;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase}
+.ed-pick{position:relative}
+@media (max-width:900px){.ed-chapters{top:auto;right:auto;left:50%;transform:translateX(-50%);bottom:auto}}
+@media (max-width:640px){
+  .ed-chapters{position:relative;left:auto;transform:none;margin:14px 14px 0;justify-content:space-between;order:-1}
+  .ed-chapters button{flex:1;justify-content:center;padding:7px 6px 9px;font-size:.68rem;gap:5px}
+  .ed-chapters button span{white-space:nowrap}
+  .ed-mega{padding-top:14px}
+}
