@@ -231,3 +231,23 @@
   background:linear-gradient(100deg,#f7c6ea,#c79cff 55%,#a777f0);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero h1.ed-mega,.hero h1.ed-mega span{font-family:"Playfair Display",Georgia,serif;font-weight:700}
 .hero h1.ed-mega em{font-family:"Playfair Display",Georgia,serif;font-weight:600;font-style:italic}
+
+/* ---------- "Born to Glow": Bodoni italic + Great Vibes script, purple ---------- */
+.hero h1.ed-mega{text-transform:none;letter-spacing:0;line-height:.82;filter:drop-shadow(0 0 18px rgba(255,255,255,.35)) drop-shadow(0 6px 26px rgba(40,10,60,.6))}
+.hero h1.ed-mega .m1{display:block;padding:0;font-family:"Bodoni Moda",Georgia,serif;font-style:italic;font-weight:700;
+  font-size:clamp(3rem,6.6vw,6.4rem);letter-spacing:-.01em;
+  background:linear-gradient(100deg,#ffffff 0%,#ead9ff 30%,#c9a3ff 65%,#b07cf7 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1.ed-mega em{display:block;margin:-.12em 0 0 .55em;font-family:"Great Vibes",cursive;font-style:normal;font-weight:400;
+  font-size:clamp(5.2rem,11.5vw,11rem);line-height:1;
+  background:linear-gradient(100deg,#f5c9ff 0%,#c58cff 45%,#9b5cf0 75%,#d6a8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (max-width:640px){
+  .hero h1.ed-mega .m1{font-size:3.1rem}
+  .hero h1.ed-mega em{font-size:5.6rem;margin-left:.45em}
+}
+
+/* ---------- "Born to Glow": gold ---------- */
+.hero h1.ed-mega{filter:drop-shadow(0 0 14px rgba(255,236,190,.35)) drop-shadow(0 6px 22px rgba(50,25,10,.65))}
+.hero h1.ed-mega .m1{background:linear-gradient(100deg,#fff6dc 0%,#f6dca3 30%,#e2b867 60%,#fbe7b4 80%,#c8963f 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1.ed-mega em{margin-top:.02em;background:linear-gradient(100deg,#fff1c9 0%,#f3d08a 30%,#d4a24c 55%,#fde9b8 72%,#b98536 100%);
+  background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+@media (max-width:640px){.hero h1.ed-mega em{margin-top:.06em}}
