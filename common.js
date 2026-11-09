@@ -144,6 +144,7 @@
   $("#menuBtn").onclick = () => document.body.classList.add("menu-open");
   $("#menuClose").onclick = () => document.body.classList.remove("menu-open");
   $$("#mnav a").forEach(a => a.addEventListener("click", () => document.body.classList.remove("menu-open")));
+  $("#mnav").addEventListener("click", e => { if (e.target.id === "mnav") document.body.classList.remove("menu-open"); });
   const header = $("#header");
   const onScroll = () => header.classList.toggle("scrolled", scrollY > 20);
   addEventListener("scroll", onScroll, { passive: true }); onScroll();

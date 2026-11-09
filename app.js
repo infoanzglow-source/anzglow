@@ -11,7 +11,7 @@
     const title = isPK ? `<a class="kit-name" href="${k.page}">${k.name}</a>` : `<button class="kit-name" data-qv="${k.id}">${k.name}</button>`;
     const cta = isPK
       ? `<a class="btn btn-gold btn-sm" href="${k.page}?shade=${PK.heroShade}">Choose shade</a>`
-      : `<button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag</button>`;
+      : `<button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to cart</button>`;
     return `
     <article class="kit reveal d${i % 4} ${k.featured ? "featured" : ""}" data-id="${k.id}">
       <span class="tag ${k.tagClass}">${k.tag}</span>
@@ -72,7 +72,7 @@
     setTimeout(() => {
       copy.innerHTML = `<span class="r-k">Your perfect match</span><h3 class="gold-text">${f.title}</h3><p>${f.text}</p>
         <div class="meter">${["Even tone", "Radiance", "Hydration"].map((l, i) => `<div>${l}<span><i data-w="${f.m[i]}"></i></span>${f.m[i]}%</div>`).join("")}</div>
-        <button class="btn btn-gold" data-add="${k.id}">Add to bag — AED ${k.price} <svg><use href="#i-arrow"/></svg></button>`;
+        <button class="btn btn-gold" data-add="${k.id}">Add to cart — AED ${k.price} <svg><use href="#i-arrow"/></svg></button>`;
       art.innerHTML = artSvg(k, "r-prod");
       copy.classList.remove("out"); art.classList.remove("out");
       requestAnimationFrame(() => requestAnimationFrame(() => $$("#resultCopy [data-w]").forEach(i => i.style.width = i.dataset.w + "%")));
@@ -147,13 +147,38 @@
   };
   tick(); setInterval(tick, 1000);
 
-  // ---------- Hero parallax ----------
-  const hv = $("#heroVisual");
-  if (hv && matchMedia("(pointer:fine)").matches) {
-    addEventListener("pointermove", e => {
-      const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
-      $$(".float-card", hv).forEach((c, i) => c.style.translate = `${x * (i ? -18 : 18)}px ${y * (i ? -14 : 14)}px`);
+  // ---------- Hero banner slider ----------
+  const slides = $$("#hxSlides .hx-slide"), tabs = $$("#hxTabs button");
+  if (slides.length) {
+    const DURATION = 6500;
+    let idx = 0, timer = null;
+    const hero = $(".hx-hero");
+    const show = n => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => { s.classList.toggle("on", i === idx); s.setAttribute("aria-hidden", i !== idx); });
+      tabs.forEach((t, i) => t.classList.toggle("on", i === idx));
+      hero.style.setProperty("--tint", slides[idx].style.getPropertyValue("--tint"));
+      hero.style.setProperty("--tint2", slides[idx].style.getPropertyValue("--tint2"));
+      restart();
+    };
+    const restart = () => {
+      clearTimeout(timer);
+      tabs.forEach(t => { const bar = t.querySelector("i"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = ""; });
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) timer = setTimeout(() => show(idx + 1), DURATION);
+    };
+    tabs.forEach((t, i) => t.onclick = () => show(i));
+    $("#hxPrev").onclick = () => show(idx - 1);
+    $("#hxNext").onclick = () => show(idx + 1);
+    hero.addEventListener("mouseenter", () => { clearTimeout(timer); hero.classList.add("paused"); });
+    hero.addEventListener("mouseleave", () => { hero.classList.remove("paused"); restart(); });
+    // swipe on phones
+    let x0 = null;
+    hero.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    hero.addEventListener("touchend", e => {
+      if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 45) show(idx + (dx < 0 ? 1 : -1));
     }, { passive: true });
+    show(0);
   }
 
   // ---------- Gold sparkles ----------

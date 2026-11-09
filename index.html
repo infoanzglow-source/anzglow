@@ -10,9 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261109">
-<link rel="stylesheet" href="footer.css?v=20261109">
-<link rel="stylesheet" href="theme.css?v=20261109">
+<link rel="stylesheet" href="styles.css?v=20261110">
+<link rel="stylesheet" href="footer.css?v=20261110">
+<link rel="stylesheet" href="theme.css?v=20261110">
+<link rel="stylesheet" href="hero.css?v=20261110">
 </head>
 <body>
 
@@ -121,7 +122,17 @@
     </a>
     <ul class="nav" id="nav">
       <li><a href="#top" class="active">Home</a></li>
-      <li><a href="#kits">Shop</a></li>
+      <li class="has-mega"><a href="#kits">Shop <svg class="chev"><use href="#i-arrow"/></svg></a>
+        <div class="mega" role="menu">
+          <a class="mega-card" href="pink-key.html?shade=09"><img src="assets/pinkkey/pk-open.jpg" alt=""><span><small>Lips · 12 shades</small><b>Pink Key Liquid Lipstick</b><em>AED 10</em></span></a>
+          <a class="mega-card" href="#hair"><img src="assets/shampoo/ma-bottle.jpg" alt=""><span><small>Hair care</small><b>Rosemary Anti-Hair Fall Shampoo</b><em>AED 30</em></span></a>
+          <div class="mega-col">
+            <small>Shop by</small>
+            <a href="#kits">All products</a><a href="pink-key.html#shades">Lipstick shades</a><a href="#hair">Hair care</a><a href="#finder">Skincare finder</a>
+            <a class="mega-offer" href="#kits"><b>Launch sale</b>Up to 33% off · cash on delivery</a>
+          </div>
+        </div>
+      </li>
       <li><a href="#pinkkey">Pink Key</a></li>
       <li><a href="#hair">Hair Care</a></li>
       <li><a href="#story">About</a></li>
@@ -129,7 +140,6 @@
       <li><a href="#order">Contact</a></li>
     </ul>
     <div class="tools">
-      <button class="icon-btn hide-sm" aria-label="Search"><svg><use href="#i-search"/></svg></button>
       <button class="icon-btn hide-sm" aria-label="Wishlist" id="wishBtn"><svg><use href="#i-heart"/></svg><span class="badge" id="wishCount">0</span></button>
       <button class="icon-btn" aria-label="Cart" id="cartBtn"><svg><use href="#i-bag"/></svg><span class="badge" id="cartCount">0</span></button>
       <button class="icon-btn menu-btn" aria-label="Menu" id="menuBtn"><svg><use href="#i-menu"/></svg></button>
@@ -139,56 +149,81 @@
 
 <main id="top">
 <!-- ============ Hero ============ -->
-<section class="hero">
-  <svg class="silk" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
-    <defs><linearGradient id="silkG" x1="0" x2="1"><stop offset="0" stop-color="#d9b46a" stop-opacity="0"/><stop offset=".5" stop-color="#f3d999" stop-opacity=".55"/><stop offset="1" stop-color="#d9b46a" stop-opacity="0"/></linearGradient></defs>
-    <path d="M-50 620C250 520 420 760 760 600S1200 360 1500 470" fill="none" stroke="url(#silkG)" stroke-width="1.4"/>
-    <path d="M-50 660C260 560 440 800 780 640S1210 400 1500 510" fill="none" stroke="url(#silkG)" stroke-width=".8"/>
-    <path d="M-50 140C300 260 520 40 860 160S1250 300 1500 200" fill="none" stroke="url(#silkG)" stroke-width=".8"/>
-  </svg>
+<section class="hero hx-hero" aria-roledescription="carousel" aria-label="Featured products">
   <canvas id="sparkles"></canvas>
-
+  <div class="hx-bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
   <div class="wrap">
-    <div class="hero-copy">
-      <span class="eyebrow reveal">Beauty · Confidence · You</span>
-      <h1 class="reveal d1">
-        <span class="script">Reveal your</span>
-        <span class="big">Natural <em class="gold-text">Glow</em></span>
-      </h1>
-      <p class="hero-sub reveal d2">Say goodbye to <b>tan &amp; dark spots</b> — hello to skin that feels like silk.</p>
+    <div class="hx-slides" id="hxSlides">
 
-      <div class="benefits reveal d2">
-        <div class="benefit"><i><svg><use href="#i-sun"/></svg></i>Removes<br>Tan</div>
-        <div class="benefit"><i><svg><use href="#i-spark"/></svg></i>Brightens<br>Skin</div>
-        <div class="benefit"><i><svg><use href="#i-drop"/></svg></i>Deep<br>Hydration</div>
-        <div class="benefit"><i><svg><use href="#i-leaf"/></svg></i>Safe &amp;<br>Gentle</div>
-      </div>
+      <!-- Slide 1 · Pink Key -->
+      <article class="hx-slide on" style="--tint:#f7cfdc;--tint2:#efe2fb">
+        <div class="hx-media">
+          <span class="hx-ring" aria-hidden="true"></span>
+          <img src="assets/pinkkey/pk-open.jpg" alt="Pink Key Liquid Lipstick open with its applicator">
+          <span class="hx-chip c1"><b>AED 10</b><s>15</s></span>
+          <span class="hx-chip c2"><i class="hx-sw" style="background:#a5493f"></i>09 light-brown matte</span>
+          <span class="hx-swatches" aria-hidden="true"><i style="background:#e98a95"></i><i style="background:#e2607a"></i><i style="background:#dc7a6c"></i><i style="background:#cf5c58"></i><i style="background:#ae3552"></i><i style="background:#a5493f"></i><i style="background:#8e3a37"></i><i style="background:#a30716"></i></span>
+        </div>
+        <div class="hx-copy">
+          <span class="hx-kicker">New · Pink Key Liquid Lipstick</span>
+          <h1 class="hx-title"><span class="script">12 shades.</span>One <em class="gold-text">you.</em></h1>
+          <p class="hx-text">Ultra-matte colour that suits every skin tone — start with our light-brown hero shade 09.</p>
+          <div class="hx-cta">
+            <a class="btn btn-buy" href="pink-key.html?shade=09">Shop Pink Key <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#kits">View all</a>
+          </div>
+        </div>
+      </article>
 
-      <div class="hero-cta reveal d3">
-        <a href="#kits" class="btn btn-gold">Shop Tan Removal Kit <svg><use href="#i-arrow"/></svg></a>
-        <a href="#finder" class="btn btn-ghost">Find my glow</a>
-      </div>
-      <div class="hero-proof reveal d3">
-        <div class="avatars"><span>F</span><span>S</span><span>A</span></div>
-        <div><span class="stars">★★★★★</span><br>Loved by thousands of women across the UAE</div>
-      </div>
+      <!-- Slide 2 · Mamaearth shampoo -->
+      <article class="hx-slide" style="--tint:#e6dcf7;--tint2:#e3f1e2">
+        <div class="hx-media">
+          <span class="hx-ring" aria-hidden="true"></span>
+          <img src="assets/shampoo/ma-model.jpg" alt="Woman washing her hair with Mamaearth Rosemary shampoo">
+          <span class="hx-chip c1"><b>AED 30</b><s>39</s></span>
+          <span class="hx-chip c2"><svg><use href="#i-leaf"/></svg>Rosemary &amp; methi dana</span>
+        </div>
+        <div class="hx-copy">
+          <span class="hx-kicker">Hair care · Mamaearth</span>
+          <h2 class="hx-title"><span class="script">Stronger hair.</span>Healthier <em class="gold-text">you.</em></h2>
+          <p class="hx-text">Rosemary Anti-Hair Fall Shampoo — gently cleanses and helps reduce hair fall. For all hair types.</p>
+          <div class="hx-cta">
+            <button class="btn btn-buy" data-add="shampoo">Add to cart — AED 30 <svg><use href="#i-bag"/></svg></button>
+            <a class="btn btn-ghost" href="#hair">Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Slide 3 · Brand -->
+      <article class="hx-slide" style="--tint:#f4e2c4;--tint2:#f8d6e2">
+        <div class="hx-media">
+          <span class="hx-ring" aria-hidden="true"></span>
+          <img src="assets/model.jpg" alt="Woman with radiant, glowing skin">
+          <span class="hx-chip c1"><svg><use href="#i-shield"/></svg>Cash on delivery</span>
+          <span class="hx-chip c2"><svg><use href="#i-truck"/></svg>AED 10 · all UAE</span>
+        </div>
+        <div class="hx-copy">
+          <span class="hx-kicker">AnzGlow · Beauty · Confidence · You</span>
+          <h2 class="hx-title"><span class="script">Reveal your</span>Natural <em class="gold-text">glow.</em></h2>
+          <p class="hx-text">Lips, hair and skin essentials — delivered across the UAE, pay when it arrives.</p>
+          <div class="hx-cta">
+            <a class="btn btn-buy" href="#kits">Shop the edit <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#finder">Find my glow</a>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <div class="hero-visual reveal d2" id="heroVisual">
-      <div class="orbit" aria-hidden="true">
-        <svg viewBox="0 0 200 200"><defs><linearGradient id="orb" x1="0" x2="1"><stop offset="0" stop-color="#f3d999" stop-opacity="0"/><stop offset=".5" stop-color="#f3d999"/><stop offset="1" stop-color="#f3d999" stop-opacity="0"/></linearGradient></defs>
-          <ellipse cx="100" cy="100" rx="96" ry="70" fill="none" stroke="url(#orb)" stroke-width=".6" transform="rotate(-24 100 100)"/>
-          <circle cx="188" cy="64" r="2.4" fill="#fff1c9"/>
-        </svg>
+    <div class="hx-nav">
+      <button class="hx-arrow" id="hxPrev" aria-label="Previous slide"><svg><use href="#i-left"/></svg></button>
+      <div class="hx-tabs" id="hxTabs" role="tablist">
+        <button class="on" role="tab" aria-label="Pink Key"><span>Pink Key</span><i></i></button>
+        <button role="tab" aria-label="Hair care"><span>Hair care</span><i></i></button>
+        <button role="tab" aria-label="Glow"><span>Glow</span><i></i></button>
       </div>
-      <div class="arch-frame"></div>
-      <div class="arch"><img src="assets/model.jpg" alt="Woman with radiant, glowing skin"></div>
-      <div class="float-card fc-1"><i><svg><use href="#i-shield"/></svg></i><span><b>Derm-tested</b>Safe for all skin</span></div>
-      <div class="float-card fc-2"><i><svg><use href="#i-spark"/></svg></i><span><b>2 weeks</b>to visible glow*</span></div>
-      <div class="signature">Glow<br>Beautifully ♡</div>
+      <button class="hx-arrow" id="hxNext" aria-label="Next slide"><svg><use href="#i-arrow"/></svg></button>
     </div>
   </div>
-  <div class="scroll-cue">SCROLL<span></span></div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -264,7 +299,7 @@
       </ul>
       <div class="hair-buy reveal d3">
         <div class="price">AED 30<s>39</s></div>
-        <button class="btn btn-gold" data-add="shampoo">Add to bag <svg><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-gold" data-add="shampoo">Add to cart <svg><use href="#i-arrow"/></svg></button>
         <button class="btn btn-lav" data-qv="shampoo">View details</button>
       </div>
       <div class="reveal d3" data-enq="Mamaearth Rosemary Anti-Hair Fall Shampoo"></div>
@@ -523,9 +558,34 @@
     <small>AED 10 delivery across the UAE · 1–2 working days</small>
   </footer>
 </aside>
-<nav class="mnav" id="mnav">
-  <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
-  <a href="#top">Home</a><a href="#kits">Shop</a><a href="#pinkkey">Pink Key</a><a href="#hair">Hair Care</a><a href="#finder">Glow Finder</a><a href="#ritual">Ritual</a><a href="#story">About</a><a href="#reviews">Reviews</a><a href="#order">Contact</a>
+<nav class="mnav" id="mnav" aria-label="Menu">
+  <div class="mnav-panel">
+    <div class="mnav-top">
+      <a href="#top" class="brand" aria-label="AnzGlow home"><img class="brand-emblem" src="assets/emblem-sm.png" alt=""><img class="brand-word" src="assets/wordmark.png" alt="AnzGlow"></a>
+      <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <a class="mnav-offer" href="#kits"><svg><use href="#i-spark"/></svg><span><b>Launch sale</b>Pink Key AED 10 · Shampoo AED 30</span></a>
+    <div class="mnav-products">
+      <a href="pink-key.html?shade=09"><img src="assets/pinkkey/pk-open.jpg" alt=""><span><b>Pink Key</b>12 shades · AED 10</span></a>
+      <a href="#hair"><img src="assets/shampoo/ma-bottle.jpg" alt=""><span><b>Rosemary Shampoo</b>Mamaearth · AED 30</span></a>
+    </div>
+    <div class="mnav-links">
+      <a href="#top"><svg><use href="#i-spark"/></svg>Home</a>
+      <a href="#kits"><svg><use href="#i-bag"/></svg>Shop all</a>
+      <a href="#pinkkey"><svg><use href="#i-heart"/></svg>Pink Key lipstick</a>
+      <a href="#hair"><svg><use href="#i-leaf"/></svg>Hair care</a>
+      <a href="#finder"><svg><use href="#i-sun"/></svg>Glow finder</a>
+      <a href="#ritual"><svg><use href="#i-drop"/></svg>Skincare ritual</a>
+      <a href="#story"><svg><use href="#i-gem"/></svg>About us</a>
+      <a href="#reviews"><svg><use href="#i-heart"/></svg>Reviews</a>
+      <a href="#order"><svg><use href="#i-shield"/></svg>Order &amp; FAQ</a>
+    </div>
+    <div class="mnav-contact">
+      <a class="mnav-wa" href="https://wa.me/971566650328" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp us</a>
+      <a class="mnav-mail" href="mailto:info.anzglow@gmail.com"><svg><use href="#i-mail"/></svg>Email</a>
+    </div>
+    <p class="mnav-note"><svg><use href="#i-truck"/></svg>AED 10 delivery · Cash on delivery</p>
+  </div>
 </nav>
 <!-- ============ Product quick view ============ -->
 <div class="modal" id="quick" role="dialog" aria-modal="true" aria-labelledby="qvName">
@@ -543,7 +603,7 @@
       <details><summary>Delivery &amp; payment</summary><p>AED 10 flat delivery to all seven emirates, usually 1–2 working days. Pay cash when it arrives — we confirm every order by phone or WhatsApp first.</p></details>
       <div class="qv-buy">
         <div class="qty-lg"><button id="qvMinus" aria-label="Less">−</button><span id="qvQty">1</span><button id="qvPlus" aria-label="More">+</button></div>
-        <button class="btn btn-gold" id="qvAdd">Add to bag <svg><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-gold" id="qvAdd">Add to cart <svg><use href="#i-arrow"/></svg></button>
       </div>
       <div class="enq-row"><a class="e-wa" id="qvWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a><a class="e-mail" id="qvMail"><svg><use href="#i-mail"/></svg>Email enquiry</a></div>
     </div>
@@ -563,8 +623,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261109"></script>
-<script src="common.js?v=20261109"></script>
-<script src="app.js?v=20261109"></script>
+<script src="shades.js?v=20261110"></script>
+<script src="common.js?v=20261110"></script>
+<script src="app.js?v=20261110"></script>
 </body>
 </html>

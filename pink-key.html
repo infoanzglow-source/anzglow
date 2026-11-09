@@ -10,10 +10,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261109">
-<link rel="stylesheet" href="footer.css?v=20261109">
-<link rel="stylesheet" href="product.css?v=20261109">
-<link rel="stylesheet" href="theme.css?v=20261109">
+<link rel="stylesheet" href="styles.css?v=20261110">
+<link rel="stylesheet" href="footer.css?v=20261110">
+<link rel="stylesheet" href="product.css?v=20261110">
+<link rel="stylesheet" href="theme.css?v=20261110">
+<link rel="stylesheet" href="hero.css?v=20261110">
 </head>
 <body>
 
@@ -122,7 +123,17 @@
     </a>
     <ul class="nav" id="nav">
       <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#kits">Shop</a></li>
+      <li class="has-mega"><a href="index.html#kits">Shop <svg class="chev"><use href="#i-arrow"/></svg></a>
+        <div class="mega" role="menu">
+          <a class="mega-card" href="pink-key.html?shade=09"><img src="assets/pinkkey/pk-open.jpg" alt=""><span><small>Lips · 12 shades</small><b>Pink Key Liquid Lipstick</b><em>AED 10</em></span></a>
+          <a class="mega-card" href="index.html#hair"><img src="assets/shampoo/ma-bottle.jpg" alt=""><span><small>Hair care</small><b>Rosemary Anti-Hair Fall Shampoo</b><em>AED 30</em></span></a>
+          <div class="mega-col">
+            <small>Shop by</small>
+            <a href="index.html#kits">All products</a><a href="pink-key.html#shades">Lipstick shades</a><a href="index.html#hair">Hair care</a><a href="index.html#finder">Skincare finder</a>
+            <a class="mega-offer" href="index.html#kits"><b>Launch sale</b>Up to 33% off · cash on delivery</a>
+          </div>
+        </div>
+      </li>
       <li><a href="pink-key.html" class="active">Pink Key</a></li>
       <li><a href="index.html#hair">Hair Care</a></li>
       <li><a href="index.html#story">About</a></li>
@@ -130,7 +141,6 @@
       <li><a href="index.html#order">Contact</a></li>
     </ul>
     <div class="tools">
-      <button class="icon-btn hide-sm" aria-label="Search"><svg><use href="#i-search"/></svg></button>
       <button class="icon-btn hide-sm" aria-label="Wishlist" id="wishBtn"><svg><use href="#i-heart"/></svg><span class="badge" id="wishCount">0</span></button>
       <button class="icon-btn" aria-label="Cart" id="cartBtn"><svg><use href="#i-bag"/></svg><span class="badge" id="cartCount">0</span></button>
       <button class="icon-btn menu-btn" aria-label="Menu" id="menuBtn"><svg><use href="#i-menu"/></svg></button>
@@ -186,7 +196,7 @@
 
       <div class="pdp-buy" id="pdpBuy">
         <div class="qty-lg"><button id="qMinus" aria-label="Less">−</button><span id="qVal">1</span><button id="qPlus" aria-label="More">+</button></div>
-        <button class="btn btn-gold" id="pdpAdd">Add to bag — AED 10 <svg><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-gold" id="pdpAdd">Add to cart — AED 10 <svg><use href="#i-arrow"/></svg></button>
         <button class="wish pdp-wish" aria-label="Save to wishlist" data-wish="pinkkey"><svg><use href="#i-heart"/></svg></button>
       </div>
       <div class="enq-row">
@@ -324,7 +334,7 @@
 <div class="sticky-buy" id="stickyBuy">
   <i id="stickyDot"></i>
   <span><b id="stickyName"></b><small>AED 10 · Pink Key Liquid Lipstick</small></span>
-  <button class="btn btn-gold btn-sm" id="stickyAdd">Add to bag</button>
+  <button class="btn btn-gold btn-sm" id="stickyAdd">Add to cart</button>
 </div>
 
 <!-- ============ Footer ============ -->
@@ -432,9 +442,34 @@
     <small>AED 10 delivery across the UAE · 1–2 working days</small>
   </footer>
 </aside>
-<nav class="mnav" id="mnav">
-  <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
-  <a href="index.html">Home</a><a href="index.html#kits">Shop</a><a href="index.html#pinkkey">Pink Key</a><a href="index.html#hair">Hair Care</a><a href="index.html#finder">Glow Finder</a><a href="index.html#ritual">Ritual</a><a href="index.html#story">About</a><a href="index.html#reviews">Reviews</a><a href="index.html#order">Contact</a>
+<nav class="mnav" id="mnav" aria-label="Menu">
+  <div class="mnav-panel">
+    <div class="mnav-top">
+      <a href="index.html" class="brand" aria-label="AnzGlow home"><img class="brand-emblem" src="assets/emblem-sm.png" alt=""><img class="brand-word" src="assets/wordmark.png" alt="AnzGlow"></a>
+      <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
+    </div>
+    <a class="mnav-offer" href="index.html#kits"><svg><use href="#i-spark"/></svg><span><b>Launch sale</b>Pink Key AED 10 · Shampoo AED 30</span></a>
+    <div class="mnav-products">
+      <a href="pink-key.html?shade=09"><img src="assets/pinkkey/pk-open.jpg" alt=""><span><b>Pink Key</b>12 shades · AED 10</span></a>
+      <a href="index.html#hair"><img src="assets/shampoo/ma-bottle.jpg" alt=""><span><b>Rosemary Shampoo</b>Mamaearth · AED 30</span></a>
+    </div>
+    <div class="mnav-links">
+      <a href="index.html"><svg><use href="#i-spark"/></svg>Home</a>
+      <a href="index.html#kits"><svg><use href="#i-bag"/></svg>Shop all</a>
+      <a href="index.html#pinkkey"><svg><use href="#i-heart"/></svg>Pink Key lipstick</a>
+      <a href="index.html#hair"><svg><use href="#i-leaf"/></svg>Hair care</a>
+      <a href="index.html#finder"><svg><use href="#i-sun"/></svg>Glow finder</a>
+      <a href="index.html#ritual"><svg><use href="#i-drop"/></svg>Skincare ritual</a>
+      <a href="index.html#story"><svg><use href="#i-gem"/></svg>About us</a>
+      <a href="index.html#reviews"><svg><use href="#i-heart"/></svg>Reviews</a>
+      <a href="index.html#order"><svg><use href="#i-shield"/></svg>Order &amp; FAQ</a>
+    </div>
+    <div class="mnav-contact">
+      <a class="mnav-wa" href="https://wa.me/971566650328" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp us</a>
+      <a class="mnav-mail" href="mailto:info.anzglow@gmail.com"><svg><use href="#i-mail"/></svg>Email</a>
+    </div>
+    <p class="mnav-note"><svg><use href="#i-truck"/></svg>AED 10 delivery · Cash on delivery</p>
+  </div>
 </nav>
 <!-- ============ Policies ============ -->
 <div class="modal" id="policy" role="dialog" aria-modal="true" aria-labelledby="polTitle">
@@ -449,8 +484,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261109"></script>
-<script src="common.js?v=20261109"></script>
-<script src="product.js?v=20261109"></script>
+<script src="shades.js?v=20261110"></script>
+<script src="common.js?v=20261110"></script>
+<script src="product.js?v=20261110"></script>
 </body>
 </html>
