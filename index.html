@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="footer.css">
 </head>
 <body>
 
@@ -375,62 +376,88 @@
 </main>
 
 <!-- ============ Footer ============ -->
-<footer class="footer">
+<footer class="ft">
   <div class="wrap">
-    <div class="foot-cta reveal">
-      <div>
-        <span class="eyebrow">The Glow Club</span>
-        <h3>Beauty tips, launches &amp; <span class="script gold-text">members-only offers</span></h3>
-      </div>
-      <form class="news" id="newsForm"><input type="email" placeholder="Your email address" aria-label="Email address" required><button class="btn btn-gold btn-sm" type="submit">Subscribe</button></form>
-    </div>
-
-    <div class="foot-brandrow">
-      <a href="#top" class="brand" aria-label="AnzGlow home">
-        <img class="brand-emblem" src="assets/emblem-sm.png" alt="">
-        <img class="brand-word" src="assets/wordmark.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
+    <!-- Feature row: Pink Key promo + Glow Club -->
+    <div class="ft-feature">
+      <a class="ft-promo" href="pink-key.html">
+        <img src="assets/pinkkey/pk-open.jpg" alt="Pink Key Liquid Lipstick">
+        <span class="ft-promo-copy">
+          <span class="eyebrow">New · Pink Key</span>
+          <b>12 shades.<br><span class="script">One you.</span></b>
+          <span class="ft-dots" aria-hidden="true"><i style="background:#e98a95"></i><i style="background:#e2607a"></i><i style="background:#dc7a6c"></i><i style="background:#cf5c58"></i><i style="background:#ae3552"></i><i style="background:#a5493f"></i><i style="background:#8e3a37"></i><i style="background:#a30716"></i></span>
+          <span class="ft-link">Shop the shades — AED 10 <svg><use href="#i-arrow"/></svg></span>
+        </span>
       </a>
-      <p class="foot-about">Premium skincare and Pink Key liquid lipsticks, made for life under the Gulf sun. Gentle formulas, beautiful results.</p>
-      <ul class="foot-contact">
-        <li><svg><use href="#i-wa"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">+971 56 665 0328</a></li>
-        <li><svg><use href="#i-mail"/></svg><a href="mailto:info.anzglow@gmail.com">info.anzglow@gmail.com</a></li>
-        <li><svg><use href="#i-pin"/></svg>United Arab Emirates</li>
-      </ul>
+      <div class="ft-club">
+        <span class="eyebrow">The Glow Club</span>
+        <h3>Beauty tips, new shades &amp; <span class="script">members-only offers</span></h3>
+        <form class="news" id="newsForm"><input type="email" placeholder="Your email address" aria-label="Email address" required><button class="btn btn-gold btn-sm" type="submit">Join</button></form>
+        <small>No spam — unsubscribe anytime.</small>
+      </div>
     </div>
 
-    <div class="foot-grid">
-      <div><h5>Shop</h5><ul><li><a href="#kits">Tan Removal Kit</a></li><li><a href="#kits">Complete Glow Kit</a></li><li><a href="pink-key.html">Pink Key Lipstick</a></li><li><a href="#finder">Glow Finder</a></li></ul></div>
-      <div><h5>Pink Key shades</h5><ul><li><a href="pink-key.html?shade=01">01 Nude Pink</a></li><li><a href="pink-key.html?shade=05">05 Caramel Pink</a></li><li><a href="pink-key.html?shade=10">10 Chocolate</a></li><li><a href="pink-key.html?shade=12">12 Classic Red</a></li><li><a href="pink-key.html#shades">All 12 shades</a></li></ul></div>
-      <div><h5>Help</h5><ul><li><a href="https://wa.me/971566650328?text=Hi%20AnzGlow%2C%20I%27d%20like%20to%20track%20my%20order" target="_blank" rel="noopener">Track order</a></li><li><a href="#order">FAQ</a></li><li><a href="#" data-policy="delivery">Delivery — AED 10</a></li><li><a href="#" data-policy="returns">Returns</a></li><li><a href="#" data-policy="privacy">Privacy policy</a></li></ul></div>
-      <div>
-        <h5>Follow the glow</h5>
-        <div class="foot-gallery">
-          <a href="pink-key.html"><img src="assets/pinkkey/pk-open.jpg" alt="Pink Key lipstick with applicator"></a>
-          <a href="pink-key.html?shade=12"><img src="assets/pinkkey/pk-red-2.jpg" alt="Pink Key Classic Red"></a>
-          <a href="#top"><img src="assets/model.jpg" alt="AnzGlow model"></a>
-          <a href="pink-key.html?shade=05"><img src="assets/pinkkey/shade-05.jpg" alt="Pink Key Caramel Pink"></a>
-        </div>
-        <div class="socials">
+    <!-- Main columns -->
+    <div class="ft-main">
+      <div class="ft-brand">
+        <a href="#top" class="brand" aria-label="AnzGlow home">
+          <img class="brand-emblem" src="assets/emblem-sm.png" alt="">
+          <img class="brand-word" src="assets/wordmark.png" alt="AnzGlow — Beauty · Confidence · You · by Anzix">
+        </a>
+        <p>Premium skincare and Pink Key liquid lipsticks, made for life under the Gulf sun. Beauty · Confidence · You.</p>
+        <a class="ft-wa" href="https://wa.me/971566650328" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span><small>Order or ask on WhatsApp</small>+971 56 665 0328</span></a>
+        <div class="ft-social">
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
           <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
           <a href="#" aria-label="TikTok"><svg><use href="#i-tt"/></svg></a>
           <a href="https://wa.me/971566650328" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
         </div>
       </div>
+
+      <nav class="ft-col" aria-label="Shop">
+        <h5>Shop</h5>
+        <a href="pink-key.html">Pink Key Lipstick</a>
+        <a href="#kits">Tan Removal Kit</a>
+        <a href="#kits">Complete Glow Kit</a>
+        <a href="#finder">Glow Finder</a>
+        <a href="#ritual">Skincare ritual</a>
+      </nav>
+
+      <nav class="ft-col ft-shades" aria-label="Pink Key shades">
+        <h5>Popular shades</h5>
+        <a href="pink-key.html?shade=01"><i style="background:#e98a95"></i>01 Nude Pink</a>
+        <a href="pink-key.html?shade=05"><i style="background:#cf5c58"></i>05 Caramel Pink</a>
+        <a href="pink-key.html?shade=09"><i style="background:#a5493f"></i>09 Brown Nude</a>
+        <a href="pink-key.html?shade=12"><i style="background:#a30716"></i>12 Classic Red</a>
+        <a href="pink-key.html#shades" class="ft-more">See all 12 →</a>
+      </nav>
+
+      <nav class="ft-col" aria-label="Help">
+        <h5>Help</h5>
+        <a href="https://wa.me/971566650328?text=Hi%20AnzGlow%2C%20I%27d%20like%20to%20track%20my%20order" target="_blank" rel="noopener">Track my order</a>
+        <a href="#" data-policy="delivery">Delivery — AED 10</a>
+        <a href="#" data-policy="returns">Returns</a>
+        <a href="#order">FAQ</a>
+        <a href="mailto:info.anzglow@gmail.com">info.anzglow@gmail.com</a>
+      </nav>
     </div>
 
-
-      <span><svg><use href="#i-shield"/></svg>Cash on delivery</span>
-      <span><svg><use href="#i-truck"/></svg>AED 10 delivery · all 7 emirates</span>
-      <span><svg><use href="#i-flask"/></svg>Dermatologically tested</span>
-      <span><svg><use href="#i-bunny"/></svg>Cruelty free</span>
-    </div>
+    <!-- Promise badges -->
+    <ul class="ft-trust">
+      <li><i><svg><use href="#i-shield"/></svg></i><span><b>Cash on delivery</b>Pay when it arrives</span></li>
+      <li><i><svg><use href="#i-truck"/></svg></i><span><b>AED 10 delivery</b>All 7 emirates · 1–2 days</span></li>
+      <li><i><svg><use href="#i-flask"/></svg></i><span><b>Dermatologically tested</b>Gentle formulas</span></li>
+      <li><i><svg><use href="#i-bunny"/></svg></i><span><b>Cruelty free</b>Kind beauty</span></li>
+    </ul>
   </div>
-  <div class="foot-word" aria-hidden="true">AnzGlow</div>
-  <div class="wrap foot-bottom">
-    <span>© <span id="yr"></span> AnzGlow by Anzix. All rights reserved.</span>
-    <span class="script">Glow beautifully, feel confident ♡</span>
-    <button class="to-top" id="toTop" aria-label="Back to top"><svg><use href="#i-arrow"/></svg></button>
+
+  <div class="ft-bottom">
+    <div class="wrap">
+      <span>© <span id="yr"></span> AnzGlow by Anzix · United Arab Emirates</span>
+      <span class="ft-sign script">Glow beautifully, feel confident ♡</span>
+      <span class="ft-legal"><a href="#" data-policy="privacy">Privacy</a><a href="#" data-policy="returns">Returns</a><a href="#" data-policy="delivery">Delivery</a>
+        <button class="to-top" id="toTop" aria-label="Back to top"><svg><use href="#i-arrow"/></svg></button></span>
+    </div>
   </div>
 </footer>
 
