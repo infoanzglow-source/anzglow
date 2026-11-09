@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AnzGlow — Beauty · Confidence · You</title>
-<meta name="description" content="AnzGlow by Anzix — premium skincare kits for clear, radiant, even-toned skin. AED 10 delivery across the UAE, cash on delivery.">
+<meta name="description" content="AnzGlow by Anzix — Pink Key liquid lipsticks in 12 matte shades, Mamaearth Rosemary Anti-Hair Fall Shampoo and premium skincare. AED 10 delivery across the UAE, cash on delivery.">
 <meta name="theme-color" content="#0b0908">
 <link rel="icon" href="assets/emblem-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="theme.css">
-<link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="styles.css?v=20261109">
+<link rel="stylesheet" href="footer.css?v=20261109">
+<link rel="stylesheet" href="theme.css?v=20261109">
 </head>
 <body>
 
@@ -103,6 +103,7 @@
 <div class="ribbon">
   <div class="wrap">
     <ul>
+      <li><svg><use href="#i-spark"/></svg><b>Launch sale</b>&nbsp;· Pink Key AED 10 · Rosemary Shampoo AED 30</li>
       <li><svg><use href="#i-truck"/></svg>AED 10 delivery across UAE</li>
       <li><svg><use href="#i-shield"/></svg>Cash on delivery</li>
       <li><svg><use href="#i-headset"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">WhatsApp 056 665 0328</a></li>
@@ -122,8 +123,7 @@
       <li><a href="#top" class="active">Home</a></li>
       <li><a href="#kits">Shop</a></li>
       <li><a href="#pinkkey">Pink Key</a></li>
-      <li><a href="#finder">Glow Finder</a></li>
-      <li><a href="#ritual">Ritual</a></li>
+      <li><a href="#hair">Hair Care</a></li>
       <li><a href="#story">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#order">Contact</a></li>
@@ -197,13 +197,22 @@
   </div>
 </div>
 
+<!-- ============ Offers ============ -->
+<section class="offers" aria-label="Current offers">
+  <div class="wrap">
+    <a class="offer-card reveal" href="pink-key.html?shade=09"><img src="assets/pinkkey/shade-09.jpg" alt=""><span><em>Sale · Pink Key</em><b>Every shade AED 10</b>Was AED 15 · 12 matte shades</span></a>
+    <a class="offer-card reveal d1" href="#hair"><img src="assets/shampoo/ma-bottle.jpg" alt=""><span><em>Sale · Hair care</em><b>Rosemary Shampoo AED 30</b>Was AED 39 · Mamaearth anti-hair fall</span></a>
+    <a class="offer-card reveal d2" href="#order"><img src="assets/pinkkey/pk-open.jpg" alt=""><span><em>Easy ordering</em><b>Cash on delivery</b>AED 10 delivery · all 7 emirates</span></a>
+  </div>
+</section>
+
 <!-- ============ Kits ============ -->
 <section class="ivory pad" id="kits">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">The Collection</span>
-      <h2 class="h2">Our Premium <span class="script">Beauty Kits</span></h2>
-      <p class="lead">Complete care for radiant, glowing skin — curated rituals, each one made to work beautifully together.</p>
+      <h2 class="h2">Shop the <span class="script">Beauty Edit</span></h2>
+      <p class="lead">Lips, hair and skin — add to bag, or ask us anything on WhatsApp or email before you buy.</p>
     </div>
     <div class="kits" id="kitGrid"></div>
   </div>
@@ -215,7 +224,7 @@
     <a class="pk-product reveal" href="pink-key.html" aria-label="Open Pink Key Liquid Lipstick">
       <span class="pk-halo"></span>
       <img src="assets/pinkkey/pk-open.jpg" alt="Pink Key Liquid Lipstick open with its applicator">
-      <span class="pk-badge">12 shades</span>
+      <span class="pk-badge">Sale · AED 10</span>
     </a>
     <div class="pk-copy">
       <span class="eyebrow reveal">Natural beauty · Lasting confidence</span>
@@ -223,10 +232,43 @@
       <p class="lead reveal d1">Ultra-matte colour in <b class="pk-shade-name">12 shades</b> — soft pinks, warm nudes and browns, and bold reds. Lightweight, non-drying and made to suit <b>every skin tone</b>.</p>
       <div class="pk-strip reveal d2" id="pkStrip"></div>
       <div class="pk-families reveal d2"><span>6 pinks</span><span>4 nudes &amp; browns</span><span>2 reds</span><span>Ultra matte</span></div>
+      <a class="pk-hero-shade reveal d2" href="pink-key.html?shade=09"><i style="background:#a5493f"></i><span><b>★ 09 Brown Nude — light-brown matte</b><br>The one shade that flatters every skin tone, from fair to deep.</span></a>
       <div class="pk-buy reveal d3">
-        <div class="price">AED 10<small class="pk-note">Each shade · suits every skin tone</small></div>
-        <a class="btn btn-gold" href="pink-key.html">Choose your shade <svg><use href="#i-arrow"/></svg></a>
+        <div class="price">AED 10 <s>15</s><small class="pk-note">Each shade · suits every skin tone</small></div>
+        <a class="btn btn-gold" href="pink-key.html?shade=09">Choose your shade <svg><use href="#i-arrow"/></svg></a>
       </div>
+      <div class="reveal d3" data-enq="Pink Key Liquid Lipstick" style="margin-top:16px">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Hair care: Mamaearth shampoo ============ -->
+<section class="pad hair" id="hair">
+  <div class="wrap">
+    <div class="hair-visual reveal">
+      <img class="hv-main" src="assets/shampoo/ma-model.jpg" alt="Woman washing her hair with Mamaearth Rosemary shampoo">
+      <img class="hv-bottle" src="assets/shampoo/ma-bottle.jpg" alt="Mamaearth Rosemary Anti-Hair Fall Shampoo bottle">
+      <img class="hv-shelf" src="assets/shampoo/ma-shelf.jpg" alt="Mamaearth Rosemary shampoo bottles in store">
+      <span class="hair-badge"><b>AED 30</b>Sale · was AED 39</span>
+    </div>
+    <div class="hair-copy">
+      <span class="eyebrow reveal">Hair care · Mamaearth</span>
+      <h2 class="h2 reveal d1" style="margin:14px 0 16px">Rosemary <span class="script">Anti-Hair Fall</span> Shampoo</h2>
+      <p class="lead reveal d1">Stronger hair, healthier you. Powered by rosemary &amp; methi dana, it gently cleanses while helping reduce hair fall — leaving hair stronger, shinier and nourished.</p>
+      <ul class="hair-feats reveal d2">
+        <li><svg><use href="#i-drop"/></svg>Helps reduce hair fall</li>
+        <li><svg><use href="#i-leaf"/></svg>Rosemary &amp; methi dana</li>
+        <li><svg><use href="#i-spark"/></svg>Stronger, shinier hair</li>
+        <li><svg><use href="#i-shield"/></svg>Dermatologically tested</li>
+      </ul>
+      <div class="hair-buy reveal d3">
+        <div class="price">AED 30<s>39</s></div>
+        <button class="btn btn-gold" data-add="shampoo">Add to bag <svg><use href="#i-arrow"/></svg></button>
+        <button class="btn btn-lav" data-qv="shampoo">View details</button>
+      </div>
+      <div class="reveal d3" data-enq="Mamaearth Rosemary Anti-Hair Fall Shampoo"></div>
+      <p class="hair-note">Genuine Mamaearth product, sold by AnzGlow. Suitable for all hair types.</p>
     </div>
   </div>
 </section>
@@ -356,6 +398,7 @@
     </div>
 
     <form class="panel order reveal d2" id="orderForm" novalidate>
+      <span class="genuine"><svg><use href="#i-shield"/></svg>100% genuine products</span>
       <h3>Order now — cash on delivery</h3>
       <div class="field"><input id="oName" placeholder=" " required autocomplete="name"><label for="oName">Your name</label></div>
       <div class="field"><input id="oPhone" type="tel" placeholder=" " required autocomplete="tel" inputmode="tel"><label for="oPhone">Mobile number</label></div>
@@ -369,7 +412,7 @@
       </div>
       <p class="o-total" id="oTotal"></p>
       <button class="btn btn-gold" type="submit">Place order now <svg><use href="#i-arrow"/></svg></button>
-      <p class="secure"><svg><use href="#i-lock"/></svg>100% secure · Pay cash on delivery</p>
+      <p class="secure"><svg><use href="#i-lock"/></svg>100% secure · Pay cash on delivery · We confirm every order first</p>
     </form>
   </div>
 </section>
@@ -406,6 +449,7 @@
         </a>
         <p>Premium skincare and Pink Key liquid lipsticks, made for life under the Gulf sun. Beauty · Confidence · You.</p>
         <a class="ft-wa" href="https://wa.me/971566650328" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span><small>Order or ask on WhatsApp</small>+971 56 665 0328</span></a>
+        <a class="ft-mail" href="mailto:info.anzglow@gmail.com?subject=Enquiry%20from%20anzglow"><svg><use href="#i-mail"/></svg>info.anzglow@gmail.com</a>
         <div class="ft-social">
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
           <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
@@ -417,6 +461,7 @@
       <nav class="ft-col" aria-label="Shop">
         <h5>Shop</h5>
         <a href="pink-key.html">Pink Key Lipstick</a>
+        <a href="#hair">Rosemary Shampoo</a>
         <a href="#kits">Tan Removal Kit</a>
         <a href="#kits">Complete Glow Kit</a>
         <a href="#finder">Glow Finder</a>
@@ -473,13 +518,14 @@
   <div class="drawer-body" id="cartBody"></div>
   <footer>
     <div class="sub-row"><span>Subtotal</span><span id="cartSub">AED 0</span></div><div class="sub-row"><span>Delivery (all UAE)</span><span id="cartShip">AED 0</span></div><div class="total"><span>Total</span><b id="cartTotal">AED 0</b></div>
-    <a href="#order" class="btn btn-gold" id="checkout">Checkout — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <a href="#order" class="btn btn-gold" id="checkout">Checkout on WhatsApp — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <div data-enq="my order"></div>
     <small>AED 10 delivery across the UAE · 1–2 working days</small>
   </footer>
 </aside>
 <nav class="mnav" id="mnav">
   <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
-  <a href="#top">Home</a><a href="#kits">Shop</a><a href="#pinkkey">Pink Key</a><a href="#finder">Glow Finder</a><a href="#ritual">Ritual</a><a href="#story">About</a><a href="#reviews">Reviews</a><a href="#order">Contact</a>
+  <a href="#top">Home</a><a href="#kits">Shop</a><a href="#pinkkey">Pink Key</a><a href="#hair">Hair Care</a><a href="#finder">Glow Finder</a><a href="#ritual">Ritual</a><a href="#story">About</a><a href="#reviews">Reviews</a><a href="#order">Contact</a>
 </nav>
 <!-- ============ Product quick view ============ -->
 <div class="modal" id="quick" role="dialog" aria-modal="true" aria-labelledby="qvName">
@@ -499,7 +545,7 @@
         <div class="qty-lg"><button id="qvMinus" aria-label="Less">−</button><span id="qvQty">1</span><button id="qvPlus" aria-label="More">+</button></div>
         <button class="btn btn-gold" id="qvAdd">Add to bag <svg><use href="#i-arrow"/></svg></button>
       </div>
-      <a class="btn btn-wa" id="qvWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a>
+      <div class="enq-row"><a class="e-wa" id="qvWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a><a class="e-mail" id="qvMail"><svg><use href="#i-mail"/></svg>Email enquiry</a></div>
     </div>
   </div>
 </div>
@@ -517,8 +563,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js"></script>
-<script src="common.js"></script>
-<script src="app.js"></script>
+<script src="shades.js?v=20261109"></script>
+<script src="common.js?v=20261109"></script>
+<script src="app.js?v=20261109"></script>
 </body>
 </html>

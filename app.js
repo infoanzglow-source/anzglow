@@ -1,20 +1,21 @@
 /* AnzGlow — home page (needs shades.js + common.js first). */
 (() => {
-  const { $, $$, KITS, PK, artSvg, wa, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals } = window.AG;
+  const { $, $$, KITS, PK, artSvg, wa, mail, enquire, pct, priceHtml, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals } = window.AG;
 
   // ---------- Collection cards ----------
   $("#kitGrid").innerHTML = KITS.map((k, i) => {
     const isPK = k.id === PK.id;
     const stage = isPK
-      ? `<a class="kit-stage" href="${k.page}" aria-label="See all 12 shades">${artSvg(k)}<span class="qv-hint">See 12 shades</span></a>`
+      ? `<a class="kit-stage" href="${k.page}?shade=${PK.heroShade}" aria-label="See all 12 shades">${artSvg(k)}<span class="qv-hint">See 12 shades</span></a>`
       : `<button class="kit-stage" data-qv="${k.id}" aria-label="View ${k.name}">${artSvg(k)}<span class="qv-hint">Quick view</span></button>`;
     const title = isPK ? `<a class="kit-name" href="${k.page}">${k.name}</a>` : `<button class="kit-name" data-qv="${k.id}">${k.name}</button>`;
     const cta = isPK
-      ? `<a class="btn btn-gold btn-sm" href="${k.page}">Choose shade <svg><use href="#i-arrow"/></svg></a>`
-      : `<button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag <svg><use href="#i-arrow"/></svg></button>`;
+      ? `<a class="btn btn-gold btn-sm" href="${k.page}?shade=${PK.heroShade}">Choose shade</a>`
+      : `<button class="btn ${k.featured ? "btn-gold" : "btn-dark"} btn-sm" data-add="${k.id}">Add to bag</button>`;
     return `
-    <article class="kit reveal d${i} ${k.featured ? "featured" : ""}" data-id="${k.id}">
+    <article class="kit reveal d${i % 4} ${k.featured ? "featured" : ""}" data-id="${k.id}">
       <span class="tag ${k.tagClass}">${k.tag}</span>
+      ${k.was ? `<span class="sale-tag">SALE −${pct(k)}%</span>` : ""}
       <button class="wish" aria-label="Save to wishlist" data-wish="${k.id}"><svg><use href="#i-heart"/></svg></button>
       ${stage}
       <h3>${title}</h3>
@@ -22,8 +23,8 @@
       <ul class="kit-list">${k.items.map(x => `<li>${x}</li>`).join("")}</ul>
       <p class="kit-note">${k.note}</p>
       <div class="kit-foot">
-        <div class="price"><small>${isPK ? "Each shade" : "Kit price"}</small>AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}</div>
-        ${cta}
+        <div class="price"><small>${isPK ? "Each shade" : "Price"}</small>${priceHtml(k)}</div>
+        <div class="kit-actions">${cta}${enquire(k.short || k.name)}</div>
       </div>
     </article>`;
   }).join("");
@@ -32,7 +33,8 @@
   // ---------- Pink Key spotlight: 12-shade strip ----------
   const strip = $("#pkStrip");
   if (strip) strip.innerHTML = PK.shades.map(s =>
-    `<a href="pink-key.html?shade=${s.no}" title="${s.no} ${s.name}"><i style="background:${s.hex}"></i>${s.no}<br>${s.name}</a>`).join("");
+    `<a href="pink-key.html?shade=${s.no}" title="${s.no} ${s.name}" class="${s.no === PK.heroShade ? "hero-shade" : ""}"><i style="background:${s.hex}"></i>${s.no}<br>${s.name}</a>`).join("");
+
 
   observeReveals();
 
@@ -81,18 +83,23 @@
   });
   showFind("tan");
 
-  // ---------- Quick view (skincare kits) ----------
+  // ---------- Quick view (shampoo + skincare kits) ----------
   let qvKit = null, qvQty = 1;
+  const qvMain = src => { $("#qvMain").innerHTML = src ? `<img src="${src}" alt="${qvKit.name}">` : artSvg(qvKit); };
   const openQuick = id => {
     const k = qvKit = KITS.find(x => x.id === id); qvQty = 1;
     $("#qvTag").textContent = k.tag; $("#qvTag").className = "tag " + k.tagClass;
     $("#qvName").textContent = k.name;
-    $("#qvPrice").innerHTML = `AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}`;
+    $("#qvPrice").innerHTML = priceHtml(k) + (k.was ? ` <span class="sale-pill">Save ${pct(k)}%</span>` : "");
     $("#qvDesc").textContent = k.desc; $("#qvUse").textContent = k.use;
     $("#qvList").innerHTML = k.items.map(x => `<li>${x}</li>`).join("");
     $("#qvQty").textContent = 1;
-    $("#qvMain").innerHTML = artSvg(k); $("#qvThumbs").innerHTML = "";
+    const g = k.gallery || [];
+    qvMain(g[0]);
+    $("#qvThumbs").innerHTML = g.map((src, i) => `<button class="${i ? "" : "on"}" data-src="${src}"><img src="${src}" alt=""></button>`).join("");
+    $$("#qvThumbs button").forEach(b => b.onclick = () => { $$("#qvThumbs button").forEach(x => x.classList.toggle("on", x === b)); qvMain(b.dataset.src); });
     $("#qvWa").href = wa(`Hi AnzGlow, I'd like to order: ${k.name} (AED ${k.price}).`);
+    $("#qvMail").href = mail(`Enquiry: ${k.name}`, `Hi AnzGlow,\n\nI'd like to know more about ${k.name} (AED ${k.price}).\n\nName:\nPhone:\n`);
     openModal("quick");
   };
   document.addEventListener("click", e => { const q = e.target.closest("[data-qv]"); if (q) openQuick(q.dataset.qv); });
@@ -102,7 +109,7 @@
 
   // ---------- Order form (kits + every Pink Key shade) ----------
   const oKit = $("#oKit");
-  oKit.innerHTML = `<optgroup label="Skincare kits">${KITS.filter(k => k.id !== PK.id).map(k => `<option value="${k.id}">${k.name} — AED ${k.price}</option>`).join("")}</optgroup>
+  oKit.innerHTML = `<optgroup label="Hair &amp; skincare">${KITS.filter(k => k.id !== PK.id).map(k => `<option value="${k.id}">${k.name} — AED ${k.price}</option>`).join("")}</optgroup>
     <optgroup label="Pink Key Liquid Lipstick — AED ${PK.price}">${PK.shades.map(s => `<option value="${PK.id}:${s.no}">Pink Key ${s.no} · ${s.name}</option>`).join("")}</optgroup>`;
   const priceOf = v => (v.startsWith(PK.id) ? PK.price : KITS.find(k => k.id === v).price);
   const formTotal = () => { const p = priceOf(oKit.value); $("#oTotal").textContent = `AED ${p} + AED ${DELIVERY_FEE} delivery = AED ${p + DELIVERY_FEE}`; };

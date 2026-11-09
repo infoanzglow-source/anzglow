@@ -3,7 +3,7 @@
   const { $, $$, PK, wa, addToCart, observeReveals } = window.AG;
 
   const params = new URLSearchParams(location.search);
-  let current = PK.find(params.get("shade")) ? params.get("shade") : "05";
+  let current = PK.find(params.get("shade")) ? params.get("shade") : PK.heroShade;
   let qty = 1, filter = "all", skinPick = null;
 
   const GALLERY_EXTRA = [
@@ -33,7 +33,7 @@
     $("#pdpSwatches").innerHTML = PK.shades.map(s => {
       const hidden = filter !== "all" && s.family !== filter;
       const rec = skinPick && skinPick.picks.includes(s.no);
-      return `<button class="sw ${s.no === current ? "on" : ""} ${hidden ? "hide" : ""} ${rec ? "rec" : ""}" data-shade="${s.no}" title="${s.no} ${s.name}" aria-label="${s.no} ${s.name}">
+      return `<button class="sw ${s.no === current ? "on" : ""} ${hidden ? "hide" : ""} ${rec ? "rec" : ""} ${s.hero ? "star" : ""}" data-shade="${s.no}" title="${s.no} ${s.name}" aria-label="${s.no} ${s.name}">
         <i style="background:${s.hex}"></i><span>${s.no}</span></button>`;
     }).join("");
   };
@@ -48,6 +48,13 @@
     $("#stickyName").textContent = `${s.no} · ${s.name}`;
     $("#stickyDot").style.background = s.hex;
     $("#pdpWa").href = wa(`Hi AnzGlow, I'd like to order Pink Key Liquid Lipstick — shade ${s.no} ${s.name} (AED ${PK.price}).`);
+    $("#pdpMail").href = window.AG.mail(`Enquiry: Pink Key ${s.no} ${s.name}`, `Hi AnzGlow,
+
+I would like to know more about Pink Key Liquid Lipstick, shade ${s.no} ${s.name}.
+
+Name:
+Phone:
+`);
     setMain(PK.img(s.no), `Pink Key ${s.no} ${s.name}`);
     renderThumbs(); renderSwatches();
     $$("#shadeGrid .shade-card").forEach(c => c.classList.toggle("on", c.dataset.shade === no));

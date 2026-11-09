@@ -10,10 +10,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="theme.css">
-<link rel="stylesheet" href="product.css">
-<link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="styles.css?v=20261109">
+<link rel="stylesheet" href="footer.css?v=20261109">
+<link rel="stylesheet" href="product.css?v=20261109">
+<link rel="stylesheet" href="theme.css?v=20261109">
 </head>
 <body>
 
@@ -104,6 +104,7 @@
 <div class="ribbon">
   <div class="wrap">
     <ul>
+      <li><svg><use href="#i-spark"/></svg><b>Launch sale</b>&nbsp;· Pink Key AED 10 · Rosemary Shampoo AED 30</li>
       <li><svg><use href="#i-truck"/></svg>AED 10 delivery across UAE</li>
       <li><svg><use href="#i-shield"/></svg>Cash on delivery</li>
       <li><svg><use href="#i-headset"/></svg><a href="https://wa.me/971566650328" target="_blank" rel="noopener">WhatsApp 056 665 0328</a></li>
@@ -123,8 +124,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#kits">Shop</a></li>
       <li><a href="pink-key.html" class="active">Pink Key</a></li>
-      <li><a href="index.html#finder">Glow Finder</a></li>
-      <li><a href="index.html#ritual">Ritual</a></li>
+      <li><a href="index.html#hair">Hair Care</a></li>
       <li><a href="index.html#story">About</a></li>
       <li><a href="index.html#reviews">Reviews</a></li>
       <li><a href="index.html#order">Contact</a></li>
@@ -159,8 +159,14 @@
       <p class="qv-stock"><i></i>In stock · ships in 1–2 working days</p>
 
       <div class="pdp-price">
-        <b>AED 10</b>
+        <b>AED 10</b><s>AED 15</s><em class="save">SALE −33%</em>
         <span>+ AED 10 delivery across the UAE · Cash on delivery</span>
+      </div>
+
+      <div class="pdp-star">
+        <i style="background:#a5493f"></i>
+        <span><b>★ Hero shade: 09 Brown Nude</b><br>Our light-brown matte — flatters every skin tone, fair to deep.</span>
+        <button data-shade="09">Choose it</button>
       </div>
 
       <div class="pdp-shade-head">
@@ -183,7 +189,10 @@
         <button class="btn btn-gold" id="pdpAdd">Add to bag — AED 10 <svg><use href="#i-arrow"/></svg></button>
         <button class="wish pdp-wish" aria-label="Save to wishlist" data-wish="pinkkey"><svg><use href="#i-heart"/></svg></button>
       </div>
-      <a class="btn-wa" id="pdpWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order this shade on WhatsApp</a>
+      <div class="enq-row">
+        <a class="e-wa" id="pdpWa" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Order on WhatsApp</a>
+        <a class="e-mail" id="pdpMail"><svg><use href="#i-mail"/></svg>Email enquiry</a>
+      </div>
 
       <ul class="pdp-perks">
         <li><svg><use href="#i-truck"/></svg>AED 10 delivery · all 7 emirates</li>
@@ -349,6 +358,7 @@
         </a>
         <p>Premium skincare and Pink Key liquid lipsticks, made for life under the Gulf sun. Beauty · Confidence · You.</p>
         <a class="ft-wa" href="https://wa.me/971566650328" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg><span><small>Order or ask on WhatsApp</small>+971 56 665 0328</span></a>
+        <a class="ft-mail" href="mailto:info.anzglow@gmail.com?subject=Enquiry%20from%20anzglow"><svg><use href="#i-mail"/></svg>info.anzglow@gmail.com</a>
         <div class="ft-social">
           <a href="#" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
           <a href="#" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
@@ -360,6 +370,7 @@
       <nav class="ft-col" aria-label="Shop">
         <h5>Shop</h5>
         <a href="pink-key.html">Pink Key Lipstick</a>
+        <a href="index.html#hair">Rosemary Shampoo</a>
         <a href="index.html#kits">Tan Removal Kit</a>
         <a href="index.html#kits">Complete Glow Kit</a>
         <a href="index.html#finder">Glow Finder</a>
@@ -416,13 +427,14 @@
   <div class="drawer-body" id="cartBody"></div>
   <footer>
     <div class="sub-row"><span>Subtotal</span><span id="cartSub">AED 0</span></div><div class="sub-row"><span>Delivery (all UAE)</span><span id="cartShip">AED 0</span></div><div class="total"><span>Total</span><b id="cartTotal">AED 0</b></div>
-    <a href="index.html#order" class="btn btn-gold" id="checkout">Checkout — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <a href="index.html#order" class="btn btn-gold" id="checkout">Checkout on WhatsApp — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <div data-enq="my order"></div>
     <small>AED 10 delivery across the UAE · 1–2 working days</small>
   </footer>
 </aside>
 <nav class="mnav" id="mnav">
   <button class="icon-btn close" id="menuClose" aria-label="Close menu"><svg><use href="#i-close"/></svg></button>
-  <a href="index.html">Home</a><a href="index.html#kits">Shop</a><a href="index.html#pinkkey">Pink Key</a><a href="index.html#finder">Glow Finder</a><a href="index.html#ritual">Ritual</a><a href="index.html#story">About</a><a href="index.html#reviews">Reviews</a><a href="index.html#order">Contact</a>
+  <a href="index.html">Home</a><a href="index.html#kits">Shop</a><a href="index.html#pinkkey">Pink Key</a><a href="index.html#hair">Hair Care</a><a href="index.html#finder">Glow Finder</a><a href="index.html#ritual">Ritual</a><a href="index.html#story">About</a><a href="index.html#reviews">Reviews</a><a href="index.html#order">Contact</a>
 </nav>
 <!-- ============ Policies ============ -->
 <div class="modal" id="policy" role="dialog" aria-modal="true" aria-labelledby="polTitle">
@@ -437,8 +449,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js"></script>
-<script src="common.js"></script>
-<script src="product.js"></script>
+<script src="shades.js?v=20261109"></script>
+<script src="common.js?v=20261109"></script>
+<script src="product.js?v=20261109"></script>
 </body>
 </html>

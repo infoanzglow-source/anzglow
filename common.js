@@ -5,10 +5,27 @@
   const PK = window.PK;
 
   const WHATSAPP = "971566650328";   // orders + support
+  const EMAIL = "info.anzglow@gmail.com";
   const DELIVERY_FEE = 10;           // AED, flat across the UAE
 
-  // ---------- Catalogue (skincare kit prices are placeholders) ----------
+  // ---------- Catalogue ----------
+  // `was` = the crossed-out price that shows a SALE badge. Set it to null to hide the sale.
+  // Skincare kit prices and every `was` price are placeholders — confirm before launch.
   const KITS = [
+    {
+      id: PK.id, tag: "New · 12 shades", tagClass: "rose", name: PK.name,
+      items: ["12 ultra-matte shades", "Hero shade: 09 light-brown matte", "Suits every skin tone"], note: "Natural beauty, lasting confidence",
+      price: PK.price, was: PK.was, img: `assets/pinkkey/shade-${PK.heroShade}.jpg`, page: "pink-key.html"
+    },
+    {
+      id: "shampoo", tag: "Hair care", tagClass: "", featured: true,
+      name: "Mamaearth Rosemary Anti-Hair Fall Shampoo", short: "Rosemary Anti-Hair Fall Shampoo",
+      items: ["With rosemary & methi dana", "Helps reduce hair fall", "For all hair types"], note: "Stronger hair. Healthier you.",
+      price: 30, was: 39, img: "assets/shampoo/ma-bottle.jpg",
+      gallery: ["assets/shampoo/ma-bottle.jpg", "assets/shampoo/ma-model.jpg", "assets/shampoo/ma-banner.jpg", "assets/shampoo/ma-shelf.jpg"],
+      desc: "Mamaearth Rosemary Anti-Hair Fall Shampoo is powered by rosemary and methi dana (fenugreek). It gently cleanses while helping reduce hair fall, leaving hair stronger, shinier and nourished. Dermatologically tested and suitable for all hair types.",
+      use: "Wet your hair, massage a small amount into the scalp and lengths, lather and rinse well. Use 2–3 times a week, or as needed. Follow with a conditioner for extra softness."
+    },
     {
       id: "tan", tag: "Best Seller", tagClass: "", name: "Tan Removal Combo Kit",
       items: ["Face Wash", "Tan Removal Cream", "Body Lotion"], note: "For clear & even skin",
@@ -24,13 +41,18 @@
       desc: "Our complete daily ritual — cleanse, nourish and finish with serum for that lit-from-within glow.",
       use: "Morning and night: cleanse, press 2–3 drops of serum into skin, then seal with moisturiser.",
       art: `<use href="#pump" x="40" y="4" width="72" height="224"/><use href="#dropper" x="200" y="70" width="52" height="160"/><use href="#jar" x="100" y="128" width="118" height="100"/>`
-    },
-    {
-      id: PK.id, tag: "New · 12 shades", tagClass: "rose", name: PK.name,
-      items: ["12 matte shades", "Pinks, nudes, browns & reds", "Suits every skin tone"], note: "Natural beauty, lasting confidence",
-      price: PK.price, was: null, img: "assets/pinkkey/pk-open.jpg", page: "pink-key.html"
     }
   ];
+  KITS.find(k => k.id === "glow").featured = false;
+  const pct = k => k.was ? Math.round((1 - k.price / k.was) * 100) : 0;
+  const priceHtml = k => `AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}`;
+  const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  const mail = (subject, body) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  // Small round WhatsApp + email enquiry buttons for a product
+  const enquire = (name, cls = "enq") => `<span class="${cls}">
+      <a class="e-wa" href="${wa(`Hi AnzGlow, I have a question about ${name}.`)}" target="_blank" rel="noopener" aria-label="Ask about ${name} on WhatsApp" title="Enquire on WhatsApp"><svg><use href="#i-wa"/></svg>${cls === "enq" ? "" : "WhatsApp"}</a>
+      <a class="e-mail" href="${mail(`Enquiry: ${name}`, `Hi AnzGlow,\n\nI'd like to know more about ${name}.\n\nName:\nPhone:\n`)}" aria-label="Email about ${name}" title="Enquire by email"><svg><use href="#i-mail"/></svg>${cls === "enq" ? "" : "Email"}</a>
+    </span>`;
   // Bag ids: "tan", "glow", or "pinkkey:05" (lipstick + shade number)
   const itemOf = id => {
     const [base, shadeNo] = id.split(":");
@@ -43,7 +65,6 @@
   const artSvg = (k, cls = "") => k.img
     ? `<img class="prod-photo ${cls}" src="${k.img}" alt="${k.name}">`
     : `<svg class="${cls}" viewBox="0 0 300 230" aria-hidden="true">${k.art}</svg>`;
-  const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
 
   // ---------- Storage ----------
   const store = {
@@ -171,5 +192,8 @@
   if (glow) addEventListener("pointermove", e => { glow.style.left = e.clientX + "px"; glow.style.top = e.clientY + "px"; }, { passive: true });
   const mq = $("#marquee"); if (mq) mq.innerHTML += mq.innerHTML;
 
-  window.AG = { $, $$, KITS, PK, itemOf, artSvg, wa, WHATSAPP, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals, store };
+  // Enquiry buttons placed in a page with data-enq="what it's about"
+  $$("[data-enq]").forEach(el => el.innerHTML = enquire(el.dataset.enq, "enq-row"));
+
+  window.AG = { $, $$, KITS, PK, itemOf, artSvg, wa, mail, enquire, pct, priceHtml, EMAIL, WHATSAPP, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals, store };
 })();

@@ -3,6 +3,9 @@ window.PK = {
   id: "pinkkey",
   name: "Pink Key Liquid Lipstick",
   price: 10,
+  was: 15,          // crossed-out "sale" price (placeholder — set null to hide)
+  heroShade: "09",  // light-brown matte that suits every skin tone
+  heroNote: "Our light-brown matte — the one shade that flatters every skin tone, from fair to deep.",
   shades: [
     { no: "01", name: "Nude Pink",    hex: "#e98a95", family: "Pinks" },
     { no: "02", name: "Rose Pink",    hex: "#e2607a", family: "Pinks" },
@@ -12,7 +15,7 @@ window.PK = {
     { no: "06", name: "Mauve Pink",   hex: "#bf6274", family: "Pinks" },
     { no: "07", name: "Pink Berry",   hex: "#ae3552", family: "Pinks" },
     { no: "08", name: "Cherry Pink",  hex: "#b42746", family: "Pinks" },
-    { no: "09", name: "Brown Nude",   hex: "#a5493f", family: "Nudes & browns" },
+    { no: "09", name: "Brown Nude",   hex: "#a5493f", family: "Nudes & browns", hero: true },
     { no: "10", name: "Chocolate",    hex: "#8e3a37", family: "Nudes & browns" },
     { no: "11", name: "Deep Rose",    hex: "#8e1524", family: "Reds" },
     { no: "12", name: "Classic Red",  hex: "#a30716", family: "Reds" }
