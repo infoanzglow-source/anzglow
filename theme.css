@@ -504,3 +504,10 @@ html,body{background:var(--cream);color:var(--ink)}
 .order .o-total{color:var(--trust);font-weight:500}
 .order .secure{color:var(--trust)}
 .order .secure svg{color:var(--trust)}
+
+/* clean white-background product photos */
+.prod-photo.clean{border-radius:0!important;box-shadow:none!important;background:none!important;object-fit:contain!important;mix-blend-mode:multiply;aspect-ratio:auto!important}
+.kit-stage .prod-photo.clean{height:220px;width:auto;max-width:90%;filter:drop-shadow(0 18px 18px rgba(110,70,100,.18))}
+.ci-row .thumb .prod-photo.clean{object-fit:contain!important;background:#fff!important}
+.qv-main img{mix-blend-mode:multiply}
+.qv-main{background:radial-gradient(circle at 50% 45%,#fff 45%,#f6effa)}

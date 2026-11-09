@@ -15,16 +15,16 @@
     {
       id: PK.id, tag: "New · 12 shades", tagClass: "rose", name: PK.name,
       items: ["12 ultra-matte shades", "Hero shade: 09 light-brown matte", "Suits every skin tone"], note: "Natural beauty, lasting confidence",
-      price: PK.price, was: PK.was, img: `assets/pinkkey/shade-${PK.heroShade}.jpg`, page: "pink-key.html"
+      price: PK.price, was: PK.was, img: "assets/pinkkey/pk-product.jpg", clean: true, page: "pink-key.html"
     },
     {
       id: "shampoo", tag: "Hair care", tagClass: "", featured: true,
       name: "Mamaearth Rosemary Anti-Hair Fall Shampoo", short: "Rosemary Anti-Hair Fall Shampoo",
-      items: ["With rosemary & methi dana", "Helps reduce hair fall", "For all hair types"], note: "Stronger hair. Healthier you.",
-      price: 30, was: 39, img: "assets/shampoo/ma-bottle.jpg",
-      gallery: ["assets/shampoo/ma-bottle.jpg", "assets/shampoo/ma-model.jpg", "assets/shampoo/ma-banner.jpg", "assets/shampoo/ma-shelf.jpg"],
-      desc: "Mamaearth Rosemary Anti-Hair Fall Shampoo is powered by rosemary and methi dana (fenugreek). It gently cleanses while helping reduce hair fall, leaving hair stronger, shinier and nourished. Dermatologically tested and suitable for all hair types.",
-      use: "Wet your hair, massage a small amount into the scalp and lengths, lather and rinse well. Use 2–3 times a week, or as needed. Follow with a conditioner for extra softness."
+      items: ["With rosemary & methi dana · 250 ml", "94% natural ingredients", "Sulfate free · Paraben free"], note: "Stronger hair. Healthier you.",
+      price: 30, was: 39, img: "assets/shampoo/ma-front.jpg", clean: true, size: "250 ml",
+      gallery: ["assets/shampoo/ma-front.jpg", "assets/shampoo/ma-side.jpg", "assets/shampoo/ma-back.jpg", "assets/shampoo/ma-model.jpg", "assets/shampoo/ma-banner.jpg"],
+      desc: "Mamaearth Rosemary Anti-Hair Fall Shampoo is powered by rosemary and methi dana (fenugreek). It gently cleanses while helping reduce hair fall, leaving hair stronger, shinier and nourished. Dermatologically tested, sulfate free and paraben free, with 94% natural ingredients — suitable for all hair types. 250 ml.",
+      use: "Apply to wet hair, gently massage into the scalp and work up a lather. Rinse well. For external use only — avoid contact with eyes; if contact occurs, rinse with water."
     },
     {
       id: "tan", tag: "Best Seller", tagClass: "", name: "Tan Removal Combo Kit",
@@ -63,7 +63,7 @@
              thumb: shade ? PK.img(shade.no) : k.img };
   };
   const artSvg = (k, cls = "") => k.img
-    ? `<img class="prod-photo ${cls}" src="${k.img}" alt="${k.name}">`
+    ? `<img class="prod-photo ${k.clean ? "clean" : ""} ${cls}" src="${k.img}" alt="${k.name}">`
     : `<svg class="${cls}" viewBox="0 0 300 230" aria-hidden="true">${k.art}</svg>`;
 
   // ---------- Storage ----------

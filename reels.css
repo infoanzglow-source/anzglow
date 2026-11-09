@@ -107,3 +107,5 @@
 .reel.r3.lift{transform:translateX(-104%) rotate(-8deg) scale(.86)}
 .reel.r4.lift{transform:translateX(104%) rotate(8deg) scale(.86)}
 @media (max-width:1300px) and (min-width:641px){.reel.r3,.reel.r4{display:none}}
+
+@media (min-width:641px){.reel.r3,.reel.r4{display:none}}
