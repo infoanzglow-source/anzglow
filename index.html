@@ -10,13 +10,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500;1,6..96,600;1,6..96,700&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261124">
-<link rel="stylesheet" href="footer.css?v=20261124">
-<link rel="stylesheet" href="theme.css?v=20261124">
-<link rel="stylesheet" href="hero.css?v=20261124">
-<link rel="stylesheet" href="reels.css?v=20261124">
-<link rel="stylesheet" href="editorial.css?v=20261124">
-<link rel="stylesheet" href="luxe.css?v=20261124">
+<link rel="stylesheet" href="styles.css?v=20261126">
+<link rel="stylesheet" href="footer.css?v=20261126">
+<link rel="stylesheet" href="theme.css?v=20261126">
+<link rel="stylesheet" href="hero.css?v=20261126">
+<link rel="stylesheet" href="reels.css?v=20261126">
+<link rel="stylesheet" href="editorial.css?v=20261126">
+<link rel="stylesheet" href="luxe.css?v=20261126">
 </head>
 <body>
 
@@ -563,6 +563,9 @@
 
 <!-- ============ Footer ============ -->
 <footer class="ft">
+  <div class="ft-charm-band" aria-hidden="true"><span>🎀 Glow gifts</span><span>✨ 12 matte shades</span><span>💖 Cash on delivery</span><span>🌸 AED 10 delivery</span><span>🎁 Made with love in the UAE</span><span>💄 Every skin tone</span><span>🎀 Glow gifts</span><span>✨ 12 matte shades</span><span>💖 Cash on delivery</span><span>🌸 AED 10 delivery</span><span>🎁 Made with love in the UAE</span><span>💄 Every skin tone</span></div>
+  <svg class="deco fz1" viewBox="0 0 140 120" aria-hidden="true"><use href="#cjar" style="--glass:#f9cbd6"/></svg>
+  <svg class="deco fz2" viewBox="0 0 70 196" aria-hidden="true"><use href="#cdrop" style="--glass:#efe3fb;--liquid:#f3cf7a;--bulb:#b48be8"/></svg>
   <div class="wrap">
     <!-- Feature row: Pink Key promo + Glow Club -->
     <div class="ft-feature">
@@ -632,10 +635,10 @@
 
     <!-- Promise badges -->
     <ul class="ft-trust">
-      <li><i><svg><use href="#i-shield"/></svg></i><span><b>Cash on delivery</b>Pay when it arrives</span></li>
-      <li><i><svg><use href="#i-truck"/></svg></i><span><b>AED 10 delivery</b>All 7 emirates · 1–2 days</span></li>
-      <li><i><svg><use href="#i-flask"/></svg></i><span><b>Dermatologically tested</b>Gentle formulas</span></li>
-      <li><i><svg><use href="#i-bunny"/></svg></i><span><b>Cruelty free</b>Kind beauty</span></li>
+      <li><i>💵</i><span><b>Cash on delivery</b>Pay when it arrives</span></li>
+      <li><i>🚚</i><span><b>AED 10 delivery</b>All 7 emirates · 1–2 days</span></li>
+      <li><i>🌸</i><span><b>Dermatologically tested</b>Gentle formulas</span></li>
+      <li><i>🐰</i><span><b>Cruelty free</b>Kind beauty</span></li>
     </ul>
   </div>
 
@@ -643,6 +646,7 @@
     <div class="wrap">
       <span>© <span id="yr"></span> AnzGlow by Anzix · United Arab Emirates</span>
       <span class="ft-sign script">Glow beautifully, feel confident ♡</span>
+      <span class="ft-love">Made with 💖 in the UAE</span>
       <span class="ft-legal"><a href="#" data-policy="privacy">Privacy</a><a href="#" data-policy="returns">Returns</a><a href="#" data-policy="delivery">Delivery</a>
         <button class="to-top" id="toTop" aria-label="Back to top"><svg><use href="#i-arrow"/></svg></button></span>
     </div>
@@ -657,11 +661,13 @@
 <!-- ============ Overlays ============ -->
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-label="Shopping bag">
-  <header><h4>Your Bag</h4><button class="icon-btn" id="cartClose" aria-label="Close"><svg><use href="#i-close"/></svg></button></header>
+  <header><h4>Your Bag <span aria-hidden="true">🛍️</span></h4><button class="icon-btn" id="cartClose" aria-label="Close"><svg><use href="#i-close"/></svg></button></header>
+  <div class="cart-added" id="cartAdded" hidden></div>
   <div class="drawer-body" id="cartBody"></div>
   <footer>
     <div class="sub-row"><span>Subtotal</span><span id="cartSub">AED 0</span></div><div class="sub-row"><span>Delivery (all UAE)</span><span id="cartShip">AED 0</span></div><div class="total"><span>Total</span><b id="cartTotal">AED 0</b></div>
-    <a href="#order" class="btn btn-gold" id="checkout">Checkout on WhatsApp — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <a href="checkout.html" class="btn btn-buy" id="checkout">Checkout — cash on delivery <svg><use href="#i-arrow"/></svg></a>
+    <button class="btn btn-ghost keep" id="keepShopping" type="button">Continue shopping</button>
     <div data-enq="my order"></div>
     <small>AED 10 delivery across the UAE · 1–2 working days</small>
   </footer>
@@ -750,10 +756,11 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261124"></script>
-<script src="common.js?v=20261124"></script>
-<script src="app.js?v=20261124"></script>
-<script src="reels.js?v=20261124"></script>
-<script src="hero-video.js?v=20261124"></script>
+<script src="shades.js?v=20261126"></script>
+<script src="common.js?v=20261126"></script>
+<script src="charms.js?v=20261126"></script>
+<script src="app.js?v=20261126"></script>
+<script src="reels.js?v=20261126"></script>
+<script src="hero-video.js?v=20261126"></script>
 </body>
 </html>

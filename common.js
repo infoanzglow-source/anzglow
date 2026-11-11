@@ -84,6 +84,7 @@
   const bump = el => { el.classList.add("bump"); setTimeout(() => el.classList.remove("bump"), 350); };
 
   // ---------- Bag ----------
+  let lastAdded = null;
   const bagLines = () => Object.keys(cart).filter(id => cart[id] > 0).map(id => ({ id, qty: cart[id], ...itemOf(id) }));
   const renderCart = () => {
     const lines = bagLines();
@@ -95,20 +96,30 @@
     $("#cartShip").textContent = "AED " + ship;
     $("#cartTotal").textContent = "AED " + (sub + ship);
     $("#cartBody").innerHTML = lines.length ? lines.map(l => `
-      <div class="ci-row"><div class="thumb">${l.thumb ? `<img class="prod-photo" src="${l.thumb}" alt="">` : artSvg(l.k)}</div>
+      <div class="ci-row ${l.id === lastAdded ? "just" : ""}"><div class="thumb">${l.thumb ? `<img class="prod-photo" src="${l.thumb}" alt="">` : artSvg(l.k)}</div>
         <div><b>${l.k.name}</b>${l.shade ? `<small>Shade ${l.shade.no} · ${l.shade.name}</small>` : ""}
           <span class="qty"><button data-dec="${l.id}" aria-label="Less">−</button>${l.qty}<button data-inc="${l.id}" aria-label="More">+</button></span></div>
         <span>AED ${l.k.price * l.qty}</span></div>`).join("")
       : `<div class="empty"><span class="script">Your bag is empty</span>Your glow is just one click away.</div>`;
     store.set("anz-cart", cart);
+    const go = $("#checkout"); if (go) go.classList.toggle("off", !lines.length);
+    document.dispatchEvent(new CustomEvent("cart:change"));
   };
   const addToCart = (id, qty = 1) => {
     const it = itemOf(id); if (!it) return;
-    cart[id] = (cart[id] || 0) + qty; renderCart(); bump($("#cartCount"));
-    toast(`${qty > 1 ? qty + " × " : ""}${it.label} added to your bag`);
+    cart[id] = (cart[id] || 0) + qty; lastAdded = id; renderCart(); bump($("#cartCount"));
+    const msg = `${qty > 1 ? qty + " × " : ""}${it.label}`;
+    // open the bag straight away (not on top of the story viewer or on the checkout page)
+    if (document.querySelector(".sv.open") || document.body.classList.contains("is-checkout")) { toast(msg + " added to your bag"); return; }
+    const box = $("#cartAdded");
+    if (box) {
+      box.innerHTML = `<span class="ca-ico">🎀</span><span><b>Added to your bag</b>${msg}</span>`;
+      box.hidden = false; box.classList.remove("pop"); void box.offsetWidth; box.classList.add("pop");
+    }
+    openCart();
   };
   const openCart = () => document.body.classList.add("cart-open");
-  const closeCart = () => document.body.classList.remove("cart-open");
+  const closeCart = () => { document.body.classList.remove("cart-open"); lastAdded = null; const b = $("#cartAdded"); if (b) b.hidden = true; };
 
   document.addEventListener("click", e => {
     const add = e.target.closest("[data-add]"); if (add) addToCart(add.dataset.add);
@@ -122,23 +133,19 @@
       store.set("anz-wish", [...wish]); if (wish.has(id)) toast("Saved to your wishlist ♡");
     }
   });
-  $("#cartBtn").onclick = openCart;
+  $("#cartBtn").onclick = () => { const b = $("#cartAdded"); if (b) b.hidden = true; openCart(); };
+  const keep = $("#keepShopping"); if (keep) keep.onclick = closeCart;
   $("#cartClose").onclick = closeCart;
   $("#scrim").onclick = closeCart;
   $("#wishCount").textContent = wish.size;
   $$("[data-wish]").forEach(x => x.classList.toggle("on", wish.has(x.dataset.wish)));
   renderCart();
 
-  // Checkout: the whole bag goes to WhatsApp as a ready-to-send order
+  // Checkout: go to the checkout page
   $("#checkout").addEventListener("click", e => {
-    e.preventDefault();
-    const lines = bagLines();
-    if (!lines.length) { toast("Your bag is empty — add a product first"); return; }
-    const sub = lines.reduce((n, l) => n + l.qty * l.k.price, 0);
-    const text = `Hi AnzGlow, I'd like to order:\n${lines.map(l => `• ${l.qty} × ${l.label} — AED ${l.k.price * l.qty}`).join("\n")}\nDelivery: AED ${DELIVERY_FEE}\nTotal: AED ${sub + DELIVERY_FEE} (cash on delivery)\n\nName:\nArea / Emirate:`;
-    window.open(wa(text), "_blank", "noopener");
-    closeCart();
+    if (!bagLines().length) { e.preventDefault(); toast("Your bag is empty — add a product first"); }
   });
+  const clearCart = () => { Object.keys(cart).forEach(k => delete cart[k]); renderCart(); };
 
   // ---------- Menu + header ----------
   $("#menuBtn").onclick = () => document.body.classList.add("menu-open");
@@ -196,5 +203,5 @@
   // Enquiry buttons placed in a page with data-enq="what it's about"
   $$("[data-enq]").forEach(el => el.innerHTML = enquire(el.dataset.enq, "enq-row"));
 
-  window.AG = { $, $$, KITS, PK, itemOf, artSvg, wa, mail, enquire, pct, priceHtml, EMAIL, WHATSAPP, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals, store };
+  window.AG = { bagLines, renderCart, clearCart, closeCart, openCart, $, $$, KITS, PK, itemOf, artSvg, wa, mail, enquire, pct, priceHtml, EMAIL, WHATSAPP, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals, store };
 })();
