@@ -362,3 +362,15 @@ body.modal-open .charms,body.cart-open .charms,body.menu-open .charms{opacity:0;
 .c-heart{width:var(--s)!important;height:var(--s)!important;scale:none!important;transform:none!important;clip-path:none!important;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21C5 15 1 11 1 7a5 5 0 0 1 11-2 5 5 0 0 1 11 2c0 4-4 8-11 14z'/%3E%3C/svg%3E") center/contain no-repeat;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21C5 15 1 11 1 7a5 5 0 0 1 11-2 5 5 0 0 1 11 2c0 4-4 8-11 14z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ---------- Statement: cute shape pills instead of photos ---------- */
+.ed-pill.cute{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:2px;width:2.1em;height:1.05em;vertical-align:-.12em;
+  background:linear-gradient(135deg,#fde3ea,#f3e8fd)!important;box-shadow:0 0 0 3px #fff,0 10px 20px -10px rgba(110,60,95,.45),inset 0 0 0 1px rgba(217,180,106,.35);overflow:visible}
+.ed-pill.cute.wide{width:3em;background:linear-gradient(135deg,#fff3e6,#fde3ea)!important}
+.ed-pill.cute.p3{background:linear-gradient(135deg,#f1e8fd,#e9f6ec)!important}
+.ed-pill.cute.p4{width:1.9em;background:linear-gradient(135deg,#fde3ea,#fff1c9)!important}
+.ed-pill.cute svg{height:.82em;width:auto;animation:prodFloat 5s ease-in-out infinite}
+.ed-pill.cute b{position:absolute;right:-.18em;top:-.28em;font-size:.38em;line-height:1;animation:charmFloat 6s ease-in-out infinite}
+.ed-pill.cute b.big{position:static;font-size:.55em}
+.ed-pill.cute .dots{display:flex;gap:.08em}
+.ed-pill.cute .dots i{width:.32em;height:.32em;border-radius:50%;box-shadow:0 0 0 2px #fff}

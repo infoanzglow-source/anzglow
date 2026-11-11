@@ -71,6 +71,34 @@
     $$(".co-steps li").forEach(li => li.classList.add("done"));
     scrollTo({ top: 0, behavior: "smooth" });
     window.open(wa(text), "_blank", "noopener");
+
+    // ---------- Invoice PDF ----------
+    const cartNow = { ...store.get("anz-cart", {}) };
+    const customer = { name: v("cName"), phone: v("cPhone"), email: v("cEmail"), address: v("cAddr"), area: v("cArea"), city: v("cCity"), note: v("cNote") };
+    const giftInfo = { on: gift, msg: v("cGiftMsg") };
+    $("#invNo").textContent = no;
+    try {
+      const INV = window.ANZ_INVOICE, priced = INV.priceCart(cartNow);
+      const order = { no, date: new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }), customer, gift: giftInfo, ...priced };
+      const doc = INV.buildInvoice(window.jspdf.jsPDF, order, window.ANZ_LOGO);
+      const blob = doc.output("blob"), fname = `AnzGlow-invoice-${no}.pdf`;
+      $("#invDownload").href = URL.createObjectURL(blob); $("#invDownload").download = fname;
+      const file = new File([blob], fname, { type: "application/pdf" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        $("#invShare").hidden = false;
+        $("#invShare").onclick = () => navigator.share({ files: [file], title: `AnzGlow invoice ${no}`, text: `My AnzGlow order ${no}` }).catch(() => {});
+      }
+      $("#invStatus").textContent = "Ready to download.";
+    } catch (err) { $("#invStatus").textContent = "We'll send your invoice on WhatsApp."; }
+
+    // email the invoice (to us, and to the customer if they gave an email)
+    fetch("/api/order", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ no, customer, gift: giftInfo, cart: cartNow, website: $("#cWebsite").value }) })
+      .then(r => r.json().catch(() => ({})).then(j => ({ ok: r.ok, j })))
+      .then(({ ok, j }) => {
+        if (ok && j.ok) $("#invStatus").textContent = j.emailedCustomer ? `Emailed to ${customer.email} 💌 — and ready to download.` : "Ready to download. Add your email next time to get it by mail too.";
+      })
+      .catch(() => {});
     clearCart();
   });
 })();
