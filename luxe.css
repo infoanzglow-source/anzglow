@@ -178,3 +178,116 @@ section{position:relative}
 @media (max-width:640px){.deco.dz1{bottom:10px;left:-24px;width:84px}}
 
 .step-num{color:#3b2a35!important;font-family:"Bodoni Moda",serif;font-weight:600;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+
+/* ---------- Hero side: matching product showcase tiles ---------- */
+.ed-side{grid-template-rows:minmax(0,1fr) auto minmax(0,1fr)!important}
+.ed-show{display:block;border-radius:30px!important;background:linear-gradient(160deg,#fff7fa,#f8eefc)!important;box-shadow:inset 0 0 0 1px rgba(217,180,106,.35),var(--l-shadow)}
+.ed-show.hr{background:linear-gradient(160deg,#f8f3fe,#efe6fb)!important}
+.ed-show .ed-blob{position:absolute;left:50%;top:44%;width:66%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#fff 0 18%,#f8cfdc 60%,#f3b9cc);box-shadow:0 0 60px rgba(244,185,204,.6)}
+.ed-show.hr .ed-blob{background:radial-gradient(circle at 40% 35%,#fff 0 18%,#e3d4f8 60%,#cfb9f2);box-shadow:0 0 60px rgba(205,181,238,.6)}
+.ed-show img{position:absolute!important;inset:auto!important;left:50%!important;top:10%!important;height:66%!important;width:auto!important;max-width:80%;
+  translate:-50% 0;object-fit:contain!important;mix-blend-mode:multiply;filter:drop-shadow(0 18px 18px rgba(110,60,95,.25));
+  transform:none!important;animation:prodFloat 6s ease-in-out infinite}
+.ed-show.hr img{animation-delay:-3s}
+.ed-show:hover img{transform:none!important}
+.ed-price{position:absolute;top:14px;right:14px;padding:6px 12px;border-radius:999px;background:#fff;color:#1b8a32;font-weight:600;font-size:.78rem;box-shadow:0 6px 16px -8px rgba(110,60,95,.5)}
+.ed-show .ed-cap{left:12px;right:12px;bottom:12px;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;background:rgba(255,255,255,.92)!important}
+.ed-show .ed-cap small{grid-column:1}
+.ed-show .ed-cap i{grid-column:2;grid-row:1/3;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--buy-grad,#1b8a32);color:#fff;font-family:var(--sans);font-size:.9rem}
+.ed-pick.lit::after{display:none!important}
+@media (max-width:1100px){.ed-side .ed-show{aspect-ratio:4/5}}
+
+/* ==========================================================
+   Pink Key product page — luxe
+   ========================================================== */
+.pdp{background:
+  radial-gradient(45% 40% at 20% 10%,color-mix(in srgb,var(--shade) 22%,transparent),transparent 65%),
+  radial-gradient(40% 40% at 95% 5%,rgba(205,181,238,.55),transparent 60%),var(--l-cream)!important}
+.crumbs{padding:22px 0 4px}
+.pdp-hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)!important;gap:44px!important;align-items:start;padding:14px 0 110px!important}
+.pdp-gallery{grid-template-columns:1fr!important;gap:16px!important;top:104px!important}
+.pdp-main{grid-column:1!important;grid-row:1!important;aspect-ratio:1/1.02!important;border-radius:40px!important;border:1px solid transparent;
+  background:radial-gradient(circle at 50% 52%,#fff 0 16%,color-mix(in srgb,var(--shade) 30%,#fff) 46%,transparent 47%) padding-box,
+    linear-gradient(160deg,#fff8fa,#f6eefc) padding-box,var(--l-ring) border-box!important;
+  box-shadow:var(--l-shadow-lg)!important;transition:background .6s}
+.pdp-main img{object-fit:contain!important;padding:7% 0;mix-blend-mode:multiply;filter:drop-shadow(0 24px 24px rgba(110,60,95,.25));animation:prodFloat 6s ease-in-out infinite}
+.pdp-main.wide img{object-fit:cover!important;padding:0;mix-blend-mode:normal;animation:none}
+.pdp-glow{display:none}
+.pdp-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(8px);box-shadow:0 12px 26px -14px rgba(110,60,95,.55),0 0 0 1px rgba(217,180,106,.3);font-size:.8rem;color:var(--ink);animation:decoFloat 7s ease-in-out infinite}
+.pdp-chip b{font-family:"Bodoni Moda",serif;font-size:1.3rem;font-weight:500;line-height:1}
+.pdp-chip s{color:var(--muted);font-size:.8rem}
+.pdp-chip svg{width:15px;height:15px;color:#a77c35}
+.pdp-chip.c1{top:22px;left:22px}
+.pdp-chip.c2{top:38%;right:20px;animation-delay:-2s}
+.pdp-chip.c3{bottom:22px;right:22px;animation-delay:-4s}
+.pdp-tag{left:22px!important;bottom:22px!important}
+.pdp-thumbs{grid-column:1!important;grid-row:2!important;display:flex!important;justify-content:center;gap:12px!important;flex-wrap:wrap}
+.pdp-thumbs button{width:74px;height:74px;aspect-ratio:auto!important;border-radius:20px!important;background:#fff!important;padding:4px;
+  box-shadow:0 0 0 1px rgba(217,180,106,.3)!important;opacity:.75}
+.pdp-thumbs button img{border-radius:16px;object-fit:cover}
+.pdp-thumbs button.on{opacity:1;box-shadow:0 0 0 2px #d4a24c,0 10px 20px -12px rgba(110,60,95,.6)!important}
+.pdp-info{padding:34px 34px 30px;border-radius:36px;border:1px solid transparent;
+  background:linear-gradient(rgba(255,255,255,.88),rgba(255,255,255,.88)) padding-box,var(--l-ring) border-box;box-shadow:var(--l-shadow);backdrop-filter:blur(10px)}
+.pdp-title{font-size:clamp(2.8rem,5vw,4.4rem)!important;line-height:.92!important;background:none!important;color:var(--ink)!important;-webkit-text-fill-color:currentColor}
+.pdp-title .script{-webkit-text-fill-color:transparent;font-size:.85em!important;margin-top:.05em}
+.pdp-price{border-color:rgba(217,180,106,.25)!important}
+.pdp-price b{font-family:"Bodoni Moda",serif!important;font-weight:500!important}
+.sw i{max-width:46px}
+.pdp-buy .btn{padding:17px 22px}
+.pdp-glance{position:relative;z-index:2;margin-top:-56px;padding:0 0 30px}
+.glance-row{display:grid;grid-template-columns:repeat(4,1fr);border-radius:30px;border:1px solid transparent;
+  background:linear-gradient(#fff,#fff) padding-box,var(--l-ring) border-box;box-shadow:var(--l-shadow)}
+.glance-row div{display:grid;justify-items:center;gap:4px;padding:24px 10px;text-align:center}
+.glance-row div+div{border-left:1px solid rgba(217,180,106,.22)}
+.glance-row b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:1.9rem;line-height:1;background:var(--l-gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glance-row span{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pdp-lux,.pdp-all,.pdp-guide,.pdp-details{border-radius:48px 48px 0 0;margin-top:-34px;padding-top:120px!important;position:relative}
+.pdp-lux{z-index:3;background:radial-gradient(50% 50% at 50% 0%,rgba(205,181,238,.45),transparent 65%),var(--l-lav)!important}
+.pdp-all{z-index:4;background:var(--l-cream)!important}
+.pdp-guide{z-index:5;background:radial-gradient(50% 60% at 0% 50%,rgba(246,211,221,.8),transparent 60%),var(--l-blush)!important}
+.pdp .promise{position:relative;z-index:6}
+.pdp-details{z-index:7;background:var(--l-cream)!important}
+.lux-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;align-items:stretch}
+.lux-card{display:flex;flex-direction:column;border-radius:34px!important;overflow:hidden}
+.lux-open .lux-img{flex:1;aspect-ratio:auto!important;min-height:420px;background:radial-gradient(circle at 50% 55%,#fff 0 18%,#f8d2dd 55%,#f4c4cf)}
+.lux-open .lux-img img{object-fit:cover;object-position:center 20%}
+.lux-close .lux-quad{flex:1;grid-template-rows:1fr 1fr;gap:8px;padding:8px;background:#fff}
+.lux-close .lux-quad img{aspect-ratio:auto!important;height:100%;border-radius:20px}
+.lux-no{background:var(--l-gold)!important;color:#fff!important;font-family:"Bodoni Moda",serif}
+.lux-card figcaption b{font-family:"Bodoni Moda",serif!important;font-weight:500!important}
+.shade-card{border-radius:26px!important;padding:8px}
+.sc-img{border-radius:20px;background:radial-gradient(circle at 50% 55%,#fff 0 20%,#f8dbe3 60%,#f3cbd6)!important}
+.sc-img img{mix-blend-mode:multiply}
+.sc-meta b{font-family:"Bodoni Moda",serif;font-weight:500}
+.tabs button.on{background:var(--l-gold)!important;color:#fff!important}
+.guide-img{border-radius:34px!important}
+.sticky-buy{border:1px solid transparent;background:linear-gradient(rgba(255,255,255,.96),rgba(255,255,255,.96)) padding-box,var(--l-ring) border-box!important}
+@media (max-width:900px){
+  .pdp-hero{grid-template-columns:minmax(0,1fr)!important;gap:26px!important;padding-bottom:90px!important}
+  .pdp-gallery{position:static}
+  .pdp-info{padding:26px 22px}
+  .glance-row{grid-template-columns:1fr 1fr}
+  .glance-row div:nth-child(3){border-left:0}
+  .glance-row div:nth-child(n+3){border-top:1px solid rgba(217,180,106,.22)}
+  .lux-grid{grid-template-columns:minmax(0,1fr)!important}
+  .pdp-lux,.pdp-all,.pdp-guide,.pdp-details{border-radius:32px 32px 0 0;margin-top:-24px;padding-top:84px!important}
+}
+@media (max-width:640px){
+  .pdp-main{aspect-ratio:1/1.1!important;border-radius:30px!important}
+  .pdp-chip{font-size:.7rem;padding:7px 11px}
+  .pdp-chip b{font-size:1.05rem}
+  .pdp-chip.c2{display:none}
+  .pdp-thumbs{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .pdp-thumbs button{flex:none;width:62px;height:62px}
+  .glance-row b{font-size:1.5rem}
+  .lux-open .lux-img{min-height:360px}
+}
+.pdp-main img{position:absolute;left:50%;top:50%;width:auto!important;height:80%!important;max-width:70%;translate:-50% -50%;padding:0!important;
+  object-fit:cover!important;border-radius:999px 999px 28px 28px;mix-blend-mode:normal!important;
+  box-shadow:0 30px 50px -26px rgba(110,60,95,.6),0 0 0 6px #fff,0 0 0 7px rgba(217,180,106,.45);filter:none!important}
+.pdp-main.wide img{inset:0;translate:none;width:100%!important;height:100%!important;max-width:none;border-radius:0;box-shadow:none}
+.pdp-main.swap img{opacity:0}
+
+.lux-no{color:#3b2a35!important;font-weight:600;text-shadow:0 1px 0 rgba(255,255,255,.6)}
