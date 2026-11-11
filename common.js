@@ -32,7 +32,7 @@
       price: 149, was: 189,
       desc: "A three-step set that gently lifts sun tan and evens out dark spots, while keeping skin soft and hydrated.",
       use: "Wash face with the Face Wash, apply a thin layer of Tan Removal Cream on tanned areas, finish with Body Lotion. Use twice daily; patch test first.",
-      art: `<use href="#tube" x="30" y="12" width="84" height="210"/><use href="#tube" x="196" y="56" width="66" height="166"/><use href="#jar" x="96" y="128" width="118" height="100"/>`
+      art: `<use href="#cdrop" x="196" y="34" width="72" height="196" style="--glass:#fde7d6;--liquid:#f0b27a;--bulb:#e9a07a"/><use href="#cjar" x="70" y="102" width="146" height="125" style="--glass:#f9cbd6"/><use href="#cjar" x="14" y="160" width="82" height="70" style="--glass:#fbe0c8"/>`
     },
     {
       id: "glow", tag: "Popular", tagClass: "", featured: true, name: "Complete Glow Beauty Kit",
@@ -40,7 +40,7 @@
       price: 199, was: 249,
       desc: "Our complete daily ritual — cleanse, nourish and finish with serum for that lit-from-within glow.",
       use: "Morning and night: cleanse, press 2–3 drops of serum into skin, then seal with moisturiser.",
-      art: `<use href="#pump" x="40" y="4" width="72" height="224"/><use href="#dropper" x="200" y="70" width="52" height="160"/><use href="#jar" x="100" y="128" width="118" height="100"/>`
+      art: `<use href="#cdrop" x="34" y="18" width="78" height="212" style="--glass:#efe3fb;--liquid:#f3cf7a;--bulb:#b48be8"/><use href="#cdrop" x="216" y="84" width="54" height="146" style="--glass:#fce4ec;--liquid:#f4a9c0;--bulb:#e48aa9"/><use href="#cjar" x="96" y="112" width="136" height="116" style="--glass:#e6d9f7"/>`
     }
   ];
   KITS.find(k => k.id === "glow").featured = false;

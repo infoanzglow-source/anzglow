@@ -1,0 +1,180 @@
+/* ==========================================================
+   AnzGlow — "Luxe" design system (loaded last, every page)
+   One consistent look: Bodoni headings + gold script accents,
+   gradient-hairline glass cards, pastel section rhythm,
+   floating cute jars & droppers.
+   ========================================================== */
+:root{
+  --l-cream:#fffaf5; --l-blush:#fdf1f4; --l-lav:#f6f1fd; --l-peach:#fdf3ea;
+  --l-ring:linear-gradient(135deg,#efd59b,#f4bfd1 50%,#d3bff3);
+  --l-gold:linear-gradient(100deg,#b98536 0%,#e9c37a 30%,#fff1c9 50%,#d4a24c 70%,#a87a33 100%);
+  --l-shadow:0 30px 60px -36px rgba(110,60,95,.45);
+  --l-shadow-lg:0 50px 90px -40px rgba(110,60,95,.55);
+}
+
+/* ---------- Soft paper grain over the whole page ---------- */
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .25 0 0 0 0 .35 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- Typography ---------- */
+.h2{font-family:"Bodoni Moda",var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.02;color:var(--ink)}
+.h2 .script,.ivory .h2 .script,.reels-head .h2 .script,.hair-copy .h2 .script,.pk-copy .h2 .script{
+  font-family:"Great Vibes",cursive;font-weight:400;font-size:1.3em;letter-spacing:0;line-height:.8;padding:0 .06em .1em;
+  background:var(--l-gold);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;transform:translateY(.08em);animation:shimmer 8s linear infinite}
+.eyebrow,.ivory .eyebrow{font-size:.7rem;letter-spacing:.34em;color:#a77c35;font-weight:500}
+.sec-head .eyebrow::before,.sec-head .eyebrow::after{content:"";width:22px;height:1px;background:linear-gradient(90deg,transparent,#d4a24c)}
+.sec-head .eyebrow::after{background:linear-gradient(90deg,#d4a24c,transparent)}
+.lead{color:#7a6672}
+.sec-head{margin-bottom:52px}
+
+/* ---------- Section rhythm ---------- */
+section{position:relative}
+#kits{background:radial-gradient(60% 50% at 0% 0%,rgba(246,211,221,.55),transparent 60%),radial-gradient(50% 50% at 100% 100%,rgba(228,217,244,.6),transparent 60%),var(--l-cream)}
+.ed-mosaic-sec{background:var(--l-blush)}
+.reels{background:radial-gradient(40% 60% at 85% 50%,rgba(246,211,221,.8),transparent 65%),var(--l-lav)}
+.spotlight{background:radial-gradient(50% 70% at 15% 50%,rgba(246,200,214,.9),transparent 62%),radial-gradient(40% 50% at 95% 10%,rgba(233,204,140,.25),transparent 60%),var(--l-blush)}
+.hair{background:radial-gradient(45% 60% at 85% 40%,rgba(205,181,238,.45),transparent 62%),var(--l-lav)}
+.ed-reasons{background:var(--l-cream);border-top:0}
+.finder{overflow:hidden;background:radial-gradient(50% 60% at 90% 40%,rgba(246,211,221,.85),transparent 62%),radial-gradient(40% 50% at 5% 90%,rgba(233,204,140,.22),transparent 60%),var(--l-blush)}
+#ritual{background:radial-gradient(60% 50% at 50% 0%,rgba(205,181,238,.4),transparent 65%),var(--l-lav)}
+.story{background:var(--l-cream)}
+#reviews{background:radial-gradient(50% 60% at 0% 50%,rgba(246,211,221,.7),transparent 60%),var(--l-blush)}
+#order{overflow:hidden;background:radial-gradient(50% 60% at 100% 0%,rgba(205,181,238,.5),transparent 60%),radial-gradient(40% 50% at 0% 100%,rgba(233,204,140,.25),transparent 60%),var(--l-lav)!important}
+/* soft curved top on alternating sections */
+.ed-mosaic-sec,.reels,.spotlight,.hair,.finder,#ritual,#reviews,#order{border-radius:48px 48px 0 0;margin-top:-34px;padding-top:120px}
+.ed-mosaic-sec{z-index:1}.reels{z-index:2}.spotlight{z-index:3}.hair{z-index:4}.ed-reasons{z-index:5;border-radius:48px 48px 0 0;margin-top:-34px;padding-top:120px}
+.finder{z-index:6}#ritual{z-index:7}.story{z-index:8;border-radius:48px 48px 0 0;margin-top:-34px;padding-top:120px}#reviews{z-index:9}#order{z-index:10}
+.ed-band{z-index:11;margin-top:-34px;border-radius:48px 48px 0 0}
+.ft{z-index:12;margin-top:-34px;border-radius:48px 48px 0 0}
+
+/* ---------- Floating cute products (decor) ---------- */
+.deco{position:absolute;z-index:0;pointer-events:none;opacity:.9;filter:drop-shadow(0 20px 24px rgba(110,60,95,.18));animation:decoFloat 9s ease-in-out infinite}
+.deco.dz1{width:150px;left:3%;top:120px;rotate:-12deg}
+.deco.dz2{width:64px;right:6%;bottom:80px;rotate:14deg;animation-delay:-3s}
+.deco.dz3{width:70px;left:4%;top:140px;rotate:-10deg;animation-delay:-5s}
+.deco.dz4{width:150px;right:3%;bottom:70px;rotate:10deg;animation-delay:-2s}
+.deco.dz5{width:120px;right:4%;top:110px;rotate:12deg;opacity:.75}
+.deco.dz6{width:56px;left:5%;top:220px;rotate:-14deg;opacity:.75;animation-delay:-4s}
+@keyframes decoFloat{50%{translate:0 -16px}}
+.finder .wrap,#order .wrap,#kits .wrap{position:relative;z-index:1}
+
+/* ---------- Gradient-hairline glass cards ---------- */
+.kit,.review,.faq,.order,.offer,.result,.m-text,.ed-note,.ft-club,.ft-promo,.lux-card,.shade-card,.guide-row,.pdp-skin,.pdp-star{
+  border:1px solid transparent!important;
+  background:linear-gradient(var(--card-bg,#fff),var(--card-bg,#fff)) padding-box,var(--l-ring) border-box!important;
+  box-shadow:var(--l-shadow)!important}
+.m-text,.ed-note{--card-bg:#fbf8ff}
+.offer{--card-bg:#fffaf6}
+
+/* ---------- Product cards ---------- */
+.kits{gap:24px}
+.kit{border-radius:32px;padding:16px 16px 20px;transition:transform .5s var(--ease),box-shadow .5s}
+.kit:hover{box-shadow:var(--l-shadow-lg)!important}
+.kit .tag{position:absolute;z-index:3;top:28px;left:28px}
+.kit .sale-tag{top:60px;left:28px;z-index:3}
+.kit .wish{top:26px;right:26px;z-index:3}
+.kit-stage{width:100%!important;margin:0 0 18px!important;height:250px!important;border-radius:24px;overflow:hidden;
+  background:radial-gradient(circle at 50% 62%,var(--blob,#fbe3ea) 0 46%,transparent 47%),linear-gradient(165deg,#fff8fa,#f6effc)}
+.kit:nth-child(1) .kit-stage{--blob:#f9d2dd}
+.kit:nth-child(2) .kit-stage{--blob:#e9dcf8}
+.kit:nth-child(3) .kit-stage{--blob:#fde3cf}
+.kit:nth-child(4) .kit-stage{--blob:#e6dcf7}
+.kit-stage::after{display:none}
+.kit-stage>svg,.kit-stage>img{animation:prodFloat 6s ease-in-out infinite}
+.kit:nth-child(2) .kit-stage>*{animation-delay:-1.5s}.kit:nth-child(3) .kit-stage>*{animation-delay:-3s}.kit:nth-child(4) .kit-stage>*{animation-delay:-4.5s}
+@keyframes prodFloat{50%{translate:0 -8px}}
+.kit-stage svg{height:92%!important}
+.kit-stage .prod-photo.clean{height:225px}
+.kit h3{font-family:"Bodoni Moda",var(--serif);font-size:1.35rem;font-weight:500;line-height:1.15;padding:0 6px;margin-bottom:12px}
+.kit-shades,.kit-list,.kit-note,.kit-foot{padding-inline:6px}
+.kit-foot{border-top:1px solid rgba(169,128,60,.18)}
+.kit-foot .price{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+.kit .kit-list li{font-size:.84rem}
+
+/* ---------- Glow Finder ---------- */
+.concern{border-radius:22px!important;padding:16px 18px!important;background:rgba(255,255,255,.7)!important;box-shadow:inset 0 0 0 1px rgba(169,128,60,.18)!important}
+.concern .ci{width:48px;height:48px;border-radius:16px;background:linear-gradient(140deg,#fff,#f3e8fb)!important;box-shadow:inset 0 0 0 1px rgba(125,95,174,.18);color:#8d68c0}
+.concern .ci svg{width:22px;height:22px}
+.concern.on{background:#fff!important;box-shadow:0 0 0 2px #d9b46a,0 20px 40px -26px rgba(110,60,95,.6)!important}
+.concern.on .ci{background:var(--l-gold)!important;color:#fff}
+.concern b{font-family:"Bodoni Moda",var(--serif);font-weight:500;font-size:1.1rem}
+.result{border-radius:36px}
+.result h3{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+
+/* ---------- Ritual ---------- */
+.ritual-track{gap:20px}
+.ritual-line{top:118px}
+.step{padding:22px 18px 26px;border-radius:30px;background:rgba(255,255,255,.72);box-shadow:inset 0 0 0 1px rgba(169,128,60,.16),var(--l-shadow)}
+.step-orb{width:170px;height:170px;background:radial-gradient(circle at 50% 55%,#fff 0 40%,#f6eefb 70%,#efe3f8)!important;box-shadow:inset 0 0 0 1px rgba(125,95,174,.18)!important}
+.step:nth-child(3) .step-orb{background:radial-gradient(circle at 50% 55%,#fff 0 40%,#fdf0e6 70%,#fbe1cf)!important}
+.step:nth-child(4) .step-orb{background:radial-gradient(circle at 50% 55%,#fff 0 40%,#fcebf0 70%,#f8d6e0)!important}
+.step-orb .step-art{width:112px!important;height:auto!important;animation:prodFloat 6s ease-in-out infinite}
+.step-orb .step-art.tall{width:auto!important;height:128px!important}
+.step-orb .drip{position:absolute;width:10px;height:14px;left:50%;top:60%;opacity:0;animation:drip 2.8s ease-in infinite}
+@keyframes drip{0%,30%{opacity:0;translate:-50% -10px}40%{opacity:1}80%{opacity:1;translate:-50% 44px}100%{opacity:0;translate:-50% 50px}}
+.step h4{font-family:"Bodoni Moda",var(--serif);font-weight:500;font-size:1.45rem;margin-top:4px}
+.step p{color:#7a6672}
+.step-num{background:var(--l-gold)!important;color:#fff!important;box-shadow:0 0 0 4px #fff!important}
+
+/* ---------- Story ---------- */
+.story-img{border-radius:999px 999px 40px 40px!important}
+.stats b{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+
+/* ---------- Reviews ---------- */
+.review{border-radius:30px;padding:30px 28px}
+.review::before{content:"“";font-family:"Bodoni Moda",serif;color:transparent;background:var(--l-gold);-webkit-background-clip:text;background-clip:text;font-size:6rem;top:-4px;right:22px}
+.review p{font-family:"Bodoni Moda",var(--serif);font-style:italic;font-size:1.18rem;font-weight:400}
+.who i{background:var(--l-gold);color:#fff;box-shadow:0 0 0 3px #fff,0 0 0 4px #e9cc8c}
+
+/* ---------- Offer / FAQ / Order ---------- */
+.trio{gap:22px}
+.panel{border-radius:32px}
+.offer .pct{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+.faq h3,.order h3{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+.order{--card-bg:#fff}
+
+/* ---------- Buttons ---------- */
+.btn{border-radius:999px;letter-spacing:.05em}
+.btn-ghost{border:1px solid transparent!important;background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)) padding-box,var(--l-ring) border-box!important;color:var(--ink)}
+.btn-ghost:hover{background:linear-gradient(#fff,#fff) padding-box,var(--l-ring) border-box!important}
+.btn-lav{background:linear-gradient(#f6f1fd,#f6f1fd) padding-box,var(--l-ring) border-box!important;border:1px solid transparent}
+
+/* ---------- Spotlight / hair / reasons polish ---------- */
+.pk-product img,.hair-visual img,.ed-reasons-img{box-shadow:var(--l-shadow-lg),0 0 0 6px #fff,0 0 0 7px rgba(217,180,106,.45)!important}
+.hair-feats li{background:rgba(255,255,255,.8);box-shadow:inset 0 0 0 1px rgba(125,95,174,.16)}
+.ed-six b{background:var(--l-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-family:"Bodoni Moda",serif}
+.ed-six strong{font-family:"Bodoni Moda",var(--serif);font-weight:500}
+.ed-big{font-family:"Bodoni Moda",var(--serif);font-weight:400;letter-spacing:-.02em}
+.ed-big em{font-family:"Great Vibes",cursive;font-style:normal;font-size:1.3em;color:transparent;background:var(--l-gold);-webkit-background-clip:text;background-clip:text}
+
+/* ---------- Product page ---------- */
+.pdp-title{font-family:"Bodoni Moda",var(--serif)!important;font-weight:500}
+.pdp-title .script{font-family:"Great Vibes",cursive!important;background:var(--l-gold)!important;-webkit-background-clip:text!important;background-clip:text!important}
+
+@media (max-width:900px){
+  .ed-mosaic-sec,.reels,.spotlight,.hair,.finder,#ritual,#reviews,#order,.ed-reasons,.story{border-radius:32px 32px 0 0;margin-top:-24px;padding-top:84px}
+  .ed-band,.ft{border-radius:32px 32px 0 0;margin-top:-24px}
+  .deco.dz1,.deco.dz4{width:96px}.deco.dz5{width:84px}
+  .deco.dz2,.deco.dz3,.deco.dz6{width:44px}
+}
+@media (max-width:640px){
+  .deco{opacity:.55}
+  .deco.dz1{top:40px;left:-20px}.deco.dz5{top:40px;right:-14px}.deco.dz4{right:-20px}
+  .kit-stage{height:230px!important}
+  .step-orb{width:120px;height:120px}
+  .step-orb .step-art{width:80px!important}
+  .step-orb .step-art.tall{height:92px!important}
+  .step{padding:16px 10px 18px}
+  .ritual-line{display:none}
+}
+@media (prefers-reduced-motion:reduce){.deco,.kit-stage>*,.step-art,.drip,.h2 .script{animation:none!important}}
+/* deeper gold for script accents on light backgrounds */
+.h2 .script,.ivory .h2 .script,.reels-head .h2 .script,.hair-copy .h2 .script,.pk-copy .h2 .script,.ed-big em{
+  background:linear-gradient(100deg,#8a5d1f 0%,#c08a35 30%,#e2b663 50%,#b07a2c 70%,#7d5418 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.6))}
+
+.deco.dz1{top:auto;bottom:40px;left:1%;width:120px}
+@media (max-width:640px){.deco.dz1{bottom:10px;left:-24px;width:84px}}
+
+.step-num{color:#3b2a35!important;font-family:"Bodoni Moda",serif;font-weight:600;text-shadow:0 1px 0 rgba(255,255,255,.6)}

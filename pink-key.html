@@ -9,12 +9,13 @@
 <link rel="icon" href="assets/emblem-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@1,6..96,600;1,6..96,700&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261120">
-<link rel="stylesheet" href="footer.css?v=20261120">
-<link rel="stylesheet" href="product.css?v=20261120">
-<link rel="stylesheet" href="theme.css?v=20261120">
-<link rel="stylesheet" href="hero.css?v=20261120">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500;1,6..96,600;1,6..96,700&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261122">
+<link rel="stylesheet" href="footer.css?v=20261122">
+<link rel="stylesheet" href="product.css?v=20261122">
+<link rel="stylesheet" href="theme.css?v=20261122">
+<link rel="stylesheet" href="hero.css?v=20261122">
+<link rel="stylesheet" href="luxe.css?v=20261122">
 </head>
 <body>
 
@@ -34,6 +35,47 @@
       <stop offset="0" stop-color="#c9668a"/><stop offset=".4" stop-color="#f7c3d4"/><stop offset="1" stop-color="#d9789c"/>
     </linearGradient>
   </defs>
+
+
+  <!-- Cute cosmetic jar (glass colour via --glass on the <use>) -->
+  <linearGradient id="shineL" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".75"/><stop offset=".35" stop-color="#fff" stop-opacity=".08"/><stop offset=".8" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".3"/></linearGradient>
+  <radialGradient id="domeG" cx=".35" cy=".25" r=".9"><stop offset="0" stop-color="#fff6dc"/><stop offset=".35" stop-color="#f1d593"/><stop offset=".75" stop-color="#c99a48"/><stop offset="1" stop-color="#a77c35"/></radialGradient>
+  <symbol id="cjar" viewBox="0 0 140 120">
+    <ellipse cx="70" cy="114" rx="56" ry="5" fill="#6e4660" opacity=".12"/>
+    <rect x="10" y="46" width="120" height="66" rx="28" style="fill:var(--glass,#f7c9d6)"/>
+    <rect x="18" y="58" width="104" height="46" rx="22" style="fill:var(--cream-in,#fff)" opacity=".38"/>
+    <rect x="10" y="46" width="120" height="66" rx="28" fill="url(#shineL)"/>
+    <path d="M22 64 Q17 80 23 98" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+    <rect x="24" y="42" width="92" height="8" rx="3" fill="#ead8c4"/>
+    <path d="M16 34 Q16 6 70 6 Q124 6 124 34 V40 Q124 45 119 45 H21 Q16 45 16 40 Z" fill="url(#domeG)"/>
+    <path d="M16 34 H124 V40 Q124 45 119 45 H21 Q16 45 16 40 Z" fill="#a77c35" opacity=".35"/>
+    <g stroke="#fff3d6" stroke-width="1.2" opacity=".55"><path d="M30 35v9M42 35v9M54 35v9M66 35v9M78 35v9M90 35v9M102 35v9M114 35v9"/></g>
+    <ellipse cx="50" cy="16" rx="18" ry="4.5" fill="#fff" opacity=".6"/>
+    <rect x="40" y="66" width="60" height="30" rx="15" fill="#fffaf5"/>
+    <text x="70" y="82" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="600" font-size="12.5" fill="#a77c35">AnzGlow</text>
+    <text x="70" y="90.5" text-anchor="middle" font-family="Jost" font-size="4.4" letter-spacing="1.6" fill="#a9879a">GLOW CREAM</text>
+    <path d="M112 58l1.6 3.6 3.6 1.6-3.6 1.6-1.6 3.6-1.6-3.6-3.6-1.6 3.6-1.6z" fill="#fff"/>
+  </symbol>
+
+  <!-- Cute dropper bottle (--glass, --liquid, --bulb on the <use>) -->
+  <symbol id="cdrop" viewBox="0 0 70 196">
+    <ellipse cx="35" cy="191" rx="28" ry="4" fill="#6e4660" opacity=".12"/>
+    <path d="M23 42 V19 Q23 3 35 3 Q47 3 47 19 V42 Z" style="fill:var(--bulb,#e48aa9)"/>
+    <path d="M28 12 Q29 6 34 5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
+    <rect x="16" y="40" width="38" height="28" rx="5" fill="url(#domeG)"/>
+    <g stroke="#fff3d6" stroke-width="1" opacity=".55"><path d="M22 42v24M28 42v24M34 42v24M40 42v24M46 42v24"/></g>
+    <rect x="8" y="64" width="54" height="124" rx="20" style="fill:var(--glass,#efe3fb)" opacity=".92"/>
+    <rect x="12" y="112" width="46" height="72" rx="16" style="fill:var(--liquid,#f3cf7a)" opacity=".85"/>
+    <rect x="31" y="64" width="8" height="96" rx="4" fill="#fff" opacity=".5"/>
+    <rect x="8" y="64" width="54" height="124" rx="20" fill="url(#shineL)"/>
+    <path d="M15 82 Q12 110 15 150" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <rect x="15" y="124" width="40" height="34" rx="10" fill="#fffaf5" opacity=".95"/>
+    <text x="35" y="140" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="600" font-size="9.5" fill="#a77c35">AnzGlow</text>
+    <text x="35" y="148" text-anchor="middle" font-family="Jost" font-size="3.6" letter-spacing="1.2" fill="#a9879a">GLOW DROPS</text>
+  </symbol>
+
+  <!-- falling drop -->
+  <symbol id="cdrip" viewBox="0 0 20 28"><path d="M10 1 C10 1 2 12 2 18 a8 8 0 0 0 16 0 C18 12 10 1 10 1z" fill="#f3cf7a"/><ellipse cx="7" cy="17" rx="2" ry="3" fill="#fff" opacity=".7"/></symbol>
 
   <symbol id="tube" viewBox="0 0 80 200">
     <rect x="6" y="0" width="68" height="12" rx="2" fill="url(#cream)"/>
@@ -100,8 +142,6 @@
   <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4A8 8 0 1 1 8.3 19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.5-2-1.5-2.5-2.5l.8-1-1-2z" fill="currentColor"/></symbol>
 </svg>
-
-</div>
 
 <!-- ============ Header ============ -->
 <header class="header" id="header">
@@ -474,8 +514,8 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261120"></script>
-<script src="common.js?v=20261120"></script>
-<script src="product.js?v=20261120"></script>
+<script src="shades.js?v=20261122"></script>
+<script src="common.js?v=20261122"></script>
+<script src="product.js?v=20261122"></script>
 </body>
 </html>
