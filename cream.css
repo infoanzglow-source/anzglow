@@ -1,0 +1,136 @@
+/* ==========================================================
+   AnzGlow — "Cream & Gold" boutique palette (loaded LAST)
+   Ivory backgrounds, gold rings & hairlines, deep maroon labels.
+   No pink / lavender.
+   ========================================================== */
+:root{
+  --ivory-1:#faf7f1;   /* main background */
+  --ivory-2:#f4eee4;   /* alternate band */
+  --ivory-3:#efe6d6;   /* deeper cream */
+  --gold-a:#b8903f; --gold-b:#d9b46a; --gold-c:#f1dca6;
+  --maroon:#5c1a1f; --maroon-2:#7a2a2f;
+  --ink:#2f2622; --body:#6a5d52; --muted:#9a8c7e;
+  /* re-point the old pastel tokens to cream/gold so every component follows */
+  --cream:#faf7f1; --cream-2:#f4eee4; --l-cream:#faf7f1; --l-blush:#f4eee4; --l-lav:#f4eee4; --l-peach:#f4eee4;
+  --blush:#f4eee4; --blush-2:#ead9bd; --lav:#f3ecdf; --lav-2:#e7d9bf; --lav-3:#cfae6c; --lav-deep:#8a6420;
+  --rose:#b8903f; --rose-2:#8a6420; --rose-deep:#5c1a1f;
+  --line:rgba(184,144,63,.28); --line-rose:rgba(184,144,63,.28); --line-lav:rgba(184,144,63,.28);
+  --l-ring:linear-gradient(135deg,#f1dca6,#c9a052 45%,#f1dca6 70%,#b8903f);
+  --lav-grad:linear-gradient(110deg,#f7f1e6,#f1e8d8);
+  --shadow:0 26px 50px -34px rgba(90,66,30,.4);
+  --l-shadow:0 26px 50px -34px rgba(90,66,30,.4);
+  --l-shadow-lg:0 40px 80px -40px rgba(90,66,30,.5);
+}
+html,body{background:var(--ivory-1)!important;color:var(--ink)}
+::selection{background:#ead9bd;color:var(--ink)}
+
+/* ---------- every section: flat ivory bands, no pastel glows, no curved sheets ---------- */
+#kits,.kbeauty,.reels,.hair,.finder,#ritual,.story,#reviews,#order,.ed-statement,.offers,.ft,.ed-band{
+  border-radius:0!important;margin-top:0!important}
+#kits,.kbeauty,.hair,#ritual,#reviews,.ed-statement{background:var(--ivory-1)!important}
+.reels,.finder,.story,#order,.offers{background:var(--ivory-2)!important}
+.ed-hero::before{background:linear-gradient(180deg,#faf7f1,#f6f0e6)!important}
+.reels,.hair,.finder,#ritual,.story,#reviews,#order{padding-top:110px!important}
+#kits{padding-top:100px!important}.kbeauty{padding-top:70px!important}
+
+/* gold hairline + diamond ornament at the top of each band */
+#kits,.kbeauty,.reels,.hair,.finder,#ritual,.story,#reviews,#order{position:relative}
+#kits::after,.kbeauty::after,.reels::after,.hair::after,.finder::after,#ritual::after,.story::after,#reviews::after,#order::after{
+  content:"";position:absolute;top:0;left:50%;translate:-50% 0;width:min(560px,70%);height:22px;pointer-events:none;z-index:2;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23b8903f'/%3E%3Cstop offset='.5' stop-color='%23f1dca6'/%3E%3Cstop offset='1' stop-color='%23b8903f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M6 2h12l5 6-11 12L1 8z' fill='%23fffaf0' stroke='url(%23g)' stroke-width='1.6'/%3E%3Cpath d='M1 8h22M9 2 7 8l5 12 5-12-2-6' fill='none' stroke='url(%23g)' stroke-width='1'/%3E%3C/svg%3E") center/24px 22px no-repeat,
+    linear-gradient(90deg,transparent,rgba(184,144,63,.55) 30%,rgba(184,144,63,.55) 45%,transparent 46% 54%,rgba(184,144,63,.55) 55%,rgba(184,144,63,.55) 70%,transparent) center/100% 1px no-repeat}
+
+/* ---------- headings & text ---------- */
+.eyebrow,.ivory .eyebrow{color:var(--gold-a)!important}
+.h2{color:var(--ink)}
+.h2 .script,.ivory .h2 .script,.reels-head .h2 .script,.hair-copy .h2 .script,.ed-big em,.co-head .h2 .script{color:#8a6420!important}
+.lead{color:var(--body)}
+
+/* ---------- labels & chips: maroon with gold text (like the reference) ---------- */
+.tag,.tag.rose,.tag.gold,.kit .tag{background:var(--maroon)!important;color:#f1dca6!important;box-shadow:none!important;letter-spacing:.16em}
+.sale-tag,.kb-save,.kb-card .kb-save{background:#fff!important;color:var(--maroon)!important;box-shadow:0 0 0 1px rgba(92,26,31,.35)!important}
+.badge,.tools .badge{background:var(--maroon)!important;color:#f1dca6!important}
+.pdp-price .save,.sale-pill{background:var(--maroon)!important;color:#f1dca6!important}
+
+/* ---------- product jars: gold rim on cream, no coloured blobs ---------- */
+.kit-stage,.kb-card .kit-stage,.kit:nth-child(n) .kit-stage,.kb-card[data-cat] .kit-stage{--blob:#f1e7d3!important}
+.v-jar .kit-stage{background:
+    radial-gradient(ellipse 60% 52% at 50% 60%,#f3ead8 0 70%,transparent 71%) padding-box,
+    linear-gradient(170deg,#fffdf8,#f8f2e7 70%,#f1e8d8) padding-box,
+    linear-gradient(140deg,#f1dca6,#b8903f 30%,#f6e6bd 55%,#a37a2f 80%,#e8cf8e) border-box!important}
+.kit-name:hover{color:#8a6420!important}
+.kb-brand{color:var(--gold-a)!important}
+.kb-filters button{background:#fffdf8!important;color:var(--body)!important}
+.kb-filters button.on{background:var(--maroon)!important;color:#f1dca6!important;box-shadow:none!important}
+.wish,.kit.featured .wish{background:#fffdf8!important;color:var(--maroon)!important;box-shadow:0 0 0 1px rgba(184,144,63,.4)!important}
+.wish.on{background:var(--maroon)!important;color:#f1dca6!important}
+.v-peek{color:var(--maroon)!important}
+
+/* ---------- header / nav ---------- */
+.header{background:rgba(250,247,241,.94)!important}
+.header::after{background:linear-gradient(90deg,transparent,rgba(184,144,63,.15) 10%,#d9b46a 50%,rgba(184,144,63,.15) 90%,transparent)!important}
+.header::before{background:radial-gradient(50% 100% at 50% 0%,rgba(217,180,106,.25),transparent 70%)!important}
+.brand::before{background:radial-gradient(circle,rgba(243,217,153,.6),rgba(241,220,166,.25) 45%,transparent 70%)!important}
+.nav{background:#fffdf8!important}
+.nav a:hover{color:#8a6420!important}
+.mega-card em,.ed-pick em{color:#1b8a32}
+.mega-offer b{color:var(--maroon)!important}
+
+/* ---------- hero side + note cards ---------- */
+.ed-show,.ed-show.hr{background:linear-gradient(170deg,#fffdf8,#f4ecdd)!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.35),var(--l-shadow)!important}
+.ed-show .ed-blob,.ed-show.hr .ed-blob{background:radial-gradient(circle at 40% 35%,#fff 0 18%,#f1e3c6 60%,#e6d0a3)!important;box-shadow:0 0 60px rgba(217,180,106,.45)!important}
+.ed-note,.m-text{--card-bg:#fffdf8;background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.ed-pill.cute,.ed-pill.cute.wide,.ed-pill.cute.p3,.ed-pill.cute.p4{background:linear-gradient(135deg,#fbf5ea,#f1e6d1)!important}
+
+/* ---------- other sections ---------- */
+.offer-card{background:#fffdf8!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.3),var(--shadow)!important}
+.offer-card em{color:var(--maroon)!important}
+.reel{box-shadow:0 40px 80px -36px rgba(90,66,30,.55),0 0 0 6px #fffdf8,0 0 0 7px rgba(184,144,63,.45)!important}
+.reel-top b{background:conic-gradient(#f1dca6,#d9b46a,#b8903f,#f1dca6)!important}
+.reel-index button{background:#fffdf8!important}
+.hair-feats li{background:#fffdf8!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.25)!important}
+.hair-feats svg,.p-item svg,.benefit i{color:#8a6420!important}
+.hair-badge b{color:var(--maroon)!important}
+.concern{background:#fffdf8!important}
+.concern .ci{background:linear-gradient(140deg,#fff,#f3ead8)!important;color:#8a6420!important}
+.result::before{background:radial-gradient(rgba(241,220,166,.6),transparent 65%)!important}
+.step{background:#fffdf8!important}
+.step-orb,.step:nth-child(n) .step-orb{background:radial-gradient(circle at 50% 55%,#fff 0 40%,#f6efe2 70%,#ecdfc6)!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.3)!important}
+.ritual-sign{color:#8a6420!important}
+.story-img{background:radial-gradient(circle at 50% 45%,#fff 0%,#f6efe2 55%,#ead9bd 100%)!important}
+.who i{color:#fff}
+.offer{--card-bg:#fffdf8;background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.timer b{color:var(--maroon)!important}
+.qa.open button i{background:var(--maroon)!important;color:#f1dca6!important}
+.field input,.field select{background:#fffdf8!important}
+
+/* ---------- footer ---------- */
+.ft{background:linear-gradient(180deg,#f4eee4,#efe6d6)!important;border-top:1px solid rgba(184,144,63,.35)!important}
+.ft-promo{background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.ft-club{background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.ft-main{background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.ft-trust li{background:#fffdf8!important}
+.ft-trust i{background:#f6efe2!important}
+.ft-link,.ft-col .ft-more{color:#8a6420!important}
+.ft-bottom{border-top-color:rgba(184,144,63,.35)!important}
+
+/* ---------- bag drawer, menus, pop-ups, checkout ---------- */
+.drawer,.mnav-panel{background:linear-gradient(180deg,#faf7f1,#f4eee4)!important}
+.cart-added{background:linear-gradient(110deg,#eef6ef,#faf5ea)!important}
+.mnav-offer{background:#fffdf8!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.3)!important}
+.mnav-offer b,.mnav-offer svg{color:var(--maroon)!important}
+.mnav-links svg{color:#8a6420!important}
+.mnav .mnav-mail{background:#f6efe2!important;color:#8a6420!important}
+.modal-card{background:#faf7f1!important}
+.qv-media{background:linear-gradient(160deg,#fffdf8,#f3ead8)!important}
+.qv-main{background:radial-gradient(circle at 50% 45%,#fff 45%,#f4ecdd)!important}
+.e-mail,.enq .e-mail,.enq-row .e-mail{background:#f6efe2!important;color:#8a6420!important;box-shadow:inset 0 0 0 1px rgba(184,144,63,.3)!important}
+.btn-lav,.btn-ghost{background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--l-ring) border-box!important}
+.co{background:var(--ivory-1)!important}
+.co-invoice{background:#fffdf8!important}
+.co-steps li.on i{background:var(--maroon)!important;color:#f1dca6!important}
+
+@media (max-width:900px){
+  .reels,.hair,.finder,#ritual,.story,#reviews,#order{padding-top:84px!important}
+}
