@@ -1,4 +1,4 @@
-/* AnzGlow — show every product inside a cute bottle (single items) or gift box (kits & sets).
+/* AnzGlow — show every product inside a cute cream jar with a gold dome lid and a diamond on top.
    Tap the lid/cap: it pops up with a sparkle burst and a "View details" bubble appears. */
 (() => {
   const GIFT_IDS = new Set(["tan", "glow"]);
@@ -25,13 +25,13 @@
       const stage = card.querySelector(".kit-stage"); if (!stage) return;
       const gift = isGift(card);
       const v = document.createElement("div");
-      v.className = "vessel " + (gift ? "v-gift" : "v-bottle");
+      v.className = "vessel v-jar" + (gift ? " is-set" : "");
       stage.parentNode.insertBefore(v, stage);
       const lid = document.createElement("button");
       lid.type = "button"; lid.className = "lid";
       lid.setAttribute("aria-expanded", "false");
-      lid.setAttribute("aria-label", gift ? "Open the gift box" : "Open the bottle");
-      lid.innerHTML = gift ? `<span class="lid-box"></span>${BOW}` : `<span class="lid-neck"></span>${GEM}`;
+      lid.setAttribute("aria-label", "Open the jar");
+      lid.innerHTML = `<span class="lid-dome"></span>${GEM}`;
       v.append(lid, stage);
       const burst = document.createElement("span"); burst.className = "v-burst"; burst.setAttribute("aria-hidden", "true"); burst.innerHTML = BURST;
       const peek = document.createElement("button"); peek.type = "button"; peek.className = "v-peek";
