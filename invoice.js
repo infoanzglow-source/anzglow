@@ -104,8 +104,8 @@
   }
 
   // Server-side price list — never trust prices sent from the browser.
-  const PRICES = { pinkkey: 10, shampoo: 30, tan: 149, glow: 199 };
-  const NAMES = { pinkkey: "Pink Key Liquid Lipstick", shampoo: "Mamaearth Rosemary Anti-Hair Fall Shampoo 250 ml", tan: "Tan Removal Combo Kit", glow: "Complete Glow Beauty Kit" };
+  const PRICES = { shampoo: 30, tan: 149, glow: 199 };
+  const NAMES = { shampoo: "Mamaearth Rosemary Anti-Hair Fall Shampoo 250 ml", tan: "Tan Removal Combo Kit", glow: "Complete Glow Beauty Kit" };
   const SHADES = { "01": "Nude Pink", "02": "Rose Pink", "03": "Baby Pink", "04": "Peach Nude", "05": "Caramel Pink", "06": "Mauve Pink",
     "07": "Pink Berry", "08": "Cherry Pink", "09": "Brown Nude", "10": "Chocolate", "11": "Deep Rose", "12": "Classic Red" };
   const DELIVERY = 10;

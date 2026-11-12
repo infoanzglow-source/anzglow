@@ -374,3 +374,6 @@ body.modal-open .charms,body.cart-open .charms,body.menu-open .charms{opacity:0;
 .ed-pill.cute b.big{position:static;font-size:.55em}
 .ed-pill.cute .dots{display:flex;gap:.08em}
 .ed-pill.cute .dots i{width:.32em;height:.32em;border-radius:50%;box-shadow:0 0 0 2px #fff}
+
+/* hero side tile: illustrated Glow Kit */
+.ed-show .ed-art{position:absolute;left:50%;top:8%;height:68%;width:auto;max-width:92%;translate:-50% 0;filter:drop-shadow(0 18px 18px rgba(110,60,95,.25));animation:prodFloat 6s ease-in-out infinite}

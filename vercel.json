@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/pink-key.html", "destination": "/#kits", "permanent": false },
+    { "source": "/pink-key", "destination": "/#kits", "permanent": false }
+  ]
+}

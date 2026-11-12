@@ -13,11 +13,6 @@
   // Skincare kit prices and every `was` price are placeholders — confirm before launch.
   const KITS = [
     {
-      id: PK.id, tag: "New · 12 shades", tagClass: "rose", name: PK.name,
-      items: ["12 ultra-matte shades", "Hero shade: 09 light-brown matte", "Suits every skin tone"], note: "Natural beauty, lasting confidence",
-      price: PK.price, was: PK.was, img: "assets/pinkkey/pk-product.jpg", clean: true, page: "pink-key.html"
-    },
-    {
       id: "shampoo", tag: "Hair care", tagClass: "", featured: true,
       name: "Mamaearth Rosemary Anti-Hair Fall Shampoo", short: "Rosemary Anti-Hair Fall Shampoo",
       items: ["With rosemary & methi dana · 250 ml", "94% natural ingredients", "Sulfate free · Paraben free"], note: "Stronger hair. Healthier you.",
@@ -166,7 +161,7 @@
   });
   const POLICIES = {
     delivery: ["Delivery", `<p><b>AED 10 flat delivery</b> to all seven emirates — Dubai, Abu Dhabi, Sharjah, Ajman, Ras Al Khaimah, Fujairah and Umm Al Quwain.</p><p>Orders are usually delivered within <b>1–2 working days</b>. We call or WhatsApp you to confirm before dispatch.</p><p><b>Payment:</b> cash on delivery — pay when your order arrives.</p>`],
-    returns: ["Returns", `<p>Unopened, unused products can be returned within <b>7 days</b> of delivery. For hygiene reasons, opened cosmetics (including lipsticks) can't be returned unless they arrived damaged.</p><p>If anything arrives damaged or wrong, message us within 48 hours with a photo and we'll replace it.</p>`],
+    returns: ["Returns", `<p>Unopened, unused products can be returned within <b>7 days</b> of delivery. For hygiene reasons, opened cosmetics can't be returned unless they arrived damaged.</p><p>If anything arrives damaged or wrong, message us within 48 hours with a photo and we'll replace it.</p>`],
     privacy: ["Privacy policy", `<p>We only collect the details needed to deliver your order — your name, phone number and emirate/address — and use them only to confirm, deliver and support your order.</p><p>We never sell or share your details with third parties, apart from the courier who delivers your parcel. Ask us anytime to delete your details.</p>`]
   };
   document.addEventListener("click", e => {

@@ -30,7 +30,7 @@
   }).join("");
   $$("[data-wish]").forEach(x => x.classList.toggle("on", (window.AG.store.get("anz-wish", [])).includes(x.dataset.wish)));
 
-  // ---------- Pink Key spotlight: 12-shade strip ----------
+  // (lipstick shade strip removed)
   const strip = $("#pkStrip");
   if (strip) strip.innerHTML = PK.shades.map(s =>
     `<a href="pink-key.html?shade=${s.no}" title="${s.no} ${s.name}" class="${s.no === PK.heroShade ? "hero-shade" : ""}"><i style="background:${s.hex}"></i>${s.no}<br>${s.name}</a>`).join("");
@@ -55,7 +55,7 @@
     const id = en.target.classList.contains("hero") ? "top" : en.target.id;
     navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
   }), { rootMargin: "-45% 0px -50% 0px" });
-  ["kits", "pinkkey", "finder", "ritual", "story", "reviews", "order"].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
+  ["kits", "finder", "ritual", "story", "reviews", "order"].forEach(id => { const el = document.getElementById(id); if (el) spy.observe(el); });
   spy.observe($(".hero"));
 
   // ---------- Glow Finder ----------
@@ -107,11 +107,10 @@
   $("#qvPlus").onclick = () => { qvQty = Math.min(20, qvQty + 1); $("#qvQty").textContent = qvQty; };
   $("#qvAdd").onclick = () => { addToCart(qvKit.id, qvQty); closeModals(); };
 
-  // ---------- Order form (kits + every Pink Key shade) ----------
+  // ---------- Order form ----------
   const oKit = $("#oKit");
-  oKit.innerHTML = `<optgroup label="Hair &amp; skincare">${KITS.filter(k => k.id !== PK.id).map(k => `<option value="${k.id}">${k.name} — AED ${k.price}</option>`).join("")}</optgroup>
-    <optgroup label="Pink Key Liquid Lipstick — AED ${PK.price}">${PK.shades.map(s => `<option value="${PK.id}:${s.no}">Pink Key ${s.no} · ${s.name}</option>`).join("")}</optgroup>`;
-  const priceOf = v => (v.startsWith(PK.id) ? PK.price : KITS.find(k => k.id === v).price);
+  oKit.innerHTML = KITS.map(k => `<option value="${k.id}">${k.name} — AED ${k.price}</option>`).join("");
+  const priceOf = v => KITS.find(k => k.id === v).price;
   const formTotal = () => { const p = priceOf(oKit.value); $("#oTotal").textContent = `AED ${p} + AED ${DELIVERY_FEE} delivery = AED ${p + DELIVERY_FEE}`; };
   oKit.addEventListener("change", formTotal); formTotal();
   $("#orderForm").addEventListener("submit", e => {

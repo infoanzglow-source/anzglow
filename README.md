@@ -3,8 +3,7 @@
 AnzGlow by Anzix — premium beauty website (static HTML/CSS/JS, no build step).
 
 - `index.html` — home page (`app.js`)
-- `pink-key.html` — Pink Key Liquid Lipstick product page, 12 shades (`product.js`, `product.css`)
-- `shades.js` — the 12 shades + skin-tone guide (edit names/colours here)
+- `shades.js` — old lipstick shade data, no longer shown (kept so old saved carts are cleaned up safely)
 - `common.js` — shared bag, WhatsApp checkout, menu, policies
 - `styles.css` + `theme.css` — design (theme.css = soft charcoal colours)
 
