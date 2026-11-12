@@ -11,12 +11,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500;1,6..96,600;1,6..96,700&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261128">
-<link rel="stylesheet" href="footer.css?v=20261128">
-<link rel="stylesheet" href="theme.css?v=20261128">
-<link rel="stylesheet" href="hero.css?v=20261128">
-<link rel="stylesheet" href="luxe.css?v=20261128">
-<link rel="stylesheet" href="checkout.css?v=20261128">
+<link rel="stylesheet" href="styles.css?v=20261130">
+<link rel="stylesheet" href="footer.css?v=20261130">
+<link rel="stylesheet" href="theme.css?v=20261130">
+<link rel="stylesheet" href="hero.css?v=20261130">
+<link rel="stylesheet" href="luxe.css?v=20261130">
+<link rel="stylesheet" href="checkout.css?v=20261130">
 </head>
 <body>
 
@@ -73,6 +73,52 @@
     <rect x="15" y="124" width="40" height="34" rx="10" fill="#fffaf5" opacity=".95"/>
     <text x="35" y="140" text-anchor="middle" font-family="Cormorant Garamond" font-style="italic" font-weight="600" font-size="9.5" fill="#a77c35">AnzGlow</text>
     <text x="35" y="148" text-anchor="middle" font-family="Jost" font-size="3.6" letter-spacing="1.2" fill="#a9879a">GLOW DROPS</text>
+  </symbol>
+
+
+  <!-- Cute sunscreen tube (cap at the bottom) -->
+  <symbol id="ctube" viewBox="0 0 70 200">
+    <ellipse cx="35" cy="196" rx="26" ry="3.5" fill="#6e4660" opacity=".12"/>
+    <path d="M6 6 H64 V12 L58 150 H12 L6 12 Z" style="fill:var(--tube,#fbf6ee)"/>
+    <rect x="6" y="2" width="58" height="8" rx="2" style="fill:var(--tube,#fbf6ee)"/>
+    <g stroke="#000" stroke-opacity=".08"><path d="M8 4h54M8 7h54"/></g>
+    <path d="M6 6 H64 V12 L58 150 H12 L6 12 Z" fill="url(#shineL)"/>
+    <path d="M12 104 L58 104 L56 150 H14 Z" style="fill:var(--band,#cfe0f3)"/>
+    <path d="M16 20 Q13 70 16 140" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <rect x="12" y="148" width="46" height="46" rx="8" style="fill:var(--cap,#a9c6e8)"/>
+    <rect x="12" y="148" width="46" height="46" rx="8" fill="url(#shineL)"/>
+    <circle cx="35" cy="58" r="10" fill="none" stroke="#c8a96a" stroke-width="1"/>
+    <path d="M35 51 l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#c8a96a"/>
+    <text x="35" y="84" text-anchor="middle" font-family="Jost" font-size="6" letter-spacing="1.2" fill="#8a7a6a">SUN</text>
+    <text x="35" y="122" text-anchor="middle" font-family="Jost" font-weight="600" font-size="7" letter-spacing=".8" fill="#5b6b80">SPF 50+</text>
+  </symbol>
+
+  <symbol id="cjar-plain" viewBox="0 0 140 120">
+    <ellipse cx="70" cy="114" rx="56" ry="5" fill="#6e4660" opacity=".12"/>
+    <rect x="10" y="46" width="120" height="66" rx="28" style="fill:var(--glass,#f7c9d6)"/>
+    <rect x="18" y="58" width="104" height="46" rx="22" style="fill:var(--cream-in,#fff)" opacity=".38"/>
+    <rect x="10" y="46" width="120" height="66" rx="28" fill="url(#shineL)"/>
+    <path d="M22 64 Q17 80 23 98" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".75"/>
+    <rect x="24" y="42" width="92" height="8" rx="3" fill="#ead8c4"/>
+    <path d="M16 34 Q16 6 70 6 Q124 6 124 34 V40 Q124 45 119 45 H21 Q16 45 16 40 Z" fill="url(#domeG)"/>
+    <path d="M16 34 H124 V40 Q124 45 119 45 H21 Q16 45 16 40 Z" fill="#a77c35" opacity=".35"/>
+    <g stroke="#fff3d6" stroke-width="1.2" opacity=".55"><path d="M30 35v9M42 35v9M54 35v9M66 35v9M78 35v9M90 35v9M102 35v9M114 35v9"/></g>
+    <ellipse cx="50" cy="16" rx="18" ry="4.5" fill="#fff" opacity=".6"/>
+    <rect x="40" y="66" width="60" height="30" rx="15" fill="#fffaf5"/>
+    <path d="M112 58l1.6 3.6 3.6 1.6-3.6 1.6-1.6 3.6-1.6-3.6-3.6-1.6 3.6-1.6z" fill="#fff"/>
+  </symbol>
+  <symbol id="cdrop-plain" viewBox="0 0 70 196">
+    <ellipse cx="35" cy="191" rx="28" ry="4" fill="#6e4660" opacity=".12"/>
+    <path d="M23 42 V19 Q23 3 35 3 Q47 3 47 19 V42 Z" style="fill:var(--bulb,#e48aa9)"/>
+    <path d="M28 12 Q29 6 34 5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>
+    <rect x="16" y="40" width="38" height="28" rx="5" fill="url(#domeG)"/>
+    <g stroke="#fff3d6" stroke-width="1" opacity=".55"><path d="M22 42v24M28 42v24M34 42v24M40 42v24M46 42v24"/></g>
+    <rect x="8" y="64" width="54" height="124" rx="20" style="fill:var(--glass,#efe3fb)" opacity=".92"/>
+    <rect x="12" y="112" width="46" height="72" rx="16" style="fill:var(--liquid,#f3cf7a)" opacity=".85"/>
+    <rect x="31" y="64" width="8" height="96" rx="4" fill="#fff" opacity=".5"/>
+    <rect x="8" y="64" width="54" height="124" rx="20" fill="url(#shineL)"/>
+    <path d="M15 82 Q12 110 15 150" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+    <rect x="15" y="124" width="40" height="34" rx="10" fill="#fffaf5" opacity=".95"/>
   </symbol>
 
   <!-- falling drop -->
@@ -159,11 +205,12 @@
           <a class="mega-card" href="index.html#hair"><img src="assets/shampoo/ma-front.jpg" alt=""><span><small>Hair care</small><b>Rosemary Anti-Hair Fall Shampoo</b><em>AED 30</em></span></a>
           <div class="mega-col">
             <small>Shop by</small>
-            <a href="index.html#kits">All products</a><a href="index.html#hair">Hair care</a><a href="index.html#finder">Skincare finder</a>
+            <a href="index.html#kits">All products</a><a href="index.html#kbeauty">K-Beauty</a><a href="index.html#hair">Hair care</a><a href="index.html#finder">Skincare finder</a>
             <a class="mega-offer" href="index.html#kits"><b>Launch sale</b>Up to 23% off · cash on delivery</a>
           </div>
         </div>
       </li>
+      <li><a href="index.html#kbeauty">K-Beauty</a></li>
       <li><a href="index.html#hair">Hair Care</a></li>
       <li><a href="index.html#story">About</a></li>
       <li><a href="index.html#reviews">Reviews</a></li>
@@ -324,6 +371,7 @@
 
       <nav class="ft-col" aria-label="Shop">
         <h5>Shop</h5>
+        <a href="index.html#kbeauty">K-Beauty edit</a>
         <a href="index.html#hair">Rosemary Shampoo</a>
         <a href="index.html#kits">Tan Removal Kit</a>
         <a href="index.html#kits">Complete Glow Kit</a>
@@ -403,6 +451,7 @@
     <div class="mnav-links">
       <a href="index.html"><svg><use href="#i-spark"/></svg>Home</a>
       <a href="index.html#kits"><svg><use href="#i-bag"/></svg>Shop all</a>
+      <a href="index.html#kbeauty"><svg><use href="#i-spark"/></svg>K-Beauty</a>
       <a href="index.html#reels"><svg><use href="#i-spark"/></svg>Glow stories</a>
       <a href="index.html#hair"><svg><use href="#i-leaf"/></svg>Hair care</a>
       <a href="index.html#finder"><svg><use href="#i-sun"/></svg>Glow finder</a>
@@ -431,12 +480,12 @@
 <div class="toast" id="toast"><i>✓</i><span id="toastMsg"></span></div>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<script src="shades.js?v=20261128"></script>
-<script src="common.js?v=20261128"></script>
-<script src="charms.js?v=20261128"></script>
+<script src="shades.js?v=20261130"></script>
+<script src="common.js?v=20261130"></script>
+<script src="charms.js?v=20261130"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="invoice-logo.js?v=20261128"></script>
-<script src="invoice.js?v=20261128"></script>
-<script src="checkout.js?v=20261128"></script>
+<script src="invoice-logo.js?v=20261130"></script>
+<script src="invoice.js?v=20261130"></script>
+<script src="checkout.js?v=20261130"></script>
 </body>
 </html>
