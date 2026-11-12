@@ -427,3 +427,11 @@ body.modal-open .charms,body.cart-open .charms,body.menu-open .charms{opacity:0;
 @media (max-width:640px){.kb-card .kit-actions .btn{white-space:nowrap;font-size:.76rem;padding:10px 6px}.kb-card .enq a{width:36px;height:36px}}
 .kb-card .kb-save{background:linear-gradient(100deg,#1b8a32,#2fb34d)!important}
 @media (max-width:640px){.kb-card .kb-save{top:44px!important;left:18px!important;font-size:.56rem;padding:4px 8px}}
+
+/* ---------- Readable accent words in headings (replaces the thin script) ---------- */
+.h2 .script,.ivory .h2 .script,.reels-head .h2 .script,.hair-copy .h2 .script,.pk-copy .h2 .script,
+.ed-big em,.ft-promo b .script,.ft-club h3 .script,.co-head .h2 .script,.empty .script{
+  font-family:"Bodoni Moda",var(--serif)!important;font-style:italic!important;font-weight:500!important;
+  font-size:1em!important;line-height:inherit!important;letter-spacing:-.01em!important;padding:0 .04em!important;transform:none!important;
+  background:none!important;-webkit-text-fill-color:currentColor!important;color:#9b6a22!important;filter:none!important;animation:none!important}
+.ft-sign{font-family:"Bodoni Moda",serif!important;font-style:italic;font-size:1.15rem!important;-webkit-text-fill-color:currentColor!important;color:#9b6a22!important;background:none!important}
