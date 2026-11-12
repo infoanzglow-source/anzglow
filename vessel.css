@@ -129,3 +129,13 @@
 }
 
 .has-vessel .kit-name{text-align:center;width:100%}
+
+/* ---------- hover: lid tips up sideways with a soft bounce (mouse / trackpad only) ---------- */
+@media (hover:hover) and (pointer:fine){
+  .v-jar .lid{transition:translate .6s cubic-bezier(.34,1.56,.64,1),rotate .6s cubic-bezier(.34,1.56,.64,1)}
+  .kit.has-vessel:hover .v-jar .lid{translate:-38% -40px;rotate:-16deg}
+  .kit.has-vessel:hover .v-jar .kit-stage>svg,.kit.has-vessel:hover .v-jar .kit-stage>img{scale:1.06}
+  .kit.has-vessel:hover .v-peek{opacity:1;translate:-50% 0;pointer-events:auto}
+  .kit.has-vessel:hover .v-jar .lid svg{animation:gemWink 1.2s ease-in-out .2s}
+}
+@keyframes gemWink{50%{filter:drop-shadow(0 0 16px #fff) brightness(1.15)}}
