@@ -3,7 +3,7 @@
   const { $, $$, KITS, PK, artSvg, wa, mail, enquire, pct, priceHtml, DELIVERY_FEE, addToCart, toast, openModal, closeModals, observeReveals } = window.AG;
 
   // ---------- Collection cards ----------
-  $("#kitGrid").innerHTML = KITS.map((k, i) => {
+  $("#kitGrid").innerHTML = KITS.filter(k => !k.kb).map((k, i) => {
     const isPK = k.id === PK.id;
     const stage = isPK
       ? `<a class="kit-stage" href="${k.page}?shade=${PK.heroShade}" aria-label="See all 12 shades">${artSvg(k)}<span class="qv-hint">See 12 shades</span></a>`

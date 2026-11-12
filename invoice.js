@@ -104,8 +104,15 @@
   }
 
   // Server-side price list — never trust prices sent from the browser.
-  const PRICES = { shampoo: 30, tan: 149, glow: 199 };
-  const NAMES = { shampoo: "Mamaearth Rosemary Anti-Hair Fall Shampoo 250 ml", tan: "Tan Removal Combo Kit", glow: "Complete Glow Beauty Kit" };
+  const PRICES = { shampoo: 30, tan: 149, glow: 199,
+    // K-beauty — PLACEHOLDER prices, keep in sync with kbdata.js
+    "boj-rice-sun": 59, "boj-aqua-sun": 59, "boj-glow-serum": 65, "boj-dynasty": 79, "cosrx-snail": 75, "boj-sun-duo": 109, "boj-glow-set": 189 };
+  const NAMES = {
+    "boj-rice-sun": "Beauty of Joseon Relief Sun: Rice + Probiotics SPF 50+ 50 ml", "boj-aqua-sun": "Beauty of Joseon Relief Sun Aqua-Fresh SPF 50+ 50 ml",
+    "boj-glow-serum": "Beauty of Joseon Glow Serum: Propolis + Niacinamide 30 ml", "boj-dynasty": "Beauty of Joseon Dynasty Cream 50 ml",
+    "cosrx-snail": "COSRX Advanced Snail 92 All in One Cream 100 g", "boj-sun-duo": "Beauty of Joseon Sun Duo Set (2 x Relief Sun 50 ml)",
+    "boj-glow-set": "Beauty of Joseon Complete Glow Set (sun + serum + cream)",
+    shampoo: "Mamaearth Rosemary Anti-Hair Fall Shampoo 250 ml", tan: "Tan Removal Combo Kit", glow: "Complete Glow Beauty Kit" };
   const SHADES = { "01": "Nude Pink", "02": "Rose Pink", "03": "Baby Pink", "04": "Peach Nude", "05": "Caramel Pink", "06": "Mauve Pink",
     "07": "Pink Berry", "08": "Cherry Pink", "09": "Brown Nude", "10": "Chocolate", "11": "Deep Rose", "12": "Classic Red" };
   const DELIVERY = 10;

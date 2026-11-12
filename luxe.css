@@ -425,3 +425,5 @@ body.modal-open .charms,body.cart-open .charms,body.menu-open .charms{opacity:0;
 }
 
 @media (max-width:640px){.kb-card .kit-actions .btn{white-space:nowrap;font-size:.76rem;padding:10px 6px}.kb-card .enq a{width:36px;height:36px}}
+.kb-card .kb-save{background:linear-gradient(100deg,#1b8a32,#2fb34d)!important}
+@media (max-width:640px){.kb-card .kb-save{top:44px!important;left:18px!important;font-size:.56rem;padding:4px 8px}}

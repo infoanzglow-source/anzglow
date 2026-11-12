@@ -39,6 +39,7 @@
     }
   ];
   KITS.find(k => k.id === "glow").featured = false;
+  KITS.push(...(window.KB_PRODUCTS || []));   // K-beauty (kbdata.js)
   const pct = k => k.was ? Math.round((1 - k.price / k.was) * 100) : 0;
   const priceHtml = k => `AED ${k.price}${k.was ? `<s>${k.was}</s>` : ""}`;
   const wa = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
