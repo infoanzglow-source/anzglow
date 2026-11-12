@@ -134,3 +134,17 @@ html,body{background:var(--ivory-1)!important;color:var(--ink)}
 @media (max-width:900px){
   .reels,.hair,.finder,#ritual,.story,#reviews,#order{padding-top:84px!important}
 }
+
+/* ---------- full-width header & footer (stretch edge to edge) ---------- */
+.header .wrap,.ft .wrap,.ft-bottom .wrap{width:calc(100% - 64px)!important;max-width:none!important}
+.ft-feature,.ft-main,.ft-trust{width:100%}
+.header .wrap{justify-content:space-between}
+@media (max-width:900px){.header .wrap,.ft .wrap,.ft-bottom .wrap{width:calc(100% - 32px)!important}}
+@media (max-width:640px){
+  .header .wrap,.ft .wrap,.ft-bottom .wrap{width:calc(100% - 24px)!important}
+  .ft-feature{gap:14px}
+  .ft-main{padding:22px 16px!important;gap:24px 14px!important}
+  .ft-promo{grid-template-columns:84px 1fr!important}
+  .ft-promo img{width:84px!important}
+  .ft-bottom .wrap{padding:16px 0}
+}

@@ -52,6 +52,24 @@
     });
   };
   ["#kitGrid", "#kbGrid"].forEach(sel => { const g = document.querySelector(sel); if (g) enhance(g); });
+
+  // ---------- phones / touch screens (no hover) ----------
+  if (matchMedia("(hover: none)").matches) {
+    const setOpen = (v, on) => { v.classList.toggle("open", on); const l = v.querySelector(".lid"); if (l) l.setAttribute("aria-expanded", on); };
+    document.querySelectorAll(".vessel").forEach(v => {
+      // first tap on a closed jar opens the lid instead of the pop-up; next tap (or "View details") opens details
+      v.addEventListener("click", e => {
+        if (!v.classList.contains("open") && e.target.closest(".kit-stage")) { e.preventDefault(); e.stopPropagation(); setOpen(v, true); v.dataset.auto = ""; }
+      }, true);
+    });
+    // lids lift by themselves as each product reaches the middle of the screen
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      const v = en.target;
+      if (en.isIntersecting) { if (!v.classList.contains("open")) { setOpen(v, true); v.dataset.auto = "1"; } }
+      else if (v.dataset.auto === "1") { setOpen(v, false); v.dataset.auto = ""; }
+    }), { rootMargin: "-38% 0px -38% 0px" });
+    document.querySelectorAll(".vessel").forEach(v => io.observe(v));
+  }
   // close other open lids when one opens (keeps the grid tidy)
   document.addEventListener("click", e => {
     const lid = e.target.closest(".lid"); if (!lid) return;
