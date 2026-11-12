@@ -1,0 +1,44 @@
+/* ==========================================================
+   AnzGlow — "calm premium" pass (loaded last)
+   Centered product rows, simpler cards, no floating decoration.
+   ========================================================== */
+/* products centered, fixed elegant card width */
+.kits,.kb-grid{display:flex!important;flex-wrap:wrap;justify-content:center;gap:28px!important;max-width:none!important}
+.kits>.kit{flex:0 1 300px;max-width:300px}
+
+/* simpler cards: product, name, one line, price, add to cart */
+.kit .kit-list li{display:none}
+.kit .kit-list li:first-child{display:block;padding-left:0;color:var(--muted);font-size:.86rem;line-height:1.45}
+.kit .kit-list li:first-child::before{display:none}
+.kit .kit-list{margin-bottom:6px}
+.kit .kit-note,.kit .kit-shades{display:none}
+.kit h3{text-align:center;padding:0 4px!important;margin-bottom:6px!important}
+.kit .kb-brand,.kit .kit-list{text-align:center}
+.kit-foot{flex-direction:column;align-items:center!important;gap:12px;padding-top:16px!important;text-align:center}
+.kit-foot .price{text-align:center}
+.kit-foot .price small{display:block}
+.kit-actions{justify-content:center;width:100%}
+.kit-actions .btn{flex:1;max-width:190px;justify-content:center}
+.kit-actions .enq .e-mail{display:none}
+.kit:hover{transform:translateY(-4px)!important}
+
+/* cleaner vessels: no sparkle burst, gentle lid */
+.v-burst{display:none}
+.vessel.open .kit-stage>svg,.vessel.open .kit-stage>img{filter:drop-shadow(0 16px 18px rgba(110,60,95,.2))}
+.vessel::after{display:none}
+.v-bottle .kit-stage::before{opacity:.6}
+
+/* remove floating decoration + page texture */
+.charms,.deco,body::after{display:none!important}
+.ft-charm-band{display:none}
+
+@media (max-width:640px){
+  .kits>.kit{flex:1 1 100%;max-width:360px}
+  .kb-grid>.kit{flex:0 1 calc(50% - 7px);max-width:calc(50% - 7px)}
+  .kb-grid{gap:14px!important}
+  .kb-card .kit-list li:first-child{display:none}
+  .kit-actions .btn{max-width:none}
+}
+
+#kitGrid .kit-list{display:none}
+#kitGrid .kit-note{display:block!important;text-align:center;margin:0 0 4px;font-size:.95rem}

@@ -1,0 +1,81 @@
+/* ==========================================================
+   AnzGlow — bottle & gift-box product vessels
+   ========================================================== */
+.kit.has-vessel{padding-top:14px!important}
+.vessel{position:relative;padding-top:58px;margin-bottom:16px}
+.vessel .kit-stage{position:relative;z-index:1;margin:0!important;height:250px!important}
+
+/* ---- bottle: glossy gold-rimmed bottle body ---- */
+.v-bottle .kit-stage{border-radius:44% 44% 30px 30px / 26% 26% 30px 30px!important;
+  border:4px solid transparent!important;
+  background:radial-gradient(circle at 50% 62%,var(--blob,#fbe3ea) 0 44%,transparent 45%) padding-box,linear-gradient(170deg,#fff,#fbf4f8) padding-box,
+    linear-gradient(140deg,#fff1c9,#d4a24c 30%,#f7e2ab 55%,#b98536 80%,#f3d999) border-box!important;
+  box-shadow:0 26px 40px -26px rgba(110,60,95,.55),inset 0 0 0 1px rgba(255,255,255,.8)!important}
+.v-bottle .kit-stage::before{content:"";position:absolute;z-index:3;left:12%;top:16%;width:10px;height:42%;border-radius:10px;
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
+.v-bottle .lid{position:absolute;z-index:4;left:50%;top:0;width:84px;height:70px;translate:-50% 0;display:grid;justify-items:center;align-content:end;
+  transition:translate .55s var(--ease),rotate .55s var(--ease);cursor:pointer;filter:drop-shadow(0 8px 10px rgba(110,60,95,.25))}
+.v-bottle .lid svg{width:64px;height:auto;position:relative;z-index:2}
+.v-bottle .lid-neck{position:absolute;bottom:-6px;left:50%;translate:-50% 0;width:58px;height:16px;border-radius:6px 6px 3px 3px;
+  background:linear-gradient(90deg,#a77c35,#f3d999 40%,#d4a24c 60%,#8a5d1f)}
+
+/* ---- gift box: ribbon-wrapped box with bow lid ---- */
+.v-gift .kit-stage{border-radius:22px!important;border:4px solid transparent!important;
+  background:linear-gradient(90deg,transparent calc(50% - 13px),rgba(228,138,169,.22) calc(50% - 13px) calc(50% + 13px),transparent calc(50% + 13px)) padding-box,
+    radial-gradient(circle at 50% 62%,var(--blob,#fbe3ea) 0 44%,transparent 45%) padding-box,linear-gradient(170deg,#fff,#fbf4f8) padding-box,
+    linear-gradient(140deg,#f7b9cf,#e48aa9 35%,#fde3ea 60%,#d9668f) border-box!important;
+  box-shadow:0 26px 40px -26px rgba(110,60,95,.55)!important}
+.v-gift .lid{position:absolute;z-index:4;left:50%;top:6px;width:calc(100% + 12px);height:56px;translate:-50% 0;cursor:pointer;
+  transition:translate .55s var(--ease),rotate .55s var(--ease);filter:drop-shadow(0 10px 12px rgba(110,60,95,.25))}
+.v-gift .lid-box{position:absolute;left:0;right:0;bottom:0;height:30px;border-radius:12px;
+  background:linear-gradient(90deg,transparent calc(50% - 14px),#e48aa9 calc(50% - 14px) calc(50% + 14px),transparent calc(50% + 14px)),linear-gradient(170deg,#fff7fa,#fbe3ec);
+  box-shadow:inset 0 0 0 2px #f2b6ca,inset 0 -4px 0 rgba(201,79,124,.15)}
+.v-gift .lid svg{position:absolute;left:50%;bottom:20px;translate:-50% 0;width:86px;height:auto}
+
+/* hover hint + open state */
+.lid:hover{translate:-50% -6px}
+.lid:focus-visible{outline:2px solid #d4a24c;outline-offset:4px;border-radius:12px}
+.vessel.open .lid{translate:-50% -46px;rotate:-14deg}
+.v-gift.open .lid{translate:-50% -40px;rotate:12deg}
+.vessel .kit-stage>svg,.vessel .kit-stage>img{transition:scale .6s var(--ease),filter .6s}
+.vessel.open .kit-stage>svg,.vessel.open .kit-stage>img{scale:1.08;filter:drop-shadow(0 0 22px rgba(243,217,153,.9)) drop-shadow(0 16px 18px rgba(110,60,95,.25))}
+.vessel::after{content:"";position:absolute;z-index:2;left:50%;top:58px;width:70%;height:40%;translate:-50% 0;border-radius:50%;pointer-events:none;
+  background:radial-gradient(rgba(255,241,201,.9),transparent 70%);opacity:0;transition:opacity .6s}
+.vessel.open::after{opacity:1}
+
+/* tags sit on the vessel */
+.vessel>.tag{position:absolute!important;z-index:5;top:auto!important;bottom:14px!important;left:14px!important}
+.vessel>.sale-tag{position:absolute!important;z-index:5;top:auto!important;bottom:14px!important;left:auto!important;right:14px!important}
+.has-vessel .wish{top:16px!important;right:16px!important}
+
+/* sparkle burst */
+.v-burst{position:absolute;z-index:6;left:50%;top:40px;pointer-events:none}
+.v-burst i{position:absolute;font-style:normal;font-size:1rem;opacity:0}
+.vessel.pop .v-burst i{animation:vBurst .9s var(--ease) forwards}
+@keyframes vBurst{0%{opacity:0;transform:rotate(var(--a)) translateY(0) scale(.4)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateY(-70px) scale(1.1)}}
+
+/* "view details" bubble */
+.v-peek{position:absolute;z-index:6;left:50%;top:132px;translate:-50% 10px;padding:9px 16px;border-radius:999px;background:#fff;color:#7d5418;
+  font-size:.8rem;font-weight:500;white-space:nowrap;box-shadow:0 14px 28px -14px rgba(110,60,95,.6),0 0 0 1px rgba(217,180,106,.45);
+  opacity:0;pointer-events:none;transition:opacity .35s .25s,translate .45s var(--ease) .25s}
+.vessel.open .v-peek{opacity:1;translate:-50% 0;pointer-events:auto}
+.v-peek:hover{background:var(--l-gold);color:#3b2a35}
+.vessel .qv-hint{display:none}
+
+@media (max-width:640px){
+  .vessel{padding-top:50px}
+  .vessel .kit-stage{height:220px!important}
+  .kb-card .vessel .kit-stage{height:170px!important}
+  .kb-card .vessel{padding-top:44px}
+  .v-bottle .lid{width:64px;height:58px}
+  .v-bottle .lid svg{width:48px}
+  .v-bottle .lid-neck{width:44px;height:12px}
+  .kb-card .v-gift .lid{height:46px}
+  .kb-card .v-gift .lid svg{width:64px;bottom:16px}
+  .kb-card .v-gift .lid-box{height:24px}
+  .kb-card .vessel>.tag,.kb-card .vessel>.sale-tag{bottom:8px!important;font-size:.52rem;padding:4px 7px}
+  .kb-card .vessel>.tag{left:8px!important}.kb-card .vessel>.sale-tag{right:8px!important}
+  .kb-card .v-peek{top:96px;font-size:.7rem;padding:7px 11px}
+  .vessel.open .lid{translate:-50% -34px}
+}
+@media (prefers-reduced-motion:reduce){.lid,.vessel .kit-stage>*{transition:none}.vessel.pop .v-burst i{animation:none}}
