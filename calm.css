@@ -42,3 +42,8 @@
 
 #kitGrid .kit-list{display:none}
 #kitGrid .kit-note{display:block!important;text-align:center;margin:0 0 4px;font-size:.95rem}
+
+/* product sections: plain background, no coloured panel / rounded sheet behind the products */
+#kits,#kbeauty{background:var(--l-cream,#fffaf5)!important;border-radius:0!important;margin-top:0!important;box-shadow:none!important}
+#kits{padding-top:90px!important}#kbeauty{padding-top:40px!important}
+.kits,.kb-grid{justify-content:center!important;margin-inline:auto!important}
